@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Icons\Stereux-logo-128x128.ico</ApplicationIcon>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>LuisAlfredo92</Authors>
+    <Description>A program that helps you put music in your livestreams with the proper attributions to avoid copyright problems.</Description>
+    <Copyright>LuisAlfredo92</Copyright>
+    <PackageProjectUrl>https://github.com/LuisAlfredo92/Stereux</PackageProjectUrl>
+    <PackageIcon>Stereux logo 128x128.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/LuisAlfredo92/Stereux</RepositoryUrl>
+    <PackageTags>music;copyright;attribution;stream;</PackageTags>
+    <PackageReleaseNotes>1.0.0
+-Initial release</PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <PackageLicenseFile>C:\Users\luisa\Proyectos\En progreso\Programas\Stereux\Stereux\LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icons\Stereux-logo-128x128.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Resources\Icons\Stereux logo 128x128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
