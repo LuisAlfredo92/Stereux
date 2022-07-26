@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Stereux
+namespace Stereux.Resources
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Lógica de interacción para SongInfoContainer.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SongInfoContainer : Page
     {
-        public MainWindow()
+        public SongInfoContainer()
         {
             InitializeComponent();
         }

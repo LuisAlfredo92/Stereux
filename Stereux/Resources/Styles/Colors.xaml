@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Palette 1 Colors https://colorhunt.co/palette/fff6fbffbee3fc5bb6ff0592 -->
+    <Color x:Key="Palette1TextColor">#FF0592</Color>
+    <Color x:Key="Palette1BackgroundColor">#FFF6FB</Color>
+    <Color x:Key="Palette1SecondaryColor">#FFBEE3</Color>
+    <Color x:Key="Palette1TertiaryColor">#FC5BB6</Color>
+    <!-- Palette 2 Colors https://colorhunt.co/palette/2121213232320d737714ffec -->
+    <Color x:Key="Palette2TextColor">#14FFEC</Color>
+    <Color x:Key="Palette2BackgroundColor">#212121</Color>
+    <Color x:Key="Palette2SecondaryColor">#0D7377</Color>
+    <Color x:Key="Palette2TertiaryColor">#323232</Color>
+    <!-- Palette 3 Colors https://colorhunt.co/palette/fafaf600fff000d1ff3d6cb9 -->
+    <Color x:Key="Palette3TextColor">#3D6CB9</Color>
+    <Color x:Key="Palette3BackgroundColor">#FAFAF6</Color>
+    <Color x:Key="Palette3SecondaryColor">#00FFF0</Color>
+    <Color x:Key="Palette3TertiaryColor">#00D1FF</Color>
+    <!-- Palette 4 Colors https://colorhunt.co/palette/eeeeee32e0c40d7377212121 -->
+    <Color x:Key="Palette4TextColor">#EEEEEE</Color>
+    <Color x:Key="Palette4BackgroundColor">#212121</Color>
+    <Color x:Key="Palette4SecondaryColor">#32E0C4</Color>
+    <Color x:Key="Palette4TertiaryColor">#0D7377</Color>
+</ResourceDictionary>

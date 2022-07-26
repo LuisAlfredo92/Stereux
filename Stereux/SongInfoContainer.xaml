@@ -1,0 +1,17 @@
+﻿<Page x:Class="Stereux.Resources.SongInfoContainer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Stereux.Resources"
+      mc:Ignorable="d"
+      Width="190" Height="100" >
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock x:Name="titleLabel" TextWrapping="Wrap" Text="Music provided by:" FontFamily="Aneliza" FontSize="9" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock x:Name="subtitleLabel" TextWrapping="Wrap" Text="No Copyright Sounds" Width="85" FontFamily="Aneliza" FontSize="9" FontWeight="Normal" TextAlignment="Center"/>
+        </StackPanel>
+        <Image x:Name="qrCodeImage" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="105" Margin="0,0,0,0" Source="/Resources/Images/ncs-qr.png" Stretch="Uniform"/>
+    </Grid>
+</Page>
