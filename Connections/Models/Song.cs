@@ -1,4 +1,4 @@
-﻿namespace Stereux.Resources.Models;
+﻿namespace Connections.Models;
 
 /// <summary>
 /// Song class that saves all the necessary data to be shown or used
@@ -19,7 +19,7 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <param name="albumCoverLocalPath">Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown</param>
     /// <param name="songLocalPath">Once the song has been downloaded, this will save the local path to the file of the downloaded song</param>
     /// <param name="qRCodeLocalPath">Local path to the QRCode of the InfoLink</param>
-    public Song(Sources? source, string name, string artists, string? albumCoverLink, string genre, string infoLink, string songLink, string albumCoverLocalPath, string songLocalPath, string qRCodeLocalPath)
+    public Song(Sources? source, string name, string artists, string? albumCoverLink, string genre, string infoLink, string songLink, string? albumCoverLocalPath, string? songLocalPath, string? qRCodeLocalPath)
     {
         Source = source ?? throw new ArgumentNullException(nameof(source));
         Name = name ?? throw new ArgumentNullException(nameof(name));
@@ -31,16 +31,6 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
         AlbumCoverLocalPath = albumCoverLink != "No cover.png" ? albumCoverLocalPath : "No cover.png";
         SongLocalPath = songLocalPath;
         QrCodeLocalPath = qRCodeLocalPath ?? throw new ArgumentNullException(nameof(qRCodeLocalPath));
-    }
-
-
-    /// <summary>
-    /// The sources where the songs can come from.
-    /// At this moment the only source is NoCopyrightSounds, however, if more sites are added, those sources must be added here
-    /// </summary>
-    public enum Sources
-    {
-        NCS
     }
 
 
@@ -76,7 +66,7 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <summary>
     /// Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown
     /// </summary>
-    public string AlbumCoverLocalPath { get; init; }
+    public string? AlbumCoverLocalPath { get; init; }
     /// <summary>
     /// Once the song has been downloaded, this will save the local path to the file of the downloaded song
     /// </summary>
@@ -87,6 +77,8 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     public string QrCodeLocalPath { get; init; }
     #endregion
 
+
+    #region 
     /// <inheritdoc />
     public override bool Equals(object? obj) => obj is Song song && Equals(song);
 
@@ -116,4 +108,5 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
         $"Genre: {Genre}" +
         $"InfoLink: {InfoLink}" +
         $"SongLink: {SongLink}";
+    #endregion
 }

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stereux", "Stereux\Stereux.csproj", "{DB4203D1-D225-4AF2-BCE9-795618555F1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stereux", "Stereux\Stereux.csproj", "{DB4203D1-D225-4AF2-BCE9-795618555F1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connections", "Connections\Connections.csproj", "{B7CB6BA4-CBA5-4E31-ACDE-BDC699AEB612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downloader", "Downloader\Downloader.csproj", "{786399C3-0A2B-4482-8CFD-530426480908}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DB4203D1-D225-4AF2-BCE9-795618555F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB4203D1-D225-4AF2-BCE9-795618555F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB4203D1-D225-4AF2-BCE9-795618555F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7CB6BA4-CBA5-4E31-ACDE-BDC699AEB612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7CB6BA4-CBA5-4E31-ACDE-BDC699AEB612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7CB6BA4-CBA5-4E31-ACDE-BDC699AEB612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CB6BA4-CBA5-4E31-ACDE-BDC699AEB612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{786399C3-0A2B-4482-8CFD-530426480908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{786399C3-0A2B-4482-8CFD-530426480908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{786399C3-0A2B-4482-8CFD-530426480908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{786399C3-0A2B-4482-8CFD-530426480908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

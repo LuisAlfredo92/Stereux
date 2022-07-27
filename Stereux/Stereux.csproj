@@ -74,10 +74,10 @@
     <Resource Include="Resources\Icons\Volume icon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\ncs-qr.png">
+    <Resource Include="Resources\Images\QrCodes\ncs-qr.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\repo-qr.png">
+    <Resource Include="Resources\Images\QrCodes\repo-qr.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Stereux logo 512x512.png">
