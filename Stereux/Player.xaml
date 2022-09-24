@@ -108,7 +108,7 @@
 
         <!-- Settings button -->
         <Button Style="{DynamicResource playerBtnsStyle}"
-                x:Name="settingsBtn"
+                x:Name="SettingsBtn"
                 HorizontalAlignment="Left"
                 Height="25"
                 Margin="280,50,0,0"
@@ -119,7 +119,7 @@
                 Cursor="Hand"
                 Opacity="0.995"
                 BorderBrush="{x:Null}"
-                Foreground="{x:Null}">
+                Foreground="{x:Null}" Click="SettingsBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Icons/Settings icon.png" />
             </Button.Background>
@@ -187,7 +187,7 @@
         <!--#endregion-->
 
         <!--#region QR container -->
-        <Frame x:Name="qrCodeContainer"
+        <Frame x:Name="QrCodeContainer"
                Width="190"
                Height="100"
                Margin="300,45,0,0"

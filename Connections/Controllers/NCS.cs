@@ -1,6 +1,10 @@
-﻿using HtmlAgilityPack;
-using Connections.Data.SongsDataSetTableAdapters;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Connections.Models;
+using HtmlAgilityPack;
 
 namespace Connections.Controllers
 {
@@ -35,13 +39,16 @@ namespace Connections.Controllers
         /// <returns><![CDATA[Task<bool>]]></returns>
         public async Task<bool> GetAllSongsAndSave()
         {
-            SongsTableAdapter songTableAdapter = new();
+            //SongsTableAdapter songTableAdapter = new();
             for (int i = 1; i <= _maxPage; i++)
             {
                 _musicPage = _htmlWeb.Load($"https://ncs.io/music?page={i}").DocumentNode;
                 _songsDiv = _musicPage.SelectNodes("//div [contains(@class, 'row')]").First();
-                foreach (var completeSongInfo in GetSongsDivs(_songsDiv))
-                    songTableAdapter.InsertSong(GetSong(completeSongInfo));
+
+                // Save every song into the database
+                /*foreach (var completeSongInfo in GetSongsDivs(_songsDiv))
+                    songTableAdapter.InsertSong(GetSong(completeSongInfo));*/
+
                 // This sleep is to avoid a block from the NCS web page
                 Thread.Sleep(new Random().Next(10, 41) * 1000);
             }
@@ -64,7 +71,7 @@ namespace Connections.Controllers
         /// <returns><![CDATA[List<Song>]]></returns>
         public List<Song> GetSongs()
         {
-            List<Song> songs = new List<Song>();
+            List<Song> songs = new();
 
             foreach (var completeSongInfo in GetSongsDivs(_songsDiv))
                 songs.Add(GetSong(completeSongInfo));
@@ -84,7 +91,10 @@ namespace Connections.Controllers
 
             string songLink = songInfo.Attributes["href"].Value,
                 songImageStyle = songInfo.SelectSingleNode("//div [contains(@class, 'img')]").Attributes["Style"].Value,
-                songImageLink = songImageStyle.Substring(songImageStyle.IndexOf("'") + 1, songImageStyle.LastIndexOf("'") - songImageStyle.IndexOf("'")),
+                songImageLink = songImageStyle.Substring(
+                    songImageStyle.IndexOf("'", StringComparison.Ordinal) + 1,
+                    songImageStyle.LastIndexOf("'", StringComparison.Ordinal) - songImageStyle.IndexOf("'", StringComparison.Ordinal)
+                ),
                 songName = bottomSongInfo.SelectSingleNode("p/strong").InnerText,
                 songArtists = bottomSongInfo.SelectSingleNode("span").InnerText,
                 songGenre = completeSongInfo.SelectSingleNode("//div [contains(@class, 'col-6 col-lg-6')]/span/strong").InnerText,

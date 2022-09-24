@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Connections.Data {
+namespace Connections {
     
     
     /// <summary>
@@ -20,13 +20,13 @@ namespace Connections.Data {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("SongsDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("SongsDS")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class SongsDataSet : global::System.Data.DataSet {
-        
-        private SongsDataTable tableSongs;
+    public partial class SongsDS : global::System.Data.DataSet {
         
         private SourcesDataTable tableSources;
+        
+        private SongsDataTable tableSongs;
         
         private global::System.Data.DataRelation relationFK_Songs_ToSources;
         
@@ -34,7 +34,7 @@ namespace Connections.Data {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public SongsDataSet() {
+        public SongsDS() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -45,7 +45,7 @@ namespace Connections.Data {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected SongsDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected SongsDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -58,11 +58,11 @@ namespace Connections.Data {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Songs"] != null)) {
-                    base.Tables.Add(new SongsDataTable(ds.Tables["Songs"]));
-                }
                 if ((ds.Tables["Sources"] != null)) {
                     base.Tables.Add(new SourcesDataTable(ds.Tables["Sources"]));
+                }
+                if ((ds.Tables["Songs"] != null)) {
+                    base.Tables.Add(new SongsDataTable(ds.Tables["Songs"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -86,9 +86,9 @@ namespace Connections.Data {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SongsDataTable Songs {
+        public SourcesDataTable Sources {
             get {
-                return this.tableSongs;
+                return this.tableSources;
             }
         }
         
@@ -96,9 +96,9 @@ namespace Connections.Data {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SourcesDataTable Sources {
+        public SongsDataTable Songs {
             get {
-                return this.tableSources;
+                return this.tableSongs;
             }
         }
         
@@ -144,7 +144,7 @@ namespace Connections.Data {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            SongsDataSet cln = ((SongsDataSet)(base.Clone()));
+            SongsDS cln = ((SongsDS)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -169,11 +169,11 @@ namespace Connections.Data {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Songs"] != null)) {
-                    base.Tables.Add(new SongsDataTable(ds.Tables["Songs"]));
-                }
                 if ((ds.Tables["Sources"] != null)) {
                     base.Tables.Add(new SourcesDataTable(ds.Tables["Sources"]));
+                }
+                if ((ds.Tables["Songs"] != null)) {
+                    base.Tables.Add(new SongsDataTable(ds.Tables["Songs"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -208,16 +208,16 @@ namespace Connections.Data {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSongs = ((SongsDataTable)(base.Tables["Songs"]));
-            if ((initTable == true)) {
-                if ((this.tableSongs != null)) {
-                    this.tableSongs.InitVars();
-                }
-            }
             this.tableSources = ((SourcesDataTable)(base.Tables["Sources"]));
             if ((initTable == true)) {
                 if ((this.tableSources != null)) {
                     this.tableSources.InitVars();
+                }
+            }
+            this.tableSongs = ((SongsDataTable)(base.Tables["Songs"]));
+            if ((initTable == true)) {
+                if ((this.tableSongs != null)) {
+                    this.tableSongs.InitVars();
                 }
             }
             this.relationFK_Songs_ToSources = this.Relations["FK_Songs_ToSources"];
@@ -226,15 +226,15 @@ namespace Connections.Data {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "SongsDataSet";
+            this.DataSetName = "SongsDS";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/SongsDataSet.xsd";
+            this.Namespace = "http://tempuri.org/SongsDS.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSongs = new SongsDataTable();
-            base.Tables.Add(this.tableSongs);
             this.tableSources = new SourcesDataTable();
             base.Tables.Add(this.tableSources);
+            this.tableSongs = new SongsDataTable();
+            base.Tables.Add(this.tableSongs);
             this.relationFK_Songs_ToSources = new global::System.Data.DataRelation("FK_Songs_ToSources", new global::System.Data.DataColumn[] {
                         this.tableSources.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableSongs.SourceColumn}, false);
@@ -243,13 +243,13 @@ namespace Connections.Data {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeSongs() {
+        private bool ShouldSerializeSources() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeSources() {
+        private bool ShouldSerializeSongs() {
             return false;
         }
         
@@ -264,7 +264,7 @@ namespace Connections.Data {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            SongsDataSet ds = new SongsDataSet();
+            SongsDS ds = new SongsDS();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -309,10 +309,334 @@ namespace Connections.Data {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void SongsRowChangeEventHandler(object sender, SongsRowChangeEvent e);
+        public delegate void SourcesRowChangeEventHandler(object sender, SourcesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void SourcesRowChangeEventHandler(object sender, SourcesRowChangeEvent e);
+        public delegate void SongsRowChangeEventHandler(object sender, SongsRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SourcesDataTable : global::System.Data.TypedTableBase<SourcesRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnURL;
+            
+            private global::System.Data.DataColumn columnQrLocalPath;
+            
+            private global::System.Data.DataColumn columnEnabled;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SourcesDataTable() {
+                this.TableName = "Sources";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal SourcesDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected SourcesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn URLColumn {
+                get {
+                    return this.columnURL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QrLocalPathColumn {
+                get {
+                    return this.columnQrLocalPath;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EnabledColumn {
+                get {
+                    return this.columnEnabled;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SourcesRow this[int index] {
+                get {
+                    return ((SourcesRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SourcesRowChangeEventHandler SourcesRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SourcesRowChangeEventHandler SourcesRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SourcesRowChangeEventHandler SourcesRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SourcesRowChangeEventHandler SourcesRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddSourcesRow(SourcesRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SourcesRow AddSourcesRow(string Name, string URL, string QrLocalPath, bool Enabled) {
+                SourcesRow rowSourcesRow = ((SourcesRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Name,
+                        URL,
+                        QrLocalPath,
+                        Enabled};
+                rowSourcesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSourcesRow);
+                return rowSourcesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SourcesRow FindById(int Id) {
+                return ((SourcesRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SourcesDataTable cln = ((SourcesDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SourcesDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnName = base.Columns["Name"];
+                this.columnURL = base.Columns["URL"];
+                this.columnQrLocalPath = base.Columns["QrLocalPath"];
+                this.columnEnabled = base.Columns["Enabled"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnURL = new global::System.Data.DataColumn("URL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnURL);
+                this.columnQrLocalPath = new global::System.Data.DataColumn("QrLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQrLocalPath);
+                this.columnEnabled = new global::System.Data.DataColumn("Enabled", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnabled);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 50;
+                this.columnURL.AllowDBNull = false;
+                this.columnURL.MaxLength = 2147483647;
+                this.columnQrLocalPath.MaxLength = 2147483647;
+                this.columnEnabled.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SourcesRow NewSourcesRow() {
+                return ((SourcesRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SourcesRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SourcesRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SourcesRowChanged != null)) {
+                    this.SourcesRowChanged(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SourcesRowChanging != null)) {
+                    this.SourcesRowChanging(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SourcesRowDeleted != null)) {
+                    this.SourcesRowDeleted(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SourcesRowDeleting != null)) {
+                    this.SourcesRowDeleting(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveSourcesRow(SourcesRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SongsDS ds = new SongsDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SourcesDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -329,19 +653,19 @@ namespace Connections.Data {
             
             private global::System.Data.DataColumn columnArtists;
             
-            private global::System.Data.DataColumn columnAlbumCoverLink;
+            private global::System.Data.DataColumn columnAlbumCoverURL;
             
             private global::System.Data.DataColumn columnGenre;
             
-            private global::System.Data.DataColumn columnInfoLink;
+            private global::System.Data.DataColumn columnInfoURL;
             
-            private global::System.Data.DataColumn columnSongLink;
+            private global::System.Data.DataColumn columnSongURL;
             
             private global::System.Data.DataColumn columnAlbumCoverLocalPath;
             
             private global::System.Data.DataColumn columnSongLocalPath;
             
-            private global::System.Data.DataColumn columnQRCodeLocalPath;
+            private global::System.Data.DataColumn columnQrCodeLocalPath;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -410,9 +734,9 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn AlbumCoverLinkColumn {
+            public global::System.Data.DataColumn AlbumCoverURLColumn {
                 get {
-                    return this.columnAlbumCoverLink;
+                    return this.columnAlbumCoverURL;
                 }
             }
             
@@ -426,17 +750,17 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn InfoLinkColumn {
+            public global::System.Data.DataColumn InfoURLColumn {
                 get {
-                    return this.columnInfoLink;
+                    return this.columnInfoURL;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SongLinkColumn {
+            public global::System.Data.DataColumn SongURLColumn {
                 get {
-                    return this.columnSongLink;
+                    return this.columnSongURL;
                 }
             }
             
@@ -458,9 +782,9 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn QRCodeLocalPathColumn {
+            public global::System.Data.DataColumn QrCodeLocalPathColumn {
                 get {
-                    return this.columnQRCodeLocalPath;
+                    return this.columnQrCodeLocalPath;
                 }
             }
             
@@ -501,20 +825,20 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SongsRow AddSongsRow(SourcesRow parentSourcesRowByFK_Songs_ToSources, string Name, string Artists, string AlbumCoverLink, string Genre, string InfoLink, string SongLink, string AlbumCoverLocalPath, string SongLocalPath, string QRCodeLocalPath) {
+            public SongsRow AddSongsRow(SourcesRow parentSourcesRowByFK_Songs_ToSources, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, string QrCodeLocalPath) {
                 SongsRow rowSongsRow = ((SongsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Name,
                         Artists,
-                        AlbumCoverLink,
+                        AlbumCoverURL,
                         Genre,
-                        InfoLink,
-                        SongLink,
+                        InfoURL,
+                        SongURL,
                         AlbumCoverLocalPath,
                         SongLocalPath,
-                        QRCodeLocalPath};
+                        QrCodeLocalPath};
                 if ((parentSourcesRowByFK_Songs_ToSources != null)) {
                     columnValuesArray[1] = parentSourcesRowByFK_Songs_ToSources[0];
                 }
@@ -551,13 +875,13 @@ namespace Connections.Data {
                 this.columnSource = base.Columns["Source"];
                 this.columnName = base.Columns["Name"];
                 this.columnArtists = base.Columns["Artists"];
-                this.columnAlbumCoverLink = base.Columns["AlbumCoverLink"];
+                this.columnAlbumCoverURL = base.Columns["AlbumCoverURL"];
                 this.columnGenre = base.Columns["Genre"];
-                this.columnInfoLink = base.Columns["InfoLink"];
-                this.columnSongLink = base.Columns["SongLink"];
+                this.columnInfoURL = base.Columns["InfoURL"];
+                this.columnSongURL = base.Columns["SongURL"];
                 this.columnAlbumCoverLocalPath = base.Columns["AlbumCoverLocalPath"];
                 this.columnSongLocalPath = base.Columns["SongLocalPath"];
-                this.columnQRCodeLocalPath = base.Columns["QRCodeLocalPath"];
+                this.columnQrCodeLocalPath = base.Columns["QrCodeLocalPath"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -571,20 +895,20 @@ namespace Connections.Data {
                 base.Columns.Add(this.columnName);
                 this.columnArtists = new global::System.Data.DataColumn("Artists", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnArtists);
-                this.columnAlbumCoverLink = new global::System.Data.DataColumn("AlbumCoverLink", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAlbumCoverLink);
+                this.columnAlbumCoverURL = new global::System.Data.DataColumn("AlbumCoverURL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAlbumCoverURL);
                 this.columnGenre = new global::System.Data.DataColumn("Genre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGenre);
-                this.columnInfoLink = new global::System.Data.DataColumn("InfoLink", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInfoLink);
-                this.columnSongLink = new global::System.Data.DataColumn("SongLink", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSongLink);
+                this.columnInfoURL = new global::System.Data.DataColumn("InfoURL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInfoURL);
+                this.columnSongURL = new global::System.Data.DataColumn("SongURL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSongURL);
                 this.columnAlbumCoverLocalPath = new global::System.Data.DataColumn("AlbumCoverLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAlbumCoverLocalPath);
                 this.columnSongLocalPath = new global::System.Data.DataColumn("SongLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSongLocalPath);
-                this.columnQRCodeLocalPath = new global::System.Data.DataColumn("QRCodeLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQRCodeLocalPath);
+                this.columnQrCodeLocalPath = new global::System.Data.DataColumn("QrCodeLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQrCodeLocalPath);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -595,20 +919,19 @@ namespace Connections.Data {
                 this.columnId.Unique = true;
                 this.columnSource.AllowDBNull = false;
                 this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 2147483647;
+                this.columnName.MaxLength = 255;
                 this.columnArtists.AllowDBNull = false;
-                this.columnArtists.MaxLength = 2147483647;
-                this.columnAlbumCoverLink.MaxLength = 2147483647;
+                this.columnArtists.MaxLength = 255;
+                this.columnAlbumCoverURL.AllowDBNull = false;
+                this.columnAlbumCoverURL.MaxLength = 2147483647;
                 this.columnGenre.MaxLength = 50;
-                this.columnInfoLink.AllowDBNull = false;
-                this.columnInfoLink.MaxLength = 2147483647;
-                this.columnSongLink.MaxLength = 2147483647;
-                this.columnAlbumCoverLocalPath.AllowDBNull = false;
+                this.columnInfoURL.AllowDBNull = false;
+                this.columnInfoURL.MaxLength = 2147483647;
+                this.columnSongURL.AllowDBNull = false;
+                this.columnSongURL.MaxLength = 2147483647;
                 this.columnAlbumCoverLocalPath.MaxLength = 2147483647;
-                this.columnSongLocalPath.AllowDBNull = false;
                 this.columnSongLocalPath.MaxLength = 2147483647;
-                this.columnQRCodeLocalPath.AllowDBNull = false;
-                this.columnQRCodeLocalPath.MaxLength = 2147483647;
+                this.columnQrCodeLocalPath.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -676,7 +999,7 @@ namespace Connections.Data {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SongsDataSet ds = new SongsDataSet();
+                SongsDS ds = new SongsDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -736,309 +1059,100 @@ namespace Connections.Data {
         }
         
         /// <summary>
-        ///Represents the strongly named DataTable class.
+        ///Represents strongly named DataRow class.
         ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SourcesDataTable : global::System.Data.TypedTableBase<SourcesRow> {
+        public partial class SourcesRow : global::System.Data.DataRow {
             
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnURL;
-            
-            private global::System.Data.DataColumn columnQRLocalPath;
+            private SourcesDataTable tableSources;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesDataTable() {
-                this.TableName = "Sources";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
+            internal SourcesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSources = ((SourcesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SourcesDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected SourcesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
+            public int Id {
                 get {
-                    return this.columnId;
+                    return ((int)(this[this.tableSources.IdColumn]));
+                }
+                set {
+                    this[this.tableSources.IdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public string Name {
                 get {
-                    return this.columnName;
+                    return ((string)(this[this.tableSources.NameColumn]));
+                }
+                set {
+                    this[this.tableSources.NameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn URLColumn {
+            public string URL {
                 get {
-                    return this.columnURL;
+                    return ((string)(this[this.tableSources.URLColumn]));
+                }
+                set {
+                    this[this.tableSources.URLColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn QRLocalPathColumn {
+            public string QrLocalPath {
                 get {
-                    return this.columnQRLocalPath;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesRow this[int index] {
-                get {
-                    return ((SourcesRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SourcesRowChangeEventHandler SourcesRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SourcesRowChangeEventHandler SourcesRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SourcesRowChangeEventHandler SourcesRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SourcesRowChangeEventHandler SourcesRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddSourcesRow(SourcesRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesRow AddSourcesRow(string Name, string URL, string QRLocalPath) {
-                SourcesRow rowSourcesRow = ((SourcesRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Name,
-                        URL,
-                        QRLocalPath};
-                rowSourcesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSourcesRow);
-                return rowSourcesRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesRow FindById(int Id) {
-                return ((SourcesRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                SourcesDataTable cln = ((SourcesDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new SourcesDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnName = base.Columns["Name"];
-                this.columnURL = base.Columns["URL"];
-                this.columnQRLocalPath = base.Columns["QRLocalPath"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnURL = new global::System.Data.DataColumn("URL", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnURL);
-                this.columnQRLocalPath = new global::System.Data.DataColumn("QRLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQRLocalPath);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
-                this.columnId.Unique = true;
-                this.columnName.MaxLength = 2147483647;
-                this.columnURL.MaxLength = 2147483647;
-                this.columnQRLocalPath.MaxLength = 2147483647;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesRow NewSourcesRow() {
-                return ((SourcesRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SourcesRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(SourcesRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.SourcesRowChanged != null)) {
-                    this.SourcesRowChanged(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.SourcesRowChanging != null)) {
-                    this.SourcesRowChanging(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.SourcesRowDeleted != null)) {
-                    this.SourcesRowDeleted(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.SourcesRowDeleting != null)) {
-                    this.SourcesRowDeleting(this, new SourcesRowChangeEvent(((SourcesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveSourcesRow(SourcesRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SongsDataSet ds = new SongsDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SourcesDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
                     try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
+                        return ((string)(this[this.tableSources.QrLocalPathColumn]));
                     }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'QrLocalPath\' de la tabla \'Sources\' es DBNull.", e);
                     }
                 }
-                xs.Add(dsSchema);
-                return type;
+                set {
+                    this[this.tableSources.QrLocalPathColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Enabled {
+                get {
+                    return ((bool)(this[this.tableSources.EnabledColumn]));
+                }
+                set {
+                    this[this.tableSources.EnabledColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsQrLocalPathNull() {
+                return this.IsNull(this.tableSources.QrLocalPathColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetQrLocalPathNull() {
+                this[this.tableSources.QrLocalPathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SongsRow[] GetSongsRows() {
+                if ((this.Table.ChildRelations["FK_Songs_ToSources"] == null)) {
+                    return new SongsRow[0];
+                }
+                else {
+                    return ((SongsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Songs_ToSources"])));
+                }
             }
         }
         
@@ -1102,17 +1216,12 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string AlbumCoverLink {
+            public string AlbumCoverURL {
                 get {
-                    try {
-                        return ((string)(this[this.tableSongs.AlbumCoverLinkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AlbumCoverLink\' de la tabla \'Songs\' es DBNull.", e);
-                    }
+                    return ((string)(this[this.tableSongs.AlbumCoverURLColumn]));
                 }
                 set {
-                    this[this.tableSongs.AlbumCoverLinkColumn] = value;
+                    this[this.tableSongs.AlbumCoverURLColumn] = value;
                 }
             }
             
@@ -1134,28 +1243,23 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string InfoLink {
+            public string InfoURL {
                 get {
-                    return ((string)(this[this.tableSongs.InfoLinkColumn]));
+                    return ((string)(this[this.tableSongs.InfoURLColumn]));
                 }
                 set {
-                    this[this.tableSongs.InfoLinkColumn] = value;
+                    this[this.tableSongs.InfoURLColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string SongLink {
+            public string SongURL {
                 get {
-                    try {
-                        return ((string)(this[this.tableSongs.SongLinkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SongLink\' de la tabla \'Songs\' es DBNull.", e);
-                    }
+                    return ((string)(this[this.tableSongs.SongURLColumn]));
                 }
                 set {
-                    this[this.tableSongs.SongLinkColumn] = value;
+                    this[this.tableSongs.SongURLColumn] = value;
                 }
             }
             
@@ -1163,7 +1267,12 @@ namespace Connections.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string AlbumCoverLocalPath {
                 get {
-                    return ((string)(this[this.tableSongs.AlbumCoverLocalPathColumn]));
+                    try {
+                        return ((string)(this[this.tableSongs.AlbumCoverLocalPathColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AlbumCoverLocalPath\' de la tabla \'Songs\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableSongs.AlbumCoverLocalPathColumn] = value;
@@ -1174,7 +1283,12 @@ namespace Connections.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string SongLocalPath {
                 get {
-                    return ((string)(this[this.tableSongs.SongLocalPathColumn]));
+                    try {
+                        return ((string)(this[this.tableSongs.SongLocalPathColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SongLocalPath\' de la tabla \'Songs\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableSongs.SongLocalPathColumn] = value;
@@ -1183,12 +1297,17 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string QRCodeLocalPath {
+            public string QrCodeLocalPath {
                 get {
-                    return ((string)(this[this.tableSongs.QRCodeLocalPathColumn]));
+                    try {
+                        return ((string)(this[this.tableSongs.QrCodeLocalPathColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'QrCodeLocalPath\' de la tabla \'Songs\' es DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableSongs.QRCodeLocalPathColumn] = value;
+                    this[this.tableSongs.QrCodeLocalPathColumn] = value;
                 }
             }
             
@@ -1205,18 +1324,6 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsAlbumCoverLinkNull() {
-                return this.IsNull(this.tableSongs.AlbumCoverLinkColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetAlbumCoverLinkNull() {
-                this[this.tableSongs.AlbumCoverLinkColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsGenreNull() {
                 return this.IsNull(this.tableSongs.GenreColumn);
             }
@@ -1229,134 +1336,71 @@ namespace Connections.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSongLinkNull() {
-                return this.IsNull(this.tableSongs.SongLinkColumn);
+            public bool IsAlbumCoverLocalPathNull() {
+                return this.IsNull(this.tableSongs.AlbumCoverLocalPathColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSongLinkNull() {
-                this[this.tableSongs.SongLinkColumn] = global::System.Convert.DBNull;
+            public void SetAlbumCoverLocalPathNull() {
+                this[this.tableSongs.AlbumCoverLocalPathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSongLocalPathNull() {
+                return this.IsNull(this.tableSongs.SongLocalPathColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSongLocalPathNull() {
+                this[this.tableSongs.SongLocalPathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsQrCodeLocalPathNull() {
+                return this.IsNull(this.tableSongs.QrCodeLocalPathColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetQrCodeLocalPathNull() {
+                this[this.tableSongs.QrCodeLocalPathColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Row event argument class
         ///</summary>
-        public partial class SourcesRow : global::System.Data.DataRow {
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class SourcesRowChangeEvent : global::System.EventArgs {
             
-            private SourcesDataTable tableSources;
+            private SourcesRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SourcesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableSources = ((SourcesDataTable)(this.Table));
+            public SourcesRowChangeEvent(SourcesRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Id {
+            public SourcesRow Row {
                 get {
-                    return ((int)(this[this.tableSources.IdColumn]));
-                }
-                set {
-                    this[this.tableSources.IdColumn] = value;
+                    return this.eventRow;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name {
+            public global::System.Data.DataRowAction Action {
                 get {
-                    try {
-                        return ((string)(this[this.tableSources.NameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Name\' de la tabla \'Sources\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSources.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string URL {
-                get {
-                    try {
-                        return ((string)(this[this.tableSources.URLColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'URL\' de la tabla \'Sources\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSources.URLColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string QRLocalPath {
-                get {
-                    try {
-                        return ((string)(this[this.tableSources.QRLocalPathColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'QRLocalPath\' de la tabla \'Sources\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSources.QRLocalPathColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableSources.NameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableSources.NameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsURLNull() {
-                return this.IsNull(this.tableSources.URLColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetURLNull() {
-                this[this.tableSources.URLColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsQRLocalPathNull() {
-                return this.IsNull(this.tableSources.QRLocalPathColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetQRLocalPathNull() {
-                this[this.tableSources.QRLocalPathColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SongsRow[] GetSongsRows() {
-                if ((this.Table.ChildRelations["FK_Songs_ToSources"] == null)) {
-                    return new SongsRow[0];
-                }
-                else {
-                    return ((SongsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Songs_ToSources"])));
+                    return this.eventAction;
                 }
             }
         }
@@ -1394,44 +1438,433 @@ namespace Connections.Data {
                 }
             }
         }
+    }
+}
+namespace Connections.SongsDSTableAdapters {
+    
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class SourcesTableAdapter : global::System.ComponentModel.Component {
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class SourcesRowChangeEvent : global::System.EventArgs {
-            
-            private SourcesRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesRowChangeEvent(SourcesRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesRow Row {
-                get {
-                    return this.eventRow;
+        public SourcesTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
                 }
+                return this._adapter;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
                 }
             }
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Sources";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("URL", "URL");
+            tableMapping.ColumnMappings.Add("QrLocalPath", "QrLocalPath");
+            tableMapping.ColumnMappings.Add("Enabled", "Enabled");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Sources] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_" +
+                "Name) AND ([Enabled] = @Original_Enabled))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Enabled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Enabled", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sources] ([Name], [URL], [QrLocalPath], [Enabled]) VALUES (@Na" +
+                "me, @URL, @QrLocalPath, @Enabled);\r\nSELECT Id, Name, URL, QrLocalPath, Enabled F" +
+                "ROM Sources WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@URL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "URL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Enabled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Enabled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Sources] SET [Name] = @Name, [URL] = @URL, [QrLocalPath] = @QrLocalPath, [Enabled] = @Enabled WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Enabled] = @Original_Enabled));
+SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@URL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "URL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Enabled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Enabled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Enabled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Enabled", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisa\\Proyectos\\En progreso\\Programas\\Stereux\\Connections\\SongsDB.mdf;I" +
+                "ntegrated Security=True";
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, Name, URL, QrLocalPath, Enabled FROM dbo.Sources";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "dbo.GetEnabled";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "dbo.SetEnabled";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Enabled", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 1, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(SongsDS.SourcesDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SongsDS.SourcesDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            SongsDS.SourcesDataTable dataTable = new SongsDS.SourcesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual SongsDS.SourcesDataTable GetEnabledById(global::System.Nullable<int> Id) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Id.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Id.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            SongsDS.SourcesDataTable dataTable = new SongsDS.SourcesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(SongsDS.SourcesDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(SongsDS dataSet) {
+            return this.Adapter.Update(dataSet, "Sources");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, string Original_Name, bool Original_Enabled) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            if ((Original_Name == null)) {
+                throw new global::System.ArgumentNullException("Original_Name");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
+            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((bool)(Original_Enabled));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string Name, string URL, string QrLocalPath, bool Enabled) {
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
+            }
+            if ((URL == null)) {
+                throw new global::System.ArgumentNullException("URL");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(URL));
+            }
+            if ((QrLocalPath == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(QrLocalPath));
+            }
+            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(Enabled));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Name, string URL, string QrLocalPath, bool Enabled, int Original_Id, string Original_Name, bool Original_Enabled, int Id) {
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
+            }
+            if ((URL == null)) {
+                throw new global::System.ArgumentNullException("URL");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(URL));
+            }
+            if ((QrLocalPath == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(QrLocalPath));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(Enabled));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
+            if ((Original_Name == null)) {
+                throw new global::System.ArgumentNullException("Original_Name");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Name));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(Original_Enabled));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Name, string URL, string QrLocalPath, bool Enabled, int Original_Id, string Original_Name, bool Original_Enabled) {
+            return this.Update(Name, URL, QrLocalPath, Enabled, Original_Id, Original_Name, Original_Enabled, Original_Id);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int SetEnabled(global::System.Nullable<bool> Enabled, global::System.Nullable<int> Id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((Enabled.HasValue == true)) {
+                command.Parameters[1].Value = ((bool)(Enabled.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Id.HasValue == true)) {
+                command.Parameters[2].Value = ((int)(Id.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
     }
-}
-namespace Connections.Data.SongsDataSetTableAdapters {
-    
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -1558,58 +1991,62 @@ namespace Connections.Data.SongsDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Source", "Source");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Artists", "Artists");
-            tableMapping.ColumnMappings.Add("AlbumCoverLink", "AlbumCoverLink");
+            tableMapping.ColumnMappings.Add("AlbumCoverURL", "AlbumCoverURL");
             tableMapping.ColumnMappings.Add("Genre", "Genre");
-            tableMapping.ColumnMappings.Add("InfoLink", "InfoLink");
-            tableMapping.ColumnMappings.Add("SongLink", "SongLink");
+            tableMapping.ColumnMappings.Add("InfoURL", "InfoURL");
+            tableMapping.ColumnMappings.Add("SongURL", "SongURL");
             tableMapping.ColumnMappings.Add("AlbumCoverLocalPath", "AlbumCoverLocalPath");
             tableMapping.ColumnMappings.Add("SongLocalPath", "SongLocalPath");
-            tableMapping.ColumnMappings.Add("QRCodeLocalPath", "QRCodeLocalPath");
+            tableMapping.ColumnMappings.Add("QrCodeLocalPath", "QrCodeLocalPath");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Songs] WHERE (([Id] = @Original_Id) AND ([Source] = @Original_" +
-                "Source) AND ((@IsNull_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Gen" +
-                "re)))";
+                "Source) AND ([Name] = @Original_Name) AND ([Artists] = @Original_Artists) AND ((" +
+                "@IsNull_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Genre)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Artists", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Genre", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Genre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Genre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Songs] ([Source], [Name], [Artists], [AlbumCoverLink], [Genre], [InfoLink], [SongLink], [AlbumCoverLocalPath], [SongLocalPath], [QRCodeLocalPath]) VALUES (@Source, @Name, @Artists, @AlbumCoverLink, @Genre, @InfoLink, @SongLink, @AlbumCoverLocalPath, @SongLocalPath, @QRCodeLocalPath);
-SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, AlbumCoverLocalPath, SongLocalPath, QRCodeLocalPath FROM Songs WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Songs] ([Source], [Name], [Artists], [AlbumCoverURL], [Genre], [InfoURL], [SongURL], [AlbumCoverLocalPath], [SongLocalPath], [QrCodeLocalPath]) VALUES (@Source, @Name, @Artists, @AlbumCoverURL, @Genre, @InfoURL, @SongURL, @AlbumCoverLocalPath, @SongLocalPath, @QrCodeLocalPath);
+SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath, QrCodeLocalPath FROM Songs WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Artists", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLink", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InfoLink", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InfoLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLink", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QRCodeLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QRCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Artists", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InfoURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InfoURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrCodeLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Songs] SET [Source] = @Source, [Name] = @Name, [Artists] = @Artists, [AlbumCoverLink] = @AlbumCoverLink, [Genre] = @Genre, [InfoLink] = @InfoLink, [SongLink] = @SongLink, [AlbumCoverLocalPath] = @AlbumCoverLocalPath, [SongLocalPath] = @SongLocalPath, [QRCodeLocalPath] = @QRCodeLocalPath WHERE (([Id] = @Original_Id) AND ([Source] = @Original_Source) AND ((@IsNull_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Genre)));
-SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, AlbumCoverLocalPath, SongLocalPath, QRCodeLocalPath FROM Songs WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Songs] SET [Source] = @Source, [Name] = @Name, [Artists] = @Artists, [AlbumCoverURL] = @AlbumCoverURL, [Genre] = @Genre, [InfoURL] = @InfoURL, [SongURL] = @SongURL, [AlbumCoverLocalPath] = @AlbumCoverLocalPath, [SongLocalPath] = @SongLocalPath, [QrCodeLocalPath] = @QrCodeLocalPath WHERE (([Id] = @Original_Id) AND ([Source] = @Original_Source) AND ([Name] = @Original_Name) AND ([Artists] = @Original_Artists) AND ((@IsNull_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Genre)));
+SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath, QrCodeLocalPath FROM Songs WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Artists", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLink", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InfoLink", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InfoLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLink", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QRCodeLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QRCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Artists", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InfoURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InfoURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrCodeLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Artists", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Genre", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Genre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Genre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -1617,59 +2054,26 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Data\\SongsDB." +
-                "mdf;Integrated Security=True";
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisa\\Proyectos\\En progreso\\Programas\\Stereux\\Connections\\SongsDB.mdf;I" +
+                "ntegrated Security=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Albu" +
-                "mCoverLocalPath, SongLocalPath, QRCodeLocalPath FROM dbo.Songs";
+            this._commandCollection[0].CommandText = "SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCo" +
+                "verLocalPath, SongLocalPath, QrCodeLocalPath FROM dbo.Songs";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, A" +
-                "lbumCoverLocalPath, SongLocalPath, QRCodeLocalPath\r\nFROM            Songs\r\nWHERE" +
-                "        (Id = @Id)";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"INSERT INTO [dbo].[Songs] ([Source], [Name], [Artists], [AlbumCoverLink], [Genre], [InfoLink], [SongLink], [AlbumCoverLocalPath], [SongLocalPath], [QRCodeLocalPath]) VALUES (@Source, @Name, @Artists, @AlbumCoverLink, @Genre, @InfoLink, @SongLink, @AlbumCoverLocalPath, @SongLocalPath, @QRCodeLocalPath);
-SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, AlbumCoverLocalPath, SongLocalPath, QRCodeLocalPath FROM Songs WHERE (Id = SCOPE_IDENTITY())";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Source", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Artists", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLink", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genre", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InfoLink", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "InfoLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLink", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SongLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QRCodeLocalPath", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "QRCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"UPDATE       Songs
-SET                AlbumCoverLocalPath = @AlbumCoverLocalPath, SongLocalPath = @SongLocalPath, QRCodeLocalPath = @QRCodeLocalPath
-WHERE        (Id = @Id); 
-SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, AlbumCoverLocalPath, SongLocalPath, QRCodeLocalPath FROM Songs WHERE (Id = @Id)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QRCodeLocalPath", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "QRCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SongsDataSet.SongsDataTable dataTable) {
+        public virtual int Fill(SongsDS.SongsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1682,9 +2086,9 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SongsDataSet.SongsDataTable GetData() {
+        public virtual SongsDS.SongsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SongsDataSet.SongsDataTable dataTable = new SongsDataSet.SongsDataTable();
+            SongsDS.SongsDataTable dataTable = new SongsDS.SongsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1692,26 +2096,14 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual SongsDataSet.SongsDataTable GetSongById(int Id) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            SongsDataSet.SongsDataTable dataTable = new SongsDataSet.SongsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SongsDataSet.SongsDataTable dataTable) {
+        public virtual int Update(SongsDS.SongsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SongsDataSet dataSet) {
+        public virtual int Update(SongsDS dataSet) {
             return this.Adapter.Update(dataSet, "Songs");
         }
         
@@ -1734,16 +2126,28 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, int Original_Source, string Original_Genre) {
+        public virtual int Delete(int Original_Id, int Original_Source, string Original_Name, string Original_Artists, string Original_Genre) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Source));
-            if ((Original_Genre == null)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            if ((Original_Name == null)) {
+                throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Genre));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Name));
+            }
+            if ((Original_Artists == null)) {
+                throw new global::System.ArgumentNullException("Original_Artists");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Artists));
+            }
+            if ((Original_Genre == null)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Genre));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1765,7 +2169,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Source, string Name, string Artists, string AlbumCoverLink, string Genre, string InfoLink, string SongLink, string AlbumCoverLocalPath, string SongLocalPath, string QRCodeLocalPath) {
+        public virtual int Insert(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, string QrCodeLocalPath) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Source));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -1779,11 +2183,11 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Artists));
             }
-            if ((AlbumCoverLink == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            if ((AlbumCoverURL == null)) {
+                throw new global::System.ArgumentNullException("AlbumCoverURL");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(AlbumCoverLink));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(AlbumCoverURL));
             }
             if ((Genre == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -1791,35 +2195,35 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Genre));
             }
-            if ((InfoLink == null)) {
-                throw new global::System.ArgumentNullException("InfoLink");
+            if ((InfoURL == null)) {
+                throw new global::System.ArgumentNullException("InfoURL");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(InfoLink));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(InfoURL));
             }
-            if ((SongLink == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((SongURL == null)) {
+                throw new global::System.ArgumentNullException("SongURL");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SongLink));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SongURL));
             }
             if ((AlbumCoverLocalPath == null)) {
-                throw new global::System.ArgumentNullException("AlbumCoverLocalPath");
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((string)(AlbumCoverLocalPath));
             }
             if ((SongLocalPath == null)) {
-                throw new global::System.ArgumentNullException("SongLocalPath");
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = ((string)(SongLocalPath));
             }
-            if ((QRCodeLocalPath == null)) {
-                throw new global::System.ArgumentNullException("QRCodeLocalPath");
+            if ((QrCodeLocalPath == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(QRCodeLocalPath));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(QrCodeLocalPath));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1841,7 +2245,23 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Source, string Name, string Artists, string AlbumCoverLink, string Genre, string InfoLink, string SongLink, string AlbumCoverLocalPath, string SongLocalPath, string QRCodeLocalPath, int Original_Id, int Original_Source, string Original_Genre, int Id) {
+        public virtual int Update(
+                    int Source, 
+                    string Name, 
+                    string Artists, 
+                    string AlbumCoverURL, 
+                    string Genre, 
+                    string InfoURL, 
+                    string SongURL, 
+                    string AlbumCoverLocalPath, 
+                    string SongLocalPath, 
+                    string QrCodeLocalPath, 
+                    int Original_Id, 
+                    int Original_Source, 
+                    string Original_Name, 
+                    string Original_Artists, 
+                    string Original_Genre, 
+                    int Id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Source));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -1855,11 +2275,11 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Artists));
             }
-            if ((AlbumCoverLink == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            if ((AlbumCoverURL == null)) {
+                throw new global::System.ArgumentNullException("AlbumCoverURL");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(AlbumCoverLink));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(AlbumCoverURL));
             }
             if ((Genre == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -1867,47 +2287,59 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Genre));
             }
-            if ((InfoLink == null)) {
-                throw new global::System.ArgumentNullException("InfoLink");
+            if ((InfoURL == null)) {
+                throw new global::System.ArgumentNullException("InfoURL");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(InfoLink));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(InfoURL));
             }
-            if ((SongLink == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((SongURL == null)) {
+                throw new global::System.ArgumentNullException("SongURL");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SongLink));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SongURL));
             }
             if ((AlbumCoverLocalPath == null)) {
-                throw new global::System.ArgumentNullException("AlbumCoverLocalPath");
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(AlbumCoverLocalPath));
             }
             if ((SongLocalPath == null)) {
-                throw new global::System.ArgumentNullException("SongLocalPath");
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(SongLocalPath));
             }
-            if ((QRCodeLocalPath == null)) {
-                throw new global::System.ArgumentNullException("QRCodeLocalPath");
+            if ((QrCodeLocalPath == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(QRCodeLocalPath));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(QrCodeLocalPath));
             }
             this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Id));
             this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Source));
+            if ((Original_Name == null)) {
+                throw new global::System.ArgumentNullException("Original_Name");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Name));
+            }
+            if ((Original_Artists == null)) {
+                throw new global::System.ArgumentNullException("Original_Artists");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Artists));
+            }
             if ((Original_Genre == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Genre));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Genre));
             }
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1928,481 +2360,8 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Source, string Name, string Artists, string AlbumCoverLink, string Genre, string InfoLink, string SongLink, string AlbumCoverLocalPath, string SongLocalPath, string QRCodeLocalPath, int Original_Id, int Original_Source, string Original_Genre) {
-            return this.Update(Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, AlbumCoverLocalPath, SongLocalPath, QRCodeLocalPath, Original_Id, Original_Source, Original_Genre, Original_Id);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertSong(int Source, string Name, string Artists, string AlbumCoverLink, string Genre, string InfoLink, string SongLink, string AlbumCoverLocalPath, string SongLocalPath, string QRCodeLocalPath) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((int)(Source));
-            if ((Name == null)) {
-                throw new global::System.ArgumentNullException("Name");
-            }
-            else {
-                command.Parameters[1].Value = ((string)(Name));
-            }
-            if ((Artists == null)) {
-                throw new global::System.ArgumentNullException("Artists");
-            }
-            else {
-                command.Parameters[2].Value = ((string)(Artists));
-            }
-            if ((AlbumCoverLink == null)) {
-                command.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[3].Value = ((string)(AlbumCoverLink));
-            }
-            if ((Genre == null)) {
-                command.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[4].Value = ((string)(Genre));
-            }
-            if ((InfoLink == null)) {
-                throw new global::System.ArgumentNullException("InfoLink");
-            }
-            else {
-                command.Parameters[5].Value = ((string)(InfoLink));
-            }
-            if ((SongLink == null)) {
-                command.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[6].Value = ((string)(SongLink));
-            }
-            if ((AlbumCoverLocalPath == null)) {
-                throw new global::System.ArgumentNullException("AlbumCoverLocalPath");
-            }
-            else {
-                command.Parameters[7].Value = ((string)(AlbumCoverLocalPath));
-            }
-            if ((SongLocalPath == null)) {
-                throw new global::System.ArgumentNullException("SongLocalPath");
-            }
-            else {
-                command.Parameters[8].Value = ((string)(SongLocalPath));
-            }
-            if ((QRCodeLocalPath == null)) {
-                throw new global::System.ArgumentNullException("QRCodeLocalPath");
-            }
-            else {
-                command.Parameters[9].Value = ((string)(QRCodeLocalPath));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int SongDownloaded(string AlbumCoverLocalPath, string SongLocalPath, string QRCodeLocalPath, int Id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            if ((AlbumCoverLocalPath == null)) {
-                throw new global::System.ArgumentNullException("AlbumCoverLocalPath");
-            }
-            else {
-                command.Parameters[0].Value = ((string)(AlbumCoverLocalPath));
-            }
-            if ((SongLocalPath == null)) {
-                throw new global::System.ArgumentNullException("SongLocalPath");
-            }
-            else {
-                command.Parameters[1].Value = ((string)(SongLocalPath));
-            }
-            if ((QRCodeLocalPath == null)) {
-                throw new global::System.ArgumentNullException("QRCodeLocalPath");
-            }
-            else {
-                command.Parameters[2].Value = ((string)(QRCodeLocalPath));
-            }
-            command.Parameters[3].Value = ((int)(Id));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SourcesTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public SourcesTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Sources";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("URL", "URL");
-            tableMapping.ColumnMappings.Add("QRLocalPath", "QRLocalPath");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Sources] WHERE (([Id] = @Original_Id))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sources] ([Name], [URL], [QRLocalPath]) VALUES (@Name, @URL, @" +
-                "QRLocalPath);\r\nSELECT Id, Name, URL, QRLocalPath FROM Sources WHERE (Id = SCOPE_" +
-                "IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@URL", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "URL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QRLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QRLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Sources] SET [Name] = @Name, [URL] = @URL, [QRLocalPath] = @QRLocal" +
-                "Path WHERE (([Id] = @Original_Id));\r\nSELECT Id, Name, URL, QRLocalPath FROM Sour" +
-                "ces WHERE (Id = @Id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@URL", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "URL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QRLocalPath", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QRLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Data\\SongsDB." +
-                "mdf;Integrated Security=True";
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, URL, QRLocalPath FROM dbo.Sources";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        Name, URL, QRLocalPath\r\nFROM            Sources\r\nWHERE        (Id =" +
-                " @Id)";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SongsDataSet.SourcesDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SongsDataSet.SourcesDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            SongsDataSet.SourcesDataTable dataTable = new SongsDataSet.SourcesDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual SongsDataSet.SourcesDataTable GetSourceById(int Id) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            SongsDataSet.SourcesDataTable dataTable = new SongsDataSet.SourcesDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SongsDataSet.SourcesDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SongsDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Sources");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string URL, string QRLocalPath) {
-            if ((Name == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
-            }
-            if ((URL == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(URL));
-            }
-            if ((QRLocalPath == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(QRLocalPath));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string URL, string QRLocalPath, int Original_Id, int Id) {
-            if ((Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
-            }
-            if ((URL == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(URL));
-            }
-            if ((QRLocalPath == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(QRLocalPath));
-            }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string URL, string QRLocalPath, int Original_Id) {
-            return this.Update(Name, URL, QRLocalPath, Original_Id, Original_Id);
+        public virtual int Update(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, string QrCodeLocalPath, int Original_Id, int Original_Source, string Original_Name, string Original_Artists, string Original_Genre) {
+            return this.Update(Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath, QrCodeLocalPath, Original_Id, Original_Source, Original_Name, Original_Artists, Original_Genre, Original_Id);
         }
     }
     
@@ -2418,9 +2377,9 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         
         private UpdateOrderOption _updateOrder;
         
-        private SongsTableAdapter _songsTableAdapter;
-        
         private SourcesTableAdapter _sourcesTableAdapter;
+        
+        private SongsTableAdapter _songsTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -2442,12 +2401,12 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public SongsTableAdapter SongsTableAdapter {
+        public SourcesTableAdapter SourcesTableAdapter {
             get {
-                return this._songsTableAdapter;
+                return this._sourcesTableAdapter;
             }
             set {
-                this._songsTableAdapter = value;
+                this._sourcesTableAdapter = value;
             }
         }
         
@@ -2456,12 +2415,12 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public SourcesTableAdapter SourcesTableAdapter {
+        public SongsTableAdapter SongsTableAdapter {
             get {
-                return this._sourcesTableAdapter;
+                return this._songsTableAdapter;
             }
             set {
-                this._sourcesTableAdapter = value;
+                this._songsTableAdapter = value;
             }
         }
         
@@ -2484,13 +2443,13 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._songsTableAdapter != null) 
-                            && (this._songsTableAdapter.Connection != null))) {
-                    return this._songsTableAdapter.Connection;
-                }
                 if (((this._sourcesTableAdapter != null) 
                             && (this._sourcesTableAdapter.Connection != null))) {
                     return this._sourcesTableAdapter.Connection;
+                }
+                if (((this._songsTableAdapter != null) 
+                            && (this._songsTableAdapter.Connection != null))) {
+                    return this._songsTableAdapter.Connection;
                 }
                 return null;
             }
@@ -2505,10 +2464,10 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._songsTableAdapter != null)) {
+                if ((this._sourcesTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._sourcesTableAdapter != null)) {
+                if ((this._songsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -2520,7 +2479,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(SongsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(SongsDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._sourcesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Sources.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -2548,7 +2507,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(SongsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(SongsDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._sourcesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Sources.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -2574,7 +2533,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(SongsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(SongsDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._songsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Songs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -2624,20 +2583,20 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(SongsDataSet dataSet) {
+        public virtual int UpdateAll(SongsDS dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._songsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._songsTableAdapter.Connection) == false))) {
+            if (((this._sourcesTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._sourcesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
                         "sma cadena de conexión.");
             }
-            if (((this._sourcesTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._sourcesTableAdapter.Connection) == false))) {
+            if (((this._songsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._songsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
                         "sma cadena de conexión.");
             }
@@ -2673,15 +2632,6 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._songsTableAdapter != null)) {
-                    revertConnections.Add(this._songsTableAdapter, this._songsTableAdapter.Connection);
-                    this._songsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._songsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._songsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._songsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._songsTableAdapter.Adapter);
-                    }
-                }
                 if ((this._sourcesTableAdapter != null)) {
                     revertConnections.Add(this._sourcesTableAdapter, this._sourcesTableAdapter.Connection);
                     this._sourcesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -2689,6 +2639,15 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
                     if (this._sourcesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._sourcesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._sourcesTableAdapter.Adapter);
+                    }
+                }
+                if ((this._songsTableAdapter != null)) {
+                    revertConnections.Add(this._songsTableAdapter, this._songsTableAdapter.Connection);
+                    this._songsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._songsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._songsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._songsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._songsTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2749,13 +2708,13 @@ SELECT Id, Source, Name, Artists, AlbumCoverLink, Genre, InfoLink, SongLink, Alb
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._songsTableAdapter != null)) {
-                    this._songsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._songsTableAdapter]));
-                    this._songsTableAdapter.Transaction = null;
-                }
                 if ((this._sourcesTableAdapter != null)) {
                     this._sourcesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sourcesTableAdapter]));
                     this._sourcesTableAdapter.Transaction = null;
+                }
+                if ((this._songsTableAdapter != null)) {
+                    this._songsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._songsTableAdapter]));
+                    this._songsTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
