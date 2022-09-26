@@ -11,7 +11,6 @@ namespace Stereux
         public SongInfoContainer()
         {
             InitializeComponent();
-            var asd = new SongsTableAdapter().GetData();
         }
     }
 }

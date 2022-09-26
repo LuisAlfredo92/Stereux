@@ -6,5 +6,5 @@
 /// </summary>
 public enum Sources
 {
-    NCS
+    Ncs = 1
 }

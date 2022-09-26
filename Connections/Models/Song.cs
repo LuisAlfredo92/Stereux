@@ -20,19 +20,19 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <param name="songLink">URL that leads to the song FILE on the Internet</param>
     /// <param name="albumCoverLocalPath">Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown</param>
     /// <param name="songLocalPath">Once the song has been downloaded, this will save the local path to the file of the downloaded song</param>
-    /// <param name="qRCodeLocalPath">Local path to the QRCode of the InfoLink</param>
+    /// <param name="qRCodeLocalPath">Local path to the QRCode of the InfoURL</param>
     public Song(Sources? source, string name, string artists, string? albumCoverLink, string genre, string infoLink, string songLink, string? albumCoverLocalPath, string? songLocalPath, string? qRCodeLocalPath)
     {
         Source = source ?? throw new ArgumentNullException(nameof(source));
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Artists = artists ?? throw new ArgumentNullException(nameof(artists));
-        AlbumCoverLink = albumCoverLink ?? "No cover.png";
+        AlbumCoverURL = albumCoverLink ?? "No cover.png";
         Genre = genre;
-        InfoLink = infoLink ?? throw new ArgumentNullException(nameof(infoLink));
-        SongLink = songLink ?? throw new ArgumentNullException(nameof(songLink));
+        InfoURL = infoLink ?? throw new ArgumentNullException(nameof(infoLink));
+        SongURL = songLink ?? throw new ArgumentNullException(nameof(songLink));
         AlbumCoverLocalPath = albumCoverLink != "No cover.png" ? albumCoverLocalPath : "No cover.png";
         SongLocalPath = songLocalPath;
-        QrCodeLocalPath = qRCodeLocalPath ?? throw new ArgumentNullException(nameof(qRCodeLocalPath));
+        QrCodeLocalPath = qRCodeLocalPath;
     }
 
     #region Properties
@@ -55,7 +55,7 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <summary>
     /// URL to the album cover image on the Internet, it the song has no cover this param must be null and the program will use a generic cover
     /// </summary>
-    public string AlbumCoverLink { get; init; }
+    public string AlbumCoverURL { get; init; }
 
     /// <summary>
     /// (Optional) Genre or genres of the song
@@ -65,12 +65,12 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <summary>
     /// URL that will lead to a web page where the viewers can find more information about the song, not the artists. This is used to create the QRCode
     /// </summary>
-    public string InfoLink { get; init; }
+    public string InfoURL { get; init; }
 
     /// <summary>
     /// URL that leads to the song FILE on the Internet
     /// </summary>
-    public string SongLink { get; init; }
+    public string SongURL { get; init; }
 
     /// <summary>
     /// Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown
@@ -80,12 +80,12 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <summary>
     /// Once the song has been downloaded, this will save the local path to the file of the downloaded song
     /// </summary>
-    public string SongLocalPath { get; init; }
+    public string? SongLocalPath { get; init; }
 
     /// <summary>
-    /// Local path to the QRCode of the InfoLink
+    /// Local path to the QRCode of the InfoURL
     /// </summary>
-    public string QrCodeLocalPath { get; init; }
+    public string? QrCodeLocalPath { get; init; }
 
     #endregion Properties
 
@@ -115,10 +115,10 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     public string ToString(string? format, IFormatProvider? formatProvider) =>
         $"name: {Name}" +
         $"Artists: {Artists}" +
-        $"AlbumCoverLink: {AlbumCoverLink}" +
+        $"AlbumCoverURL: {AlbumCoverURL}" +
         $"Genre: {Genre}" +
-        $"InfoLink: {InfoLink}" +
-        $"SongLink: {SongLink}";
+        $"InfoURL: {InfoURL}" +
+        $"SongURL: {SongURL}";
 
     #endregion
 }

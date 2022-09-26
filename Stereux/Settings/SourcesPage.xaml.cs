@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Connections;
 using Connections.SongsDSTableAdapters;
+using SourcesTableAdapter = Connections.SongsDSTableAdapters.SourcesTableAdapter;
 
 namespace Stereux.Settings
 {
