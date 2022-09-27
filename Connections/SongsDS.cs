@@ -30,6 +30,30 @@ namespace Connections
 {
 }
 
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
 namespace Connections.SongsDSTableAdapters
 {
     public partial class SongsTableAdapter
@@ -45,8 +69,7 @@ namespace Connections.SongsDSTableAdapters
                 song.InfoURL,
                 song.SongURL,
                 song.AlbumCoverLocalPath,
-                song.SongLocalPath,
-                song.QrCodeLocalPath
+                song.SongLocalPath
             );
         }
 

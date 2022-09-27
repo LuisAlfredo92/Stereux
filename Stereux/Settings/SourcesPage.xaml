@@ -25,7 +25,6 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Path='Id'}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Path='Name'}" IsReadOnly="True" />
                 <DataGridTextColumn Header="URL" Binding="{Binding Path='URL'}" IsReadOnly="True" />
-                <DataGridTextColumn Header="QrLocalPath" Binding="{Binding Path='QrLocalPath'}" IsReadOnly="True" />
                 <DataGridTemplateColumn Header="Enabled">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

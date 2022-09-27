@@ -327,8 +327,6 @@ namespace Connections {
             
             private global::System.Data.DataColumn columnURL;
             
-            private global::System.Data.DataColumn columnQrLocalPath;
-            
             private global::System.Data.DataColumn columnEnabled;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -390,14 +388,6 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn QrLocalPathColumn {
-                get {
-                    return this.columnQrLocalPath;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn EnabledColumn {
                 get {
                     return this.columnEnabled;
@@ -441,13 +431,12 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SourcesRow AddSourcesRow(string Name, string URL, string QrLocalPath, bool Enabled) {
+            public SourcesRow AddSourcesRow(string Name, string URL, bool Enabled) {
                 SourcesRow rowSourcesRow = ((SourcesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
                         URL,
-                        QrLocalPath,
                         Enabled};
                 rowSourcesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSourcesRow);
@@ -481,7 +470,6 @@ namespace Connections {
                 this.columnId = base.Columns["Id"];
                 this.columnName = base.Columns["Name"];
                 this.columnURL = base.Columns["URL"];
-                this.columnQrLocalPath = base.Columns["QrLocalPath"];
                 this.columnEnabled = base.Columns["Enabled"];
             }
             
@@ -494,8 +482,6 @@ namespace Connections {
                 base.Columns.Add(this.columnName);
                 this.columnURL = new global::System.Data.DataColumn("URL", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnURL);
-                this.columnQrLocalPath = new global::System.Data.DataColumn("QrLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQrLocalPath);
                 this.columnEnabled = new global::System.Data.DataColumn("Enabled", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnabled);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -510,7 +496,6 @@ namespace Connections {
                 this.columnName.MaxLength = 50;
                 this.columnURL.AllowDBNull = false;
                 this.columnURL.MaxLength = 2147483647;
-                this.columnQrLocalPath.MaxLength = 2147483647;
                 this.columnEnabled.AllowDBNull = false;
             }
             
@@ -665,8 +650,6 @@ namespace Connections {
             
             private global::System.Data.DataColumn columnSongLocalPath;
             
-            private global::System.Data.DataColumn columnQrCodeLocalPath;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SongsDataTable() {
@@ -782,14 +765,6 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn QrCodeLocalPathColumn {
-                get {
-                    return this.columnQrCodeLocalPath;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -825,7 +800,7 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SongsRow AddSongsRow(SourcesRow parentSourcesRowByFK_Songs_ToSources, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, string QrCodeLocalPath) {
+            public SongsRow AddSongsRow(SourcesRow parentSourcesRowByFK_Songs_ToSources, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath) {
                 SongsRow rowSongsRow = ((SongsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -837,8 +812,7 @@ namespace Connections {
                         InfoURL,
                         SongURL,
                         AlbumCoverLocalPath,
-                        SongLocalPath,
-                        QrCodeLocalPath};
+                        SongLocalPath};
                 if ((parentSourcesRowByFK_Songs_ToSources != null)) {
                     columnValuesArray[1] = parentSourcesRowByFK_Songs_ToSources[0];
                 }
@@ -881,7 +855,6 @@ namespace Connections {
                 this.columnSongURL = base.Columns["SongURL"];
                 this.columnAlbumCoverLocalPath = base.Columns["AlbumCoverLocalPath"];
                 this.columnSongLocalPath = base.Columns["SongLocalPath"];
-                this.columnQrCodeLocalPath = base.Columns["QrCodeLocalPath"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -907,8 +880,6 @@ namespace Connections {
                 base.Columns.Add(this.columnAlbumCoverLocalPath);
                 this.columnSongLocalPath = new global::System.Data.DataColumn("SongLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSongLocalPath);
-                this.columnQrCodeLocalPath = new global::System.Data.DataColumn("QrCodeLocalPath", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQrCodeLocalPath);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -931,7 +902,6 @@ namespace Connections {
                 this.columnSongURL.MaxLength = 2147483647;
                 this.columnAlbumCoverLocalPath.MaxLength = 2147483647;
                 this.columnSongLocalPath.MaxLength = 2147483647;
-                this.columnQrCodeLocalPath.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1107,22 +1077,6 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string QrLocalPath {
-                get {
-                    try {
-                        return ((string)(this[this.tableSources.QrLocalPathColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'QrLocalPath\' de la tabla \'Sources\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSources.QrLocalPathColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Enabled {
                 get {
                     return ((bool)(this[this.tableSources.EnabledColumn]));
@@ -1130,18 +1084,6 @@ namespace Connections {
                 set {
                     this[this.tableSources.EnabledColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsQrLocalPathNull() {
-                return this.IsNull(this.tableSources.QrLocalPathColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetQrLocalPathNull() {
-                this[this.tableSources.QrLocalPathColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1297,22 +1239,6 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string QrCodeLocalPath {
-                get {
-                    try {
-                        return ((string)(this[this.tableSongs.QrCodeLocalPathColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'QrCodeLocalPath\' de la tabla \'Songs\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSongs.QrCodeLocalPathColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SourcesRow SourcesRow {
                 get {
                     return ((SourcesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Songs_ToSources"])));
@@ -1356,18 +1282,6 @@ namespace Connections {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetSongLocalPathNull() {
                 this[this.tableSongs.SongLocalPathColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsQrCodeLocalPathNull() {
-                return this.IsNull(this.tableSongs.QrCodeLocalPathColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetQrCodeLocalPathNull() {
-                this[this.tableSongs.QrCodeLocalPathColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1567,35 +1481,32 @@ namespace Connections.SongsDSTableAdapters {
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("URL", "URL");
-            tableMapping.ColumnMappings.Add("QrLocalPath", "QrLocalPath");
             tableMapping.ColumnMappings.Add("Enabled", "Enabled");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Sources] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_" +
-                "Name) AND ([Enabled] = @Original_Enabled))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Sources] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) " +
+                "AND ([Enabled] = @Original_Enabled))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Enabled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Enabled", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sources] ([Name], [URL], [QrLocalPath], [Enabled]) VALUES (@Na" +
-                "me, @URL, @QrLocalPath, @Enabled);\r\nSELECT Id, Name, URL, QrLocalPath, Enabled F" +
-                "ROM Sources WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Sources] ([Name], [URL], [Enabled]) VALUES (@Name, @URL, @Enabled);\r" +
+                "\nSELECT Id, Name, URL, Enabled FROM Sources WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@URL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "URL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Enabled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Enabled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Sources] SET [Name] = @Name, [URL] = @URL, [QrLocalPath] = @QrLocalPath, [Enabled] = @Enabled WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Enabled] = @Original_Enabled));
-SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [Sources] SET [Name] = @Name, [URL] = @URL, [Enabled] = @Enabled WHERE (([" +
+                "Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Enabled] = @Original_Ena" +
+                "bled));\r\nSELECT Id, Name, URL, Enabled FROM Sources WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@URL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "URL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Enabled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Enabled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1607,7 +1518,7 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisa\\Proyectos\\En progreso\\Programas\\Stereux\\Connections\\SongsDB.mdf;I" +
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SongsDB.mdf;I" +
                 "ntegrated Security=True";
         }
         
@@ -1617,7 +1528,7 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, URL, QrLocalPath, Enabled FROM dbo.Sources";
+            this._commandCollection[0].CommandText = "SELECT Id, Name, URL, Enabled FROM Sources";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -1627,7 +1538,7 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        Sources.*\r\nFROM            Sources\r\nWHERE        (Enabled = 1)";
+            this._commandCollection[2].CommandText = "SELECT Id, Name, URL, Enabled FROM Sources WHERE (Enabled = 1)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
@@ -1752,7 +1663,7 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string URL, string QrLocalPath, bool Enabled) {
+        public virtual int Insert(string Name, string URL, bool Enabled) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -1765,13 +1676,7 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(URL));
             }
-            if ((QrLocalPath == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(QrLocalPath));
-            }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(Enabled));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(Enabled));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1792,7 +1697,7 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string URL, string QrLocalPath, bool Enabled, int Original_Id, string Original_Name, bool Original_Enabled, int Id) {
+        public virtual int Update(string Name, string URL, bool Enabled, int Original_Id, string Original_Name, bool Original_Enabled, int Id) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -1805,22 +1710,16 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(URL));
             }
-            if ((QrLocalPath == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(QrLocalPath));
-            }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(Enabled));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(Enabled));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(Original_Enabled));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(Original_Enabled));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1841,8 +1740,8 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string URL, string QrLocalPath, bool Enabled, int Original_Id, string Original_Name, bool Original_Enabled) {
-            return this.Update(Name, URL, QrLocalPath, Enabled, Original_Id, Original_Name, Original_Enabled, Original_Id);
+        public virtual int Update(string Name, string URL, bool Enabled, int Original_Id, string Original_Name, bool Original_Enabled) {
+            return this.Update(Name, URL, Enabled, Original_Id, Original_Name, Original_Enabled, Original_Id);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2012,13 +1911,12 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
             tableMapping.ColumnMappings.Add("SongURL", "SongURL");
             tableMapping.ColumnMappings.Add("AlbumCoverLocalPath", "AlbumCoverLocalPath");
             tableMapping.ColumnMappings.Add("SongLocalPath", "SongLocalPath");
-            tableMapping.ColumnMappings.Add("QrCodeLocalPath", "QrCodeLocalPath");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Songs] WHERE (([Id] = @Original_Id) AND ([Source] = @Original_" +
-                "Source) AND ([Name] = @Original_Name) AND ([Artists] = @Original_Artists) AND ((" +
-                "@IsNull_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Genre)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Songs] WHERE (([Id] = @Original_Id) AND ([Source] = @Original_Source" +
+                ") AND ([Name] = @Original_Name) AND ([Artists] = @Original_Artists) AND ((@IsNul" +
+                "l_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Genre)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2028,8 +1926,8 @@ SELECT Id, Name, URL, QrLocalPath, Enabled FROM Sources WHERE (Id = @Id)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Genre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Songs] ([Source], [Name], [Artists], [AlbumCoverURL], [Genre], [InfoURL], [SongURL], [AlbumCoverLocalPath], [SongLocalPath], [QrCodeLocalPath]) VALUES (@Source, @Name, @Artists, @AlbumCoverURL, @Genre, @InfoURL, @SongURL, @AlbumCoverLocalPath, @SongLocalPath, @QrCodeLocalPath);
-SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath, QrCodeLocalPath FROM Songs WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Songs] ([Source], [Name], [Artists], [AlbumCoverURL], [Genre], [InfoURL], [SongURL], [AlbumCoverLocalPath], [SongLocalPath]) VALUES (@Source, @Name, @Artists, @AlbumCoverURL, @Genre, @InfoURL, @SongURL, @AlbumCoverLocalPath, @SongLocalPath);
+SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath FROM Songs WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2040,11 +1938,10 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrCodeLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Songs] SET [Source] = @Source, [Name] = @Name, [Artists] = @Artists, [AlbumCoverURL] = @AlbumCoverURL, [Genre] = @Genre, [InfoURL] = @InfoURL, [SongURL] = @SongURL, [AlbumCoverLocalPath] = @AlbumCoverLocalPath, [SongLocalPath] = @SongLocalPath, [QrCodeLocalPath] = @QrCodeLocalPath WHERE (([Id] = @Original_Id) AND ([Source] = @Original_Source) AND ([Name] = @Original_Name) AND ([Artists] = @Original_Artists) AND ((@IsNull_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Genre)));
-SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath, QrCodeLocalPath FROM Songs WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Songs] SET [Source] = @Source, [Name] = @Name, [Artists] = @Artists, [AlbumCoverURL] = @AlbumCoverURL, [Genre] = @Genre, [InfoURL] = @InfoURL, [SongURL] = @SongURL, [AlbumCoverLocalPath] = @AlbumCoverLocalPath, [SongLocalPath] = @SongLocalPath WHERE (([Id] = @Original_Id) AND ([Source] = @Original_Source) AND ([Name] = @Original_Name) AND ([Artists] = @Original_Artists) AND ((@IsNull_Genre = 1 AND [Genre] IS NULL) OR ([Genre] = @Original_Genre)));
+SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath FROM Songs WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2055,7 +1952,6 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongURL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrCodeLocalPath", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QrCodeLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2069,7 +1965,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisa\\Proyectos\\En progreso\\Programas\\Stereux\\Connections\\SongsDB.mdf;I" +
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SongsDB.mdf;I" +
                 "ntegrated Security=True";
         }
         
@@ -2080,7 +1976,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCo" +
-                "verLocalPath, SongLocalPath, QrCodeLocalPath FROM dbo.Songs";
+                "verLocalPath, SongLocalPath FROM Songs";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -2102,7 +1998,6 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongURL", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QrCodeLocalPath", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "TRUNCATE TABLE [dbo].[Songs]";
@@ -2215,7 +2110,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, string QrCodeLocalPath) {
+        public virtual int Insert(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Source));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -2265,12 +2160,6 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = ((string)(SongLocalPath));
             }
-            if ((QrCodeLocalPath == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(QrCodeLocalPath));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2291,23 +2180,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int Source, 
-                    string Name, 
-                    string Artists, 
-                    string AlbumCoverURL, 
-                    string Genre, 
-                    string InfoURL, 
-                    string SongURL, 
-                    string AlbumCoverLocalPath, 
-                    string SongLocalPath, 
-                    string QrCodeLocalPath, 
-                    int Original_Id, 
-                    int Original_Source, 
-                    string Original_Name, 
-                    string Original_Artists, 
-                    string Original_Genre, 
-                    int Id) {
+        public virtual int Update(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, int Original_Id, int Original_Source, string Original_Name, string Original_Artists, string Original_Genre, int Id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Source));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -2357,35 +2230,29 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(SongLocalPath));
             }
-            if ((QrCodeLocalPath == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(QrCodeLocalPath));
-            }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Source));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Source));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Name));
             }
             if ((Original_Artists == null)) {
                 throw new global::System.ArgumentNullException("Original_Artists");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Artists));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Artists));
             }
             if ((Original_Genre == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Genre));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Genre));
             }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2406,8 +2273,8 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, string QrCodeLocalPath, int Original_Id, int Original_Source, string Original_Name, string Original_Artists, string Original_Genre) {
-            return this.Update(Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath, QrCodeLocalPath, Original_Id, Original_Source, Original_Name, Original_Artists, Original_Genre, Original_Id);
+        public virtual int Update(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, int Original_Id, int Original_Source, string Original_Name, string Original_Artists, string Original_Genre) {
+            return this.Update(Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath, Original_Id, Original_Source, Original_Name, Original_Artists, Original_Genre, Original_Id);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2443,7 +2310,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertSong(global::System.Nullable<int> Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath, string QrCodeLocalPath) {
+        public virtual int InsertSong(global::System.Nullable<int> Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((Source.HasValue == true)) {
                 command.Parameters[1].Value = ((int)(Source.Value));
@@ -2498,12 +2365,6 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             }
             else {
                 command.Parameters[9].Value = ((string)(SongLocalPath));
-            }
-            if ((QrCodeLocalPath == null)) {
-                command.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[10].Value = ((string)(QrCodeLocalPath));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

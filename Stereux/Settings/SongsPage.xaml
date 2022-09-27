@@ -25,7 +25,6 @@
                 <DataGridTextColumn Header="SongURL" Binding="{Binding Path='SongURL'}" IsReadOnly="True" />
                 <DataGridTextColumn Header="AlbumCoverLocalPath" Binding="{Binding Path='AlbumCoverLocalPath'}" />
                 <DataGridTextColumn Header="SongLocalPath" Binding="{Binding Path='SongLocalPath'}" IsReadOnly="True" />
-                <DataGridTextColumn Header="QRCodeLocalPath" Binding="{Binding Path='QRCodeLocalPath'}" IsReadOnly="True" />
                 <DataGridTemplateColumn Header="Remove">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
