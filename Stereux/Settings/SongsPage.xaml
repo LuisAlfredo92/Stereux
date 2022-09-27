@@ -13,7 +13,7 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="SongsDataGrid" CanUserAddRows="False">
+        <DataGrid x:Name="SongsDataGrid" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Path='Id'}"  IsReadOnly="True" />
                 <DataGridTextColumn Header="Source" Binding="{Binding Path='Source'}" IsReadOnly="True" />
@@ -30,7 +30,25 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="DeleteSongBtn"
-                                    CommandParameter="{Binding 'Id'}" />
+                                    CommandParameter="{Binding 'Id'}"
+                                    Width="25"
+                                    Foreground="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    Click="DeleteSongBtn_OnClick">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Resources/Icons/Delete icon.png" />
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Generate Qr">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="GenerateQrBtn"
+                                    Content="Generate"
+                                    CommandParameter="{Binding 'Id'}"
+                                    Click="GenerateQrBtn_OnClick" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

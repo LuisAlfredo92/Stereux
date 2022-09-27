@@ -32,9 +32,9 @@ namespace Connections.Controllers
         }
 
         /// <summary>
-        /// Gets <b>all</b> the songs from the NCS web page and saves them into the database
+        /// Gets <b>all</b> the songs from the NCS web page and returns them
         /// </summary>
-        /// <returns><![CDATA[Task<bool>]]></returns>
+        /// <returns><![CDATA[Task<List<Song>?>]]></returns>
         public async Task<List<Song>?> GetSongs()
         {
             List<Song> songs = new();
@@ -74,15 +74,29 @@ namespace Connections.Controllers
                 bottomSongInfo = songInfo.SelectNodes("div [contains(@class, 'bottom')]").First();
 
             string songLink = "https://ncs.io" + songInfo.Attributes["href"].Value,
-                songImageStyle = songInfo.SelectNodes("div [contains(@class, 'inner')]/div [contains(@class, 'img')]").First().Attributes["Style"].Value,
+                songImageStyle = songInfo.SelectNodes("div [contains(@class, 'inner')]/div [contains(@class, 'img')]")
+                    .First()
+                    .Attributes["Style"]
+                    .Value,
                 songImageLink = songImageStyle.Substring(
                     songImageStyle.IndexOf("'", StringComparison.Ordinal) + 1,
                     songImageStyle.LastIndexOf("'", StringComparison.Ordinal) - songImageStyle.IndexOf("'", StringComparison.Ordinal)
                 ),
-                songName = bottomSongInfo.SelectSingleNode("p/strong").InnerText,
+                songName = bottomSongInfo.SelectSingleNode("p/strong").InnerText.Replace("&#039;", "'"),
                 songArtists = bottomSongInfo.SelectSingleNode("span").InnerText,
-                songGenre = completeSongInfo.SelectNodes("div [contains(@class, 'options')]/div [contains(@class, 'row align-items-center')]/div [contains(@class, 'col-6 col-lg-6')]/span/strong").First().InnerText,
-                songDataLink = completeSongInfo.SelectNodes("div [contains(@class, 'options')]/div [contains(@class, 'row align-items-center')]/div [contains(@class, 'col-6 col-lg-6')]").Last().SelectNodes("a").First().Attributes["data-url"].Value;
+                songGenre = completeSongInfo
+                    .SelectNodes(
+                        "div [contains(@class, 'options')]/div [contains(@class, 'row align-items-center')]/div [contains(@class, 'col-6 col-lg-6')]/span/strong")
+                    .First()
+                    .InnerText,
+                songDataLink = completeSongInfo
+                    .SelectNodes(
+                        "div [contains(@class, 'options')]/div [contains(@class, 'row align-items-center')]/div [contains(@class, 'col-6 col-lg-6')]")
+                    .Last()
+                    .SelectNodes("a")
+                    .First()
+                    .Attributes["data-url"]
+                    .Value;
             return new Song(Sources.Ncs, songName, songArtists, songImageLink, songGenre, songLink, songDataLink, null, null, null);
         }
     }

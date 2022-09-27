@@ -41,6 +41,7 @@ namespace Stereux.Settings
             var enabledSources = new SourcesTableAdapter().GetEnabledSources();
             foreach (var source in enabledSources)
             {
+                //TODO: Learn how to do this with Threads
                 var songsObtained = source.Id switch
                 {
                     1 => await new Ncs().GetSongs(),
@@ -64,6 +65,17 @@ namespace Stereux.Settings
         {
             _songsTable.TruncateTable();
             SongsDataGrid.ItemsSource = _songsTable.GetData();
+        }
+
+        private void DeleteSongBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var id = ((sender as Button)!.CommandParameter as int?) ?? -1;
+            _songsTable.DeleteSong(id);
+        }
+
+        private void GenerateQrBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            //TODO: Generate Qr
         }
     }
 }

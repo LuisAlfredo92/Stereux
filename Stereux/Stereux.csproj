@@ -25,6 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\Delete icon.png" />
     <None Remove="Resources\Icons\Mute icon.png" />
     <None Remove="Resources\Icons\Next icon.png" />
     <None Remove="Resources\Icons\Pause icon.png" />
@@ -47,6 +48,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Icons\Delete icon.png" />
     <Resource Include="Resources\Icons\Mute icon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
