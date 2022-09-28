@@ -12,7 +12,7 @@
     <Grid>
         <!--#region Song cover -->
         <!-- Song cover -->
-        <Image x:Name="songImage" 
+        <Image x:Name="songImage"
                HorizontalAlignment="Left"
                Height="150"
                Width="150"
@@ -156,34 +156,34 @@
                 LargeChange="10"
                 SmallChange="5"
                 Value="60"
-                AutoToolTipPlacement="TopLeft"/>
+                AutoToolTipPlacement="TopLeft" />
         <!--#endregion-->
 
         <!--#region Time controls -->
         <!-- Time slider -->
         <Slider x:Name="timeSlider"
                 Value="{Binding Position, FallbackValue=0}"
-                Maximum="{Binding 
+                Maximum="{Binding
                 SliderMaximum, FallbackValue=0, Mode=OneWay}"
                 Minimum="0"
                 VerticalAlignment="Top"
                 Width="125"
                 HorizontalAlignment="Left"
-                Margin="160,110,0,0"/>
+                Margin="160,110,0,0" />
 
         <!-- Current time label -->
         <TextBlock x:Name="currentTimeTB"
                    Text="{Binding Time, StringFormat={}{0:mm}:{0:ss}, FallbackValue=00:00, Mode=OneWay}"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
-                   Margin="160,128,0,0"/>
+                   Margin="160,128,0,0" />
 
         <!-- Song time label -->
         <TextBlock x:Name="songTimeTB"
                    Text="{Binding Time, FallbackValue=00:00, Mode=OneWay, StringFormat=\{0:mm\}:\{0:ss\}}"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
-                   Margin="257,131,0,0"/>
+                   Margin="257,131,0,0" />
         <!--#endregion-->
 
         <!--#region QR container -->
@@ -191,7 +191,7 @@
                Width="190"
                Height="100"
                Margin="300,45,0,0"
-               Source="/SongInfoContainer.xaml"/>
+               Source="/SongInfoContainer.xaml" />
         <!--#endregion-->
 
         <!-- TODO: Add license of Aneliza font -->

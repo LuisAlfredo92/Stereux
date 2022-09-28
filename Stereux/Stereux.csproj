@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Connections\Connections.csproj" />
+    <ProjectReference Include="..\QrGenerator\QrGenerator.csproj" />
   </ItemGroup>
 
   <ItemGroup>

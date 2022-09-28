@@ -11,6 +11,11 @@
             <TextBlock x:Name="titleLabel" TextWrapping="Wrap" Text="Music provided by:" FontFamily="Aneliza" FontSize="9" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <TextBlock x:Name="subtitleLabel" TextWrapping="Wrap" Text="No Copyright Sounds" Width="85" FontFamily="Aneliza" FontSize="9" FontWeight="Normal" TextAlignment="Center" />
         </StackPanel>
-        <Image x:Name="qrCodeImage" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="105" Margin="0,0,0,0" Source="/Resources/Images/ncs-qr.png" Stretch="Uniform" />
+        <Image x:Name="qrCodeImage"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Stretch"
+               Width="105"
+               Margin="0,0,0,0"
+               Stretch="Uniform" />
     </Grid>
 </Page>
