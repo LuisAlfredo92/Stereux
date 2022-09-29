@@ -13,6 +13,8 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
+        <!-- TODO: Add a search bar -->
         <DataGrid x:Name="SongsDataGrid" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Path='Id'}"  IsReadOnly="True" />
@@ -41,16 +43,17 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Generate Qr">
+                <DataGridTemplateColumn Header="Download">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="GenerateQrBtn"
-                                    Content="Generate"
+                            <Button x:Name="DownloadBtn"
+                                    Content="Download"
                                     CommandParameter="{Binding 'Id'}"
-                                    Click="GenerateQrBtn_OnClick" />
+                                    Click="DownloadBtn_OnClick" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <!-- TODO: Add a Play next button -->
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Column="1">

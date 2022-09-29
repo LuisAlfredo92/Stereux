@@ -54,6 +54,38 @@ namespace Connections
 {
 }
 
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
+namespace Connections
+{
+}
+
 namespace Connections.SongsDSTableAdapters
 {
     public partial class SongsTableAdapter

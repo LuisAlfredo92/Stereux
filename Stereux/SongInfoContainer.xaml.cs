@@ -11,7 +11,7 @@ namespace Stereux
     /// </summary>
     public partial class SongInfoContainer : Page
     {
-        private int _infoIndex;
+        private byte _infoIndex;
 
         // For each array, the order is 1. Stereux, 2. Source, 3. Song
         private string[] _titles = { "Download Stereux", "Music provided by:", "Get more info" };

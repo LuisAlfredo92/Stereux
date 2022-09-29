@@ -16,5 +16,8 @@
         <TabItem Header="Sources">
             <Frame Source="/Settings/SourcesPage.xaml" />
         </TabItem>
+        <TabItem Header="About">
+            <Frame Source="/Settings/AboutPage.xaml" />
+        </TabItem>
     </TabControl>
 </Window>

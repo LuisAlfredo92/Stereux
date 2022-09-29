@@ -14,25 +14,24 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <param name="source">Source of the song, taken from <see cref="Sources"/></param>
     /// <param name="name">Name or title of the song</param>
     /// <param name="artists">Artist or artists involved into creation of the song (Usually avoid "feat" or "ft." artists)</param>
-    /// <param name="albumCoverLink">URL to the album cover image on the Internet, it the song has no cover this param must be null and the program will use a generic cover</param>
+    /// <param name="albumCoverURL">URL to the album cover image on the Internet, it the song has no cover this param must be null and the program will use a generic cover</param>
     /// <param name="genre">(Optional) Genre or genres of the song</param>
-    /// <param name="infoLink">URL that will lead to a web page where the viewers can find more information about the song, not the artists. This is used to create the QRCode</param>
-    /// <param name="songLink">URL that leads to the song FILE on the Internet</param>
+    /// <param name="infoURL">URL that will lead to a web page where the viewers can find more information about the song, not the artists. This is used to create the QRCode</param>
+    /// <param name="songURL">URL that leads to the song FILE on the Internet</param>
     /// <param name="albumCoverLocalPath">Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown</param>
     /// <param name="songLocalPath">Once the song has been downloaded, this will save the local path to the file of the downloaded song</param>
-    /// <param name="qRCodeLocalPath">Local path to the QRCode of the InfoURL</param>
-    public Song(Sources? source, string name, string artists, string? albumCoverLink, string genre, string infoLink, string songLink, string? albumCoverLocalPath, string? songLocalPath, string? qRCodeLocalPath)
+    public Song(Sources? source, string name, string artists, string? albumCoverURL, string genre, string infoURL,
+        string songURL, string? albumCoverLocalPath, string? songLocalPath)
     {
         Source = source ?? throw new ArgumentNullException(nameof(source));
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Artists = artists ?? throw new ArgumentNullException(nameof(artists));
-        AlbumCoverURL = albumCoverLink ?? "No cover.png";
+        AlbumCoverURL = albumCoverURL ?? "No cover.png";
         Genre = genre;
-        InfoURL = infoLink ?? throw new ArgumentNullException(nameof(infoLink));
-        SongURL = songLink ?? throw new ArgumentNullException(nameof(songLink));
-        AlbumCoverLocalPath = albumCoverLink != "No cover.png" ? albumCoverLocalPath : "No cover.png";
+        InfoURL = infoURL ?? throw new ArgumentNullException(nameof(infoURL));
+        SongURL = songURL ?? throw new ArgumentNullException(nameof(songURL));
+        AlbumCoverLocalPath = albumCoverURL != "No cover.png" ? albumCoverLocalPath : "No cover.png";
         SongLocalPath = songLocalPath;
-        QrCodeLocalPath = qRCodeLocalPath;
     }
 
     #region Properties
@@ -81,11 +80,6 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// Once the song has been downloaded, this will save the local path to the file of the downloaded song
     /// </summary>
     public string? SongLocalPath { get; init; }
-
-    /// <summary>
-    /// Local path to the QRCode of the InfoURL
-    /// </summary>
-    public string? QrCodeLocalPath { get; init; }
 
     #endregion Properties
 

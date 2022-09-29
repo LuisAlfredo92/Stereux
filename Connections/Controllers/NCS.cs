@@ -80,15 +80,19 @@ namespace Connections.Controllers
                     .Value,
                 songImageLink = songImageStyle.Substring(
                     songImageStyle.IndexOf("'", StringComparison.Ordinal) + 1,
-                    songImageStyle.LastIndexOf("'", StringComparison.Ordinal) - songImageStyle.IndexOf("'", StringComparison.Ordinal)
-                ),
-                songName = bottomSongInfo.SelectSingleNode("p/strong").InnerText.Replace("&#039;", "'"),
-                songArtists = bottomSongInfo.SelectSingleNode("span").InnerText,
+                    songImageStyle.LastIndexOf("'", StringComparison.Ordinal) - songImageStyle.IndexOf("'", StringComparison.Ordinal) - 1
+                ).Trim(),
+                songName = bottomSongInfo.SelectSingleNode("p/strong")
+                    .InnerText
+                    .Replace("&#039;", "'")
+                    .Trim(),
+                songArtists = bottomSongInfo.SelectSingleNode("span").InnerText.Trim(),
                 songGenre = completeSongInfo
                     .SelectNodes(
                         "div [contains(@class, 'options')]/div [contains(@class, 'row align-items-center')]/div [contains(@class, 'col-6 col-lg-6')]/span/strong")
                     .First()
-                    .InnerText,
+                    .InnerText
+                    .Trim(),
                 songDataLink = completeSongInfo
                     .SelectNodes(
                         "div [contains(@class, 'options')]/div [contains(@class, 'row align-items-center')]/div [contains(@class, 'col-6 col-lg-6')]")
@@ -96,8 +100,9 @@ namespace Connections.Controllers
                     .SelectNodes("a")
                     .First()
                     .Attributes["data-url"]
-                    .Value;
-            return new Song(Sources.Ncs, songName, songArtists, songImageLink, songGenre, songLink, songDataLink, null, null, null);
+                    .Value
+                    .Trim();
+            return new Song(Sources.Ncs, songName, songArtists, songImageLink, songGenre, songLink, songDataLink, null, null);
         }
     }
 }
