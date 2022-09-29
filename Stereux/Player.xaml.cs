@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Stereux.Settings;
 
 namespace Stereux
@@ -23,10 +9,19 @@ namespace Stereux
     /// </summary>
     public partial class Player : Window
     {
-
         public Player()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.DataPath.Length < 1)
+            {
+                Properties.Settings.Default.DataPath =
+                    Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "Stereux"
+                        );
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)

@@ -1518,7 +1518,7 @@ namespace Connections.SongsDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SongsDB.mdf;I" +
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisa\\Proyectos\\En progreso\\Programas\\Stereux\\Connections\\SongsDB.mdf;I" +
                 "ntegrated Security=True";
         }
         
@@ -1965,7 +1965,7 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SongsDB.mdf;I" +
+            this._connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisa\\Proyectos\\En progreso\\Programas\\Stereux\\Connections\\SongsDB.mdf;I" +
                 "ntegrated Security=True";
         }
         

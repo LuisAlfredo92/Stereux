@@ -44,7 +44,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Connections\Connections.csproj" />
+    <ProjectReference Include="..\Downloader\Downloader.csproj" />
     <ProjectReference Include="..\QrGenerator\QrGenerator.csproj" />
   </ItemGroup>
 

@@ -7,7 +7,7 @@ namespace QrGenerator
     {
         public static DrawingImage GenerateQr(string text) =>
             QrCodeDrawing.CreateDrawing(QrCode.EncodeText(text,
-                    QrCode.Ecc.High),
-                192);
+                    QrCode.Ecc.Low),
+                512);
     }
 }

@@ -29,6 +29,7 @@ namespace Stereux
         {
             _infoIndex = 0;
             InitializeComponent();
+            ChangeVars(Sources.Ncs, "https://ncs.io");
             titleLabel.Text = _titles[_infoIndex];
             subtitleLabel.Text = _subtitles[_infoIndex];
             qrCodeImage.Source = _qrCodes[_infoIndex];

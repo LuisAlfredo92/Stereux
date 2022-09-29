@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stereux", "Stereux\Stereux.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Connections", "Connections\Connections.csproj", "{4728B723-95CA-48F7-8A6B-F423E1BAF371}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrGenerator", "QrGenerator\QrGenerator.csproj", "{DEE43DCA-F4E8-4EA7-891B-5F54676F157D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QrGenerator", "QrGenerator\QrGenerator.csproj", "{DEE43DCA-F4E8-4EA7-891B-5F54676F157D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downloader", "Downloader\Downloader.csproj", "{CF36C6CE-B6FB-4B85-AEF2-1E6500709A44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{DEE43DCA-F4E8-4EA7-891B-5F54676F157D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEE43DCA-F4E8-4EA7-891B-5F54676F157D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEE43DCA-F4E8-4EA7-891B-5F54676F157D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF36C6CE-B6FB-4B85-AEF2-1E6500709A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF36C6CE-B6FB-4B85-AEF2-1E6500709A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF36C6CE-B6FB-4B85-AEF2-1E6500709A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF36C6CE-B6FB-4B85-AEF2-1E6500709A44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

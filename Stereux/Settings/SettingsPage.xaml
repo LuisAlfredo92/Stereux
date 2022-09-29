@@ -1,0 +1,74 @@
+﻿<Page x:Class="Stereux.Settings.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Stereux.Settings"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsPage">
+    <ScrollViewer Padding="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0"
+                  Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       Content="Folder data path"
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="20" />
+                <Label Grid.Column="0"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       Content="Where are songs and covers going to be saved?"
+                       HorizontalAlignment="Center"
+                       FontSize="16" />
+                <TextBox x:Name="DataPathTextBox"
+                         Grid.Column="0"
+                         Grid.Row="2"
+                         Grid.ColumnSpan="2"
+                         TextWrapping="Wrap"
+                         VerticalContentAlignment="Center"
+                         HorizontalScrollBarVisibility="Auto"
+                         FontSize="14"
+                         IsReadOnly="True" Cursor="IBeam" />
+                <Button x:Name="DefaultFolderBtn"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Content="Default"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Click="DefaultFolderBtn_OnClick" />
+                <Button x:Name="SelectFolderBtn"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Content="Examine"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Click="SelectFolderBtn_OnClick" />
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
