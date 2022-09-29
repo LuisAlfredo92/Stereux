@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using Connections.Models;
 using HtmlAgilityPack;
+using Ookii.Dialogs.Wpf;
 
 namespace Connections.Controllers
 {
@@ -17,6 +20,15 @@ namespace Connections.Controllers
         private HtmlNode _musicPage;
         private HtmlNode _songsDiv;
         private readonly int _maxPage;
+        private List<Song>? _songs;
+
+        private ProgressDialog _progressDialog = new()
+        {
+            WindowTitle = "Getting songs from NCS",
+            Text = "Getting songs from No Copyright Sounds",
+            Description = "Processing...",
+            ShowTimeRemaining = true
+        };
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Ncs"/> class.
@@ -25,7 +37,39 @@ namespace Connections.Controllers
         public Ncs()
         {
             _htmlWeb = new HtmlWeb();
-            _musicPage = _htmlWeb.Load("https://ncs.io/music?page=1").DocumentNode;
+            try
+            {
+                _musicPage = _htmlWeb.Load("https://ncs.io/music?page=1").DocumentNode;
+            }
+            catch (System.Net.WebException)
+            {
+                bool error;
+                HtmlDocument webPage = new();
+                do
+                {
+                    var result =
+                        MessageBox.Show(
+                            $"There was an error during connection. You may not be connected to Internet{Environment.NewLine}Try again?",
+                            "Error during connection", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    if (result != MessageBoxResult.Yes)
+                    {
+                        _progressDialog.ReportProgress(100, "Cancelled", "");
+                        _progressDialog.Dispose();
+                        throw;
+                    }
+
+                    try
+                    {
+                        webPage = _htmlWeb.Load($"https://ncs.io/music?page=1");
+                        error = false;
+                    }
+                    catch
+                    {
+                        error = true;
+                    }
+                } while (error);
+                _musicPage = webPage.DocumentNode;
+            }
             _songsDiv = _musicPage.SelectNodes("//div [contains(@class, 'row')]").First();
             var pages = _musicPage.SelectNodes("//li [contains(@class, 'page-item')]");
             _maxPage = Convert.ToInt32(pages.ElementAt(pages.Count - 2).InnerText);
@@ -35,24 +79,83 @@ namespace Connections.Controllers
         /// Gets <b>all</b> the songs from the NCS web page and returns them
         /// </summary>
         /// <returns><![CDATA[Task<List<Song>?>]]></returns>
-        public async Task<List<Song>?> GetSongs()
+        public List<Song>? GetSongs()
         {
-            List<Song> songs = new();
+            if (_progressDialog.IsBusy)
+            {
+                MessageBox.Show("Songs are already being obtained", "Work in progress");
+                return null;
+            }
+
+            _songs = new List<Song>();
+            _progressDialog.DoWork += GetList;
+            _progressDialog.Show();
+            do
+            {
+                Thread.Sleep(3000);
+            } while (_progressDialog.IsBusy);
+            return _songs;
+        }
+
+        private void GetList(object? sender, DoWorkEventArgs doWorkEventArgs)
+        {
+            byte progress = 0;
             for (var i = 1; i <= _maxPage; i++)
             {
-                _musicPage = _htmlWeb.Load($"https://ncs.io/music?page={i}").DocumentNode;
+                // Report progress to progress dialog
+                _progressDialog.ReportProgress(progress,
+                    "Getting songs from No Copyright Sounds",
+                    $"Progress: {i} of {_maxPage} ({progress}%)");
+
+                try
+                {
+                    _musicPage = _htmlWeb.Load($"https://ncs.io/music?page={i}").DocumentNode;
+                }
+                catch (System.Net.WebException)
+                {
+                    HtmlDocument webPage = new();
+                    bool error;
+                    do
+                    {
+                        var result =
+                            MessageBox.Show(
+                                $"There was an error during connection. You may not be connected to Internet{Environment.NewLine}Try again?",
+                                "Error during connection", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                        if (result != MessageBoxResult.Yes)
+                        {
+                            _progressDialog.ReportProgress(100, "Cancelled", "");
+                            _progressDialog.Dispose();
+                            _songs = null;
+                            return;
+                        }
+
+                        try
+                        {
+                            webPage = _htmlWeb.Load($"https://ncs.io/music?page={i}");
+                            error = false;
+                        }
+                        catch
+                        {
+                            error = true;
+                        }
+                    } while (error);
+                    _musicPage = webPage.DocumentNode;
+                }
                 _songsDiv = _musicPage.SelectNodes("//div [contains(@class, 'row')]").First();
 
                 // Save every song into the list
-                songs.AddRange(GetSongsDivs(_songsDiv).Select(GetSong));
+                _songs!.AddRange(GetSongsDivs(_songsDiv).Select(GetSong));
+
+                if (_progressDialog.CancellationPending)
+                    return;
 
                 // This sleep is to avoid a block from the NCS web page
                 /* Is this necessary? I have to check how many requests
                  I can do before getting blocked, they won't ever be more than 100
                  */
                 Thread.Sleep(new Random().Next(1000, 2001) * 5);
+                progress += (byte)(_maxPage / 100);
             }
-            return songs;
         }
 
         /// <summary>

@@ -23,8 +23,8 @@
 
         <!--#region Titles -->
         <!--Song title-->
-        <Label x:Name="songNameLabel"
-               Content="Song's name Dolorum corrupti inventore sed vero porro."
+        <Label x:Name="SongNameLabel"
+               Content="Song's name"
                Margin="160,0,0,0"
                VerticalAlignment="Top"
                Width="340"
@@ -36,8 +36,8 @@
                FontStyle="Normal"
                HorizontalAlignment="Left" />
         <!-- Song artists -->
-        <Label x:Name="artistsNamesLabel"
-               Content="Artists names Dolorum corrupti inventore sed vero porro."
+        <Label x:Name="ArtistsNamesLabel"
+               Content="Artists names"
                HorizontalAlignment="Left"
                Margin="160,30,0,0"
                VerticalAlignment="Top"
@@ -82,7 +82,8 @@
                 Cursor="Hand"
                 Opacity="1"
                 BorderBrush="{x:Null}"
-                Foreground="{x:Null}">
+                Foreground="{x:Null}"
+                Click="PlayBtn_OnClick">
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Icons/Play icon.png" />
             </Button.Background>

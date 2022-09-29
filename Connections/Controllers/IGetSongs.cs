@@ -6,5 +6,5 @@ namespace Connections.Controllers;
 
 public interface IGetSongs
 {
-    public Task<List<Song>?> GetSongs();
+    public List<Song>? GetSongs();
 }

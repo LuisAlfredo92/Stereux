@@ -1,6 +1,8 @@
-﻿using Connections;
+﻿using System.Windows;
+using Connections;
 using Connections.Models;
 using Connections.SongsDSTableAdapters;
+using Stereux.Settings;
 
 namespace Stereux;
 
@@ -15,10 +17,10 @@ public class Playlist
         //TODO: Take capacity from settings
         _songs = new List<Song>(11);
         _table = new SongsTableAdapter();
-        var lastRow = _table.GetLastSong().Rows[0];
-        if (lastRow is null) return;
+        SongsDS.SongsRow lastRow;
+        lastRow = (_table.GetLastSong().Rows[0] as SongsDS.SongsRow)!;
 
-        _lastId = ((lastRow as SongsDS.SongsRow)!).Id;
+        _lastId = lastRow.Id;
         for (byte i = 0; i < 11; i++)
             do
             {
