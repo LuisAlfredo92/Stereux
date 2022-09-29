@@ -1158,7 +1158,7 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string AlbumCoverURL {
+            public string? AlbumCoverURL {
                 get {
                     return ((string)(this[this.tableSongs.AlbumCoverURLColumn]));
                 }
@@ -1207,7 +1207,8 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string AlbumCoverLocalPath {
+            #nullable enable
+            public string? AlbumCoverLocalPath {
                 get {
                     try {
                         return ((string)(this[this.tableSongs.AlbumCoverLocalPathColumn]));
@@ -1223,7 +1224,7 @@ namespace Connections {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string SongLocalPath {
+            public string? SongLocalPath {
                 get {
                     try {
                         return ((string)(this[this.tableSongs.SongLocalPathColumn]));
@@ -1236,7 +1237,8 @@ namespace Connections {
                     this[this.tableSongs.SongLocalPathColumn] = value;
                 }
             }
-            
+            #nullable disable
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SourcesRow SourcesRow {

@@ -52,7 +52,7 @@
         <!--#region Control buttons -->
         <!-- Previous song button -->
         <Button Style="{DynamicResource playerBtnsStyle}"
-                x:Name="prevBtn"
+                x:Name="PrevBtn"
                 HorizontalAlignment="Left"
                 Height="25"
                 Margin="160,50,0,0"
@@ -62,7 +62,8 @@
                 Focusable="True"
                 Cursor="Hand"
                 BorderBrush="{x:Null}"
-                Foreground="{x:Null}">
+                Foreground="{x:Null}"
+                Click="PrevBtn_OnClick">
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Icons/Previous icon.png" />
             </Button.Background>
@@ -70,7 +71,7 @@
 
         <!-- Play / Pause button -->
         <Button Style="{DynamicResource playerBtnsStyle}"
-                x:Name="playBtn"
+                x:Name="PlayBtn"
                 HorizontalAlignment="Left"
                 Height="25"
                 Margin="200,50,0,0"
@@ -89,7 +90,7 @@
 
         <!-- Next song button -->
         <Button Style="{DynamicResource playerBtnsStyle}"
-                x:Name="nextBtn"
+                x:Name="NextBtn"
                 HorizontalAlignment="Left"
                 Height="25"
                 Margin="240,50,0,0"
@@ -100,7 +101,8 @@
                 Cursor="Hand"
                 Opacity="0.995"
                 BorderBrush="{x:Null}"
-                Foreground="{x:Null}">
+                Foreground="{x:Null}"
+                Click="NextBtn_OnClick">
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Icons/Next icon.png" />
             </Button.Background>

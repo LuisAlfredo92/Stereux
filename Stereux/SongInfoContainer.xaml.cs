@@ -9,16 +9,16 @@ namespace Stereux
     /// <summary>
     /// Lógica de interacción para SongInfoContainer.xaml
     /// </summary>
-    public partial class SongInfoContainer : Page
+    public partial class SongInfoContainer
     {
-        private byte _infoIndex;
+        private static byte _infoIndex;
 
         // For each array, the order is 1. Stereux, 2. Source, 3. Song
-        private string[] _titles = { "Download Stereux", "Music provided by:", "Get more info" };
+        private static string[] _titles = { "Download Stereux", "Music provided by:", "Get more info" };
 
-        private string[] _subtitles = { "from here!", string.Empty, "about this song" };
+        private static string[] _subtitles = { "from here!", string.Empty, "about this song" };
 
-        private DrawingImage[] _qrCodes =
+        private static DrawingImage[] _qrCodes =
         {
             QrGenerator.Generator.GenerateQr("https://github.com/LuisAlfredo92/Stereux"),
             QrGenerator.Generator.GenerateQr("https://github.com/LuisAlfredo92/Stereux"),
@@ -29,7 +29,6 @@ namespace Stereux
         {
             _infoIndex = 0;
             InitializeComponent();
-            ChangeVars(Sources.Ncs, "https://ncs.io");
             titleLabel.Text = _titles[_infoIndex];
             subtitleLabel.Text = _subtitles[_infoIndex];
             qrCodeImage.Source = _qrCodes[_infoIndex];
@@ -41,7 +40,7 @@ namespace Stereux
             timer.Start();
         }
 
-        private void ChangeVars(Sources source, string songUrl)
+        public static void ChangeVars(Sources source, string songUrl)
         {
             _subtitles[1] = source switch
             {
@@ -56,9 +55,9 @@ namespace Stereux
             _qrCodes[2] = QrGenerator.Generator.GenerateQr(songUrl);
         }
 
-        private void ChangeView(object? sender, EventArgs e)
+        public void ChangeView(object? sender, EventArgs e)
         {
-            _infoIndex = _infoIndex < 2 ? _infoIndex + 1 : 0;
+            _infoIndex = (byte)(_infoIndex < 2 ? _infoIndex + 1 : 0);
             titleLabel.Text = _titles[_infoIndex];
             subtitleLabel.Text = _subtitles[_infoIndex];
             qrCodeImage.Source = _qrCodes[_infoIndex];

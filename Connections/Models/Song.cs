@@ -30,7 +30,7 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
         Genre = genre;
         InfoURL = infoURL ?? throw new ArgumentNullException(nameof(infoURL));
         SongURL = songURL ?? throw new ArgumentNullException(nameof(songURL));
-        AlbumCoverLocalPath = albumCoverURL != "No cover.png" ? albumCoverLocalPath : "No cover.png";
+        AlbumCoverLocalPath = albumCoverURL;
         SongLocalPath = songLocalPath;
     }
 

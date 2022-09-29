@@ -85,6 +85,7 @@ namespace Connections.Controllers
                 songName = bottomSongInfo.SelectSingleNode("p/strong")
                     .InnerText
                     .Replace("&#039;", "'")
+                    .Replace("&amp;", "&")
                     .Trim(),
                 songArtists = bottomSongInfo.SelectSingleNode("span").InnerText.Trim(),
                 songGenre = completeSongInfo
@@ -102,6 +103,9 @@ namespace Connections.Controllers
                     .Attributes["data-url"]
                     .Value
                     .Trim();
+            songImageLink = Uri.IsWellFormedUriString(songImageLink, UriKind.Relative)
+                ? "https://ncs.io" + songImageLink
+                : songImageLink;
             return new Song(Sources.Ncs, songName, songArtists, songImageLink, songGenre, songLink, songDataLink, null, null);
         }
     }

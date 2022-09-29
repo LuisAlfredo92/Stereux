@@ -23,7 +23,7 @@ public class Playlist
             do
             {
                 var result = _table.GetSong(new Random().Next(1, _lastId + 1)).Rows[0] as SongsDS.SongsRow;
-                _songs[i] = new Song(
+                _songs.Add(new Song(
                     (Sources)result!.Source,
                     result.Name,
                     result.Artists,
@@ -31,9 +31,9 @@ public class Playlist
                     result.Genre,
                     result.InfoURL,
                     result.SongURL,
-                    result.AlbumCoverLocalPath,
-                    result.SongLocalPath
-                );
+                    result.IsAlbumCoverLocalPathNull() ? null : result.AlbumCoverLocalPath,
+                    result.IsSongLocalPathNull() ? null : result.SongLocalPath
+                ));
             } while (_songs.Count(elem => elem.Equals(_songs[i])) > 1 && _lastId > 11);
     }
 
@@ -51,9 +51,10 @@ public class Playlist
             result.Genre,
             result.InfoURL,
             result.SongURL,
-            result.AlbumCoverLocalPath,
-            result.SongLocalPath
+            result.IsAlbumCoverLocalPathNull() ? null : result.AlbumCoverLocalPath,
+            result.IsSongLocalPathNull() ? null : result.SongLocalPath
         ));
+        //TODO: Download songs
         return _songs[5];
     }
 
@@ -69,9 +70,10 @@ public class Playlist
             result.Genre,
             result.InfoURL,
             result.SongURL,
-            result.AlbumCoverLocalPath,
-            result.SongLocalPath
+            result.IsAlbumCoverLocalPathNull() ? null : result.AlbumCoverLocalPath,
+            result.IsSongLocalPathNull() ? null : result.SongLocalPath
         ));
+        //TODO: Download songs
         return _songs[5];
     }
 }
