@@ -41,6 +41,8 @@ namespace Stereux
                         );
                 Properties.Settings.Default.Save();
             }
+
+            Directory.CreateDirectory(Properties.Settings.Default.DataPath);
             CreatePlaylist();
         }
 

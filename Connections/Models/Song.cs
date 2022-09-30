@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace Connections.Models;
 
@@ -11,6 +12,7 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// Initializes a new instance of the <see cref="Song"/> class.
     /// This constructor uses all the data given by text
     /// </summary>
+    /// <param name="id">Optional Id of the song for easier DB operations</param>
     /// <param name="source">Source of the song, taken from <see cref="Sources"/></param>
     /// <param name="name">Name or title of the song</param>
     /// <param name="artists">Artist or artists involved into creation of the song (Usually avoid "feat" or "ft." artists)</param>
@@ -20,9 +22,10 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <param name="songURL">URL that leads to the song FILE on the Internet</param>
     /// <param name="albumCoverLocalPath">Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown</param>
     /// <param name="songLocalPath">Once the song has been downloaded, this will save the local path to the file of the downloaded song</param>
-    public Song(Sources? source, string name, string artists, string? albumCoverURL, string genre, string infoURL,
+    public Song(int? id, Sources? source, string name, string artists, string? albumCoverURL, string genre, string infoURL,
         string songURL, string? albumCoverLocalPath, string? songLocalPath)
     {
+        Id = id;
         Source = source ?? throw new ArgumentNullException(nameof(source));
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Artists = artists ?? throw new ArgumentNullException(nameof(artists));
@@ -30,11 +33,35 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
         Genre = genre;
         InfoURL = infoURL ?? throw new ArgumentNullException(nameof(infoURL));
         SongURL = songURL ?? throw new ArgumentNullException(nameof(songURL));
-        AlbumCoverLocalPath = albumCoverURL;
+        AlbumCoverLocalPath = albumCoverLocalPath;
         SongLocalPath = songLocalPath;
     }
 
+    public Song(SongsDS.SongsRow row) : this(row.Id,
+        (Sources)row.Source,
+        row.Name,
+        row.Artists,
+        row.AlbumCoverURL,
+        row.Genre,
+        row.InfoURL,
+        row.SongURL,
+        row.IsAlbumCoverLocalPathNull() ? null : row.AlbumCoverLocalPath,
+        row.IsSongLocalPathNull() ? null : row.SongLocalPath
+    )
+    {
+    }
+
+    public Song(DataTable dataTable) : this((dataTable.Rows[0] as SongsDS.SongsRow)!)
+    {
+    }
+
     #region Properties
+
+    /// <summary>
+    /// Id of the song, for easier DB operations.
+    /// It can be null if not necessary
+    /// </summary>
+    public int? Id { get; init; }
 
     /// <summary>
     /// Source of the song, taken from <see cref="Sources"/>
@@ -74,12 +101,12 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <summary>
     /// Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown
     /// </summary>
-    public string? AlbumCoverLocalPath { get; init; }
+    public string? AlbumCoverLocalPath { get; set; }
 
     /// <summary>
     /// Once the song has been downloaded, this will save the local path to the file of the downloaded song
     /// </summary>
-    public string? SongLocalPath { get; init; }
+    public string? SongLocalPath { get; set; }
 
     #endregion Properties
 
@@ -92,7 +119,7 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     public bool Equals(Song? other) => Name == other?.Name && Artists == other.Artists;
 
     /// <inheritdoc />
-    public override int GetHashCode() => HashCode.Combine(Name);
+    public override int GetHashCode() => HashCode.Combine(Name, Artists, InfoURL);
 
     public static bool operator ==(Song left, Song right) => left.Equals(right);
 
@@ -107,12 +134,7 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
 
     /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider) =>
-        $"name: {Name}" +
-        $"Artists: {Artists}" +
-        $"AlbumCoverURL: {AlbumCoverURL}" +
-        $"Genre: {Genre}" +
-        $"InfoURL: {InfoURL}" +
-        $"SongURL: {SongURL}";
+        $"{Artists} - {Name}";
 
     #endregion
 }

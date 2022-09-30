@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using Connections.Controllers;
@@ -14,9 +15,9 @@ namespace Stereux.Settings
     /// </summary>
     public partial class SongsPage : Page
     {
-        private SongsTableAdapter _songsTable;
+        private readonly SongsTableAdapter _songsTable;
 
-        private ProgressDialog _entireProgressDialog = new()
+        private readonly ProgressDialog _entireProgressDialog = new()
         {
             WindowTitle = "Getting songs info",
             Text = "Getting info of the songs from",
@@ -46,6 +47,7 @@ namespace Stereux.Settings
         private void ClearSongsBtn_OnClick(object sender, RoutedEventArgs e)
         {
             _songsTable.TruncateTable();
+            Directory.Delete(Properties.Settings.Default.DataPath, true);
             SongsDataGrid.ItemsSource = _songsTable.GetData();
         }
 
@@ -57,7 +59,11 @@ namespace Stereux.Settings
 
         private void DownloadBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            //TODO: Download song
+            var id = ((sender as Button)!.CommandParameter as int?)!;
+            Song song = new(_songsTable.GetSong(id));
+            song = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, song).Result;
+            _songsTable.SongDownloaded(song.AlbumCoverLocalPath, song.SongLocalPath, id);
+            SongsDataGrid.ItemsSource = _songsTable.GetData();
         }
 
         private void GetSongsFromAllSources_DoWork(object? sender, DoWorkEventArgs e)

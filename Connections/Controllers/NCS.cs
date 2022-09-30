@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using Connections.Models;
 using HtmlAgilityPack;
@@ -209,7 +208,7 @@ namespace Connections.Controllers
             songImageLink = Uri.IsWellFormedUriString(songImageLink, UriKind.Relative)
                 ? "https://ncs.io" + songImageLink
                 : songImageLink;
-            return new Song(Sources.Ncs, songName, songArtists, songImageLink, songGenre, songLink, songDataLink, null, null);
+            return new Song(null, Sources.Ncs, songName, songArtists, songImageLink, songGenre, songLink, songDataLink, null, null);
         }
     }
 }

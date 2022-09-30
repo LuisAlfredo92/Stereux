@@ -20,7 +20,8 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Column="0"
-                  Grid.Row="0">
+                  Grid.Row="0"
+                  Margin="0,0,10,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -42,7 +43,7 @@
                 <Label Grid.Column="0"
                        Grid.Row="1"
                        Grid.ColumnSpan="2"
-                       Content="Where are songs and covers going to be saved?"
+                       Content="Where are songs and images going to be saved?"
                        HorizontalAlignment="Center"
                        FontSize="16" />
                 <TextBox x:Name="DataPathTextBox"
@@ -68,6 +69,49 @@
                         FontWeight="Bold"
                         FontSize="14"
                         Click="SelectFolderBtn_OnClick" />
+            </Grid>
+            <Grid Grid.Row="0"
+                  Grid.Column="1"
+                  Margin="10,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       Content="Data size"
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="20" />
+                <Label Grid.Column="0"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       Content="How much space is Stereux using?"
+                       HorizontalAlignment="Center"
+                       FontSize="16" />
+                <Label x:Name="FolderSizeLabel"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       Content="Calculating..."
+                       HorizontalAlignment="Center"
+                       FontSize="16" FontWeight="Bold" />
+                <Button x:Name="DeleteStereuxFolderBtn"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Content="Delete files"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Click="DeleteStereuxFolderBtn_OnClick" />
             </Grid>
         </Grid>
     </ScrollViewer>

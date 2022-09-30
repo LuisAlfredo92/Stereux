@@ -37,12 +37,12 @@
                HorizontalAlignment="Left" />
         <!-- Song artists -->
         <Label x:Name="ArtistsNamesLabel"
-               Content="Artists names"
+               Content="Artists names g"
                HorizontalAlignment="Left"
                Margin="160,30,0,0"
                VerticalAlignment="Top"
                Width="340"
-               Height="15"
+               Height="20"
                Padding="0,0,0,0"
                FontFamily="Aneliza"
                FontWeight="Bold"
