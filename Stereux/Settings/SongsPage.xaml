@@ -35,10 +35,9 @@
                                     Width="25"
                                     Foreground="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Click="DeleteSongBtn_OnClick">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Resources/Icons/Delete icon.png" />
-                                </Button.Background>
+                                    Click="DeleteSongBtn_OnClick"
+                                    Background="{x:Null}">
+                                <Image Source="{StaticResource DeleteDrawingImage}" />
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

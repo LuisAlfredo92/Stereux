@@ -1,0 +1,625 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Geometry x:Key="PreviousGeometry1">F1 M100,100z M0,0z M58.644,27.26L58.644,35.554C58.644,36.125,58.339,36.654,57.844,36.939L37.632,48.608C36.566,49.224,36.566,50.763,37.632,51.379L57.844,63.048C58.339,63.334,58.644,63.862,58.644,64.433L58.644,72.727C58.644,73.958,57.311,74.728,56.245,74.112L16.869,51.379C15.803,50.763,15.803,49.224,16.869,48.608L56.244,25.875C57.311,25.259,58.644,26.029,58.644,27.26z</Geometry>
+  <Geometry x:Key="PreviousGeometry2">F1 M100,100z M0,0z M57.844,63.048L55.468,61.676C55.455,61.719,55.445,61.766,55.436,61.812L55.845,62.048C56.34,62.334,56.645,62.862,56.645,63.433L56.645,71.727C56.645,72.735,55.751,73.42,54.842,73.302L56.246,74.112C57.312,74.728,58.645,73.958,58.645,72.727L58.645,64.433C58.644,63.862,58.339,63.334,57.844,63.048z</Geometry>
+  <Geometry x:Key="PreviousGeometry3">F1 M100,100z M0,0z M37.632,48.608L57.844,36.939C58.339,36.653,58.644,36.125,58.644,35.554L58.644,27.26C58.644,26.145 57.552,25.42 56.553,25.748 56.607,25.908 56.644,26.076 56.644,26.26L56.644,34.554C56.644,35.125,56.339,35.654,55.844,35.939L35.632,47.608C35.554,47.66 34.887,48.124 34.832,48.993 34.775,49.904 35.441,50.46 35.505,50.511 36.144,50.954 36.782,51.396 37.421,51.839 37.389,51.727 37.351,51.527 37.44,51.329 37.451,51.304 37.464,51.28 37.477,51.259 36.582,50.587 36.625,49.19 37.632,48.608z</Geometry>
+  <Geometry x:Key="PreviousGeometry4">F1 M100,100z M0,0z M58.644,27.26L58.644,35.554C58.644,36.125,58.339,36.654,57.844,36.939L37.632,48.608C36.566,49.224,36.566,50.763,37.632,51.379L57.844,63.048C58.339,63.334,58.644,63.862,58.644,64.433L58.644,72.727C58.644,73.958,57.311,74.728,56.245,74.112L16.869,51.379C15.803,50.763,15.803,49.224,16.869,48.608L56.244,25.875C57.311,25.259,58.644,26.029,58.644,27.26z</Geometry>
+  <Geometry x:Key="PreviousGeometry5">F1 M100,100z M0,0z M86.058,27.26L86.058,35.554C86.058,36.125,85.753,36.654,85.258,36.939L65.047,48.608C63.981,49.224,63.981,50.763,65.047,51.379L85.259,63.048C85.754,63.334,86.059,63.862,86.059,64.433L86.059,72.727C86.059,73.958,84.726,74.728,83.66,74.112L44.283,51.379C43.217,50.763,43.217,49.224,44.283,48.608L83.658,25.875C84.725,25.259,86.058,26.029,86.058,27.26z</Geometry>
+  <Geometry x:Key="PreviousGeometry6">F1 M100,100z M0,0z M85.258,63.048L82.882,61.676C82.869,61.719,82.859,61.766,82.85,61.812L83.259,62.048C83.754,62.334,84.059,62.862,84.059,63.433L84.059,71.727C84.059,72.735,83.165,73.42,82.256,73.302L83.66,74.112C84.726,74.728,86.059,73.958,86.059,72.727L86.059,64.433C86.058,63.862,85.753,63.334,85.258,63.048z</Geometry>
+  <Geometry x:Key="PreviousGeometry7">F1 M100,100z M0,0z M65.047,48.608L85.259,36.939C85.754,36.653,86.059,36.125,86.059,35.554L86.059,27.26C86.059,26.145 84.967,25.42 83.968,25.748 84.022,25.908 84.059,26.076 84.059,26.26L84.059,34.554C84.059,35.125,83.754,35.654,83.259,35.939L63.047,47.608C62.969,47.66 62.302,48.124 62.247,48.993 62.19,49.904 62.856,50.46 62.92,50.511 63.559,50.954 64.197,51.396 64.836,51.839 64.804,51.727 64.766,51.527 64.855,51.329 64.866,51.304 64.879,51.28 64.892,51.259 63.996,50.587 64.039,49.19 65.047,48.608z</Geometry>
+  <Geometry x:Key="PreviousGeometry8">F1 M100,100z M0,0z M86.058,27.26L86.058,35.554C86.058,36.125,85.753,36.654,85.258,36.939L65.047,48.608C63.981,49.224,63.981,50.763,65.047,51.379L85.259,63.048C85.754,63.334,86.059,63.862,86.059,64.433L86.059,72.727C86.059,73.958,84.726,74.728,83.66,74.112L44.283,51.379C43.217,50.763,43.217,49.224,44.283,48.608L83.658,25.875C84.725,25.259,86.058,26.029,86.058,27.26z</Geometry>
+  <DrawingGroup x:Key="PreviousDrawingGroup" ClipGeometry="M0,0 V100 H100 V0 H0 Z">
+    <DrawingGroup Opacity="1" Transform="1.4063141,0,0,1.4063141,-21.884713,-20.31307">
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PreviousGeometry1}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PreviousGeometry2}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PreviousGeometry3}" />
+      <GeometryDrawing Geometry="{StaticResource PreviousGeometry4}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PreviousGeometry5}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PreviousGeometry6}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PreviousGeometry7}" />
+      <GeometryDrawing Geometry="{StaticResource PreviousGeometry8}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="PreviousDrawingImage" Drawing="{StaticResource PreviousDrawingGroup}" />
+  <Geometry x:Key="PlayGeometry1">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
+  <Geometry x:Key="PlayGeometry2">F1 M44.281193,44.35283z M0,0z M69.981,47.977L31.356,25.677C31.123,25.543,30.882,25.467,30.64,25.418L67.981,46.977C69.538,47.876,69.538,50.124,67.981,51.023L29.356,73.323C29.007,73.524 28.64,73.611 28.278,73.624 28.934,74.562 30.239,74.967 31.356,74.323L69.981,52.023C71.538,51.124,71.538,48.876,69.981,47.977z</Geometry>
+  <Geometry x:Key="PlayGeometry3">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
+  <DrawingGroup x:Key="PlayDrawingGroup" ClipGeometry="M0,0 V44.35283 H44.281193 V0 H0 Z">
+    <DrawingGroup Opacity="1" Transform="1,0,0,0.88239953,-27.352,-21.943593">
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PlayGeometry1}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PlayGeometry2}" />
+      <GeometryDrawing Geometry="{StaticResource PlayGeometry3}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="PlayDrawingImage" Drawing="{StaticResource PlayDrawingGroup}" />
+  <Geometry x:Key="MuteGeometry1">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
+  <Geometry x:Key="MuteGeometry2">F1 M44.281193,44.35283z M0,0z M69.981,47.977L31.356,25.677C31.123,25.543,30.882,25.467,30.64,25.418L67.981,46.977C69.538,47.876,69.538,50.124,67.981,51.023L29.356,73.323C29.007,73.524 28.64,73.611 28.278,73.624 28.934,74.562 30.239,74.967 31.356,74.323L69.981,52.023C71.538,51.124,71.538,48.876,69.981,47.977z</Geometry>
+  <Geometry x:Key="MuteGeometry3">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
+  <DrawingGroup x:Key="MuteDrawingGroup" ClipGeometry="M0,0 V44.35283 H44.281193 V0 H0 Z">
+    <DrawingGroup Opacity="1" Transform="-1,0,0,0.88239953,71.633194,-21.943593">
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource MuteGeometry1}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource MuteGeometry2}" />
+      <GeometryDrawing Geometry="{StaticResource MuteGeometry3}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1.06455319" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <GeometryDrawing Brush="#FF000000">
+      <GeometryDrawing.Geometry>
+        <RectangleGeometry RadiusX="1.4278" RadiusY="1.4278" Rect="0,12.5739,16.997,19.253" />
+      </GeometryDrawing.Geometry>
+    </GeometryDrawing>
+  </DrawingGroup>
+  <DrawingImage x:Key="MuteDrawingImage" Drawing="{StaticResource MuteDrawingGroup}" />
+  <Geometry x:Key="Stereux_logoGeometry1">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry2">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry3">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry4">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry5">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry6">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry7">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry8">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry9">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry10">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry11">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry12">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry13">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry14">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry15">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry16">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry17">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry18">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry19">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry20">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry21">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry22">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry23">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry24">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry25">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry26">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry27">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry28">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry29">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry30">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry31">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry32">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry33">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry34">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry35">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry36">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry37">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry38">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry39">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry40">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry41">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry42">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry43">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry44">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry45">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry46">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry47">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry48">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry49">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry50">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry51">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry52">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry53">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry54">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry55">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry56">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry57">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry58">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry59">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry60">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry61">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry62">F1 M256,256z M0,0z M48.001872,96.151719A16,16,0,0,1,31.971425,112.10579A16,16,0,0,1,16.001945,96.090694A16,16,0,0,1,32.001677,80.10582</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry63">F1 M256,256z M0,0z M112,105.07183L112.003,73.280318C112.003,72.058781,112.003,72.050449,110.4638,72.42446L82.113257,79.483936C80.00338,80,80.00338,80,80.00338,81.556904L79.93659,134.58673 63.93659,119.78472 64.0034,65.738066C64.0034,64,64.0034,64,66.080148,63.480813L126.53435,48.367258C128.00338,48,128.00338,48,128.00338,49.571919L128,119.86328</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry64">F1 M256,256z M0,0z M80.001681,135.97409A16,16,0,0,1,63.971235,151.92816A16,16,0,0,1,48.001754,135.91307A16,16,0,0,1,64.001487,119.92819</Geometry>
+  <Geometry x:Key="Stereux_logoGeometry65">F1 M256,256z M0,0z M128.00002,119.78442A16,16,0,0,1,118.14935,134.5935A16,16,0,0,1,100.69988,131.14958A16,16,0,0,1,97.214293,113.70839A16,16,0,0,1,111.99981,103.82237</Geometry>
+  <DrawingGroup x:Key="Stereux_logoDrawingGroup" ClipGeometry="M0,0 V256 H256 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FF3B064D">
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="0,0,256,256" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="0.25">
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,-48.270247,3.5936898">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry1}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry2}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,-10.859,-18.005703">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry3}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry4}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,26.552236,-39.605091">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry5}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry6}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,-53.282399,81.309948">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry7}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry8}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,-15.871153,59.710555">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry9}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry10}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,21.540094,38.111163">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry11}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry12}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,58.951326,16.511778">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry13}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry14}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,96.362565,-5.0876152">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry15}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry16}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,133.77382,-26.687007">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry17}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry18}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,-20.88331,137.42682">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry19}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry20}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,16.527936,115.82743">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry21}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry22}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,53.939184,94.228032">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry23}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry24}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,91.350412,72.628648">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry25}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry26}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,128.76165,51.029255">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry27}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry28}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,166.17291,29.429863">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry29}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry30}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,203.58417,7.8304633">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry31}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry32}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,-25.895464,215.14308">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry33}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry34}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,11.515784,193.54369">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry35}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry36}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,48.92703,171.9443">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry37}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry38}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,86.338277,150.3449">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry39}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry40}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,123.7495,128.74551">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry41}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry42}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,161.16074,107.14612">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry43}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry44}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,198.572,85.546729">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry45}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry46}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,43.914879,249.66054">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry47}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry48}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,81.326123,228.06115">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry49}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry50}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,118.73738,206.46176">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry51}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry52}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,156.14859,184.86238">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry53}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry54}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,193.55983,163.26299">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry55}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry56}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,230.97109,141.66359">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry57}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry58}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,188.54768,240.97925">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry59}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry60}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="0.45477838,-0.26256642,0.26256642,0.45477838,225.95892,219.37986">
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry61}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource Stereux_logoGeometry62}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF00FFFF" Thickness="3.21338" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <DrawingGroup Opacity="1" Transform="1.5561343,0,0,1.5561343,-14.286743,-33.561555">
+        <GeometryDrawing Brush="#FFFF00FF" Geometry="{StaticResource Stereux_logoGeometry63}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FFFF00FF" Thickness="2.40982" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FFFF00FF" Geometry="{StaticResource Stereux_logoGeometry64}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FFFF00FF" Thickness="2.40982" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FFFF00FF" Geometry="{StaticResource Stereux_logoGeometry65}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FFFF00FF" Thickness="2.40982" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="Stereux_logoDrawingImage" Drawing="{StaticResource Stereux_logoDrawingGroup}" />
+  <Geometry x:Key="NextGeometry1">F1 M100,100z M0,0z M41.762,27.26L41.762,35.554C41.762,36.125,42.067,36.654,42.562,36.939L62.774,48.608C63.84,49.224,63.84,50.763,62.774,51.379L42.562,63.048C42.067,63.334,41.762,63.862,41.762,64.433L41.762,72.727C41.762,73.958,43.095,74.728,44.161,74.112L83.536,51.379C84.602,50.763,84.602,49.224,83.536,48.608L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z</Geometry>
+  <Geometry x:Key="NextGeometry2">F1 M100,100z M0,0z M83.537,48.608L44.161,25.875C43.968,25.763,43.766,25.711,43.564,25.685L81.536,47.608C82.602,48.224,82.602,49.763,81.536,50.379L42.161,73.112C42.061,73.17 41.956,73.204 41.853,73.238 42.161,74.152 43.254,74.636 44.161,74.112L83.536,51.379C84.603,50.763,84.603,49.224,83.537,48.608z</Geometry>
+  <Geometry x:Key="NextGeometry3">F1 M100,100z M0,0z M41.762,27.26L41.762,35.554C41.762,36.125,42.067,36.654,42.562,36.939L62.774,48.608C63.84,49.224,63.84,50.763,62.774,51.379L42.562,63.048C42.067,63.334,41.762,63.862,41.762,64.433L41.762,72.727C41.762,73.958,43.095,74.728,44.161,74.112L83.536,51.379C84.602,50.763,84.602,49.224,83.536,48.608L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z</Geometry>
+  <Geometry x:Key="NextGeometry4">F1 M100,100z M0,0z M14.664,27.273L14.664,35.567C14.664,36.138,14.969,36.667,15.464,36.952L35.676,48.621C36.742,49.237,36.742,50.776,35.676,51.392L15.464,63.061C14.969,63.347,14.664,63.875,14.664,64.446L14.664,72.74C14.664,73.971,15.997,74.741,17.063,74.125L56.438,51.392C57.504,50.776,57.504,49.237,56.438,48.621L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z</Geometry>
+  <Geometry x:Key="NextGeometry5">F1 M100,100z M0,0z M56.438,48.621L17.063,25.888C16.87,25.776,16.668,25.724,16.466,25.698L54.438,47.621C55.504,48.237,55.504,49.776,54.438,50.392L15.063,73.125C14.963,73.183 14.858,73.217 14.755,73.251 15.063,74.165 16.156,74.649 17.063,74.125L56.438,51.392C57.505,50.776,57.505,49.237,56.438,48.621z</Geometry>
+  <Geometry x:Key="NextGeometry6">F1 M100,100z M0,0z M14.664,27.273L14.664,35.567C14.664,36.138,14.969,36.667,15.464,36.952L35.676,48.621C36.742,49.237,36.742,50.776,35.676,51.392L15.464,63.061C14.969,63.347,14.664,63.875,14.664,64.446L14.664,72.74C14.664,73.971,15.997,74.741,17.063,74.125L56.438,51.392C57.504,50.776,57.504,49.237,56.438,48.621L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z</Geometry>
+  <DrawingGroup x:Key="NextDrawingGroup" ClipGeometry="M0,0 V100 H100 V0 H0 Z">
+    <DrawingGroup Opacity="1" Transform="1.4151424,0,0,1.4151424,-20.053058,-20.75712">
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource NextGeometry1}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource NextGeometry2}" />
+      <GeometryDrawing Geometry="{StaticResource NextGeometry3}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource NextGeometry4}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource NextGeometry5}" />
+      <GeometryDrawing Geometry="{StaticResource NextGeometry6}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="NextDrawingImage" Drawing="{StaticResource NextDrawingGroup}" />
+  <Geometry x:Key="PauseGeometry1">F1 M100,100z M0,0z M39.806,72.858L30.891,72.858C28.715,72.858,26.951,71.094,26.951,68.918L26.951,31.119C26.951,28.943,28.715,27.179,30.891,27.179L39.806,27.179C41.982,27.179,43.746,28.943,43.746,31.119L43.746,68.918C43.746,71.094,41.982,72.858,39.806,72.858z</Geometry>
+  <Geometry x:Key="PauseGeometry2">F1 M100,100z M0,0z M68.109,72.821L59.194,72.821C57.018,72.821,55.254,71.057,55.254,68.881L55.254,31.082C55.254,28.906,57.018,27.142,59.194,27.142L68.109,27.142C70.285,27.142,72.049,28.906,72.049,31.082L72.049,68.881C72.049,71.057,70.285,72.821,68.109,72.821z</Geometry>
+  <Geometry x:Key="PauseGeometry3">F1 M100,100z M0,0z M40.489,27.248C41.258,27.967,41.746,28.983,41.746,30.119L41.746,67.918C41.746,70.094,39.982,71.858,37.806,71.858L28.891,71.858C28.657,71.858 28.431,71.828 28.208,71.789 28.912,72.447 29.851,72.858 30.891,72.858L39.806,72.858C41.982,72.858,43.746,71.094,43.746,68.918L43.746,31.119C43.746,29.177,42.338,27.573,40.489,27.248z</Geometry>
+  <Geometry x:Key="PauseGeometry4">F1 M100,100z M0,0z M68.792,27.211C69.561,27.93,70.049,28.946,70.049,30.082L70.049,67.881C70.049,70.057,68.285,71.821,66.109,71.821L57.194,71.821C56.96,71.821 56.734,71.791 56.511,71.752 57.215,72.41 58.154,72.821 59.194,72.821L68.109,72.821C70.285,72.821,72.049,71.057,72.049,68.881L72.049,31.082C72.049,29.14,70.641,27.535,68.792,27.211z</Geometry>
+  <Geometry x:Key="PauseGeometry5">F1 M100,100z M0,0z M39.806,72.858L30.891,72.858C28.715,72.858,26.951,71.094,26.951,68.918L26.951,31.119C26.951,28.943,28.715,27.179,30.891,27.179L39.806,27.179C41.982,27.179,43.746,28.943,43.746,31.119L43.746,68.918C43.746,71.094,41.982,72.858,39.806,72.858z</Geometry>
+  <Geometry x:Key="PauseGeometry6">F1 M100,100z M0,0z M68.109,72.821L59.194,72.821C57.018,72.821,55.254,71.057,55.254,68.881L55.254,31.082C55.254,28.906,57.018,27.142,59.194,27.142L68.109,27.142C70.285,27.142,72.049,28.906,72.049,31.082L72.049,68.881C72.049,71.057,70.285,72.821,68.109,72.821z</Geometry>
+  <DrawingGroup x:Key="PauseDrawingGroup" ClipGeometry="M0,0 V100 H100 V0 H0 Z">
+    <DrawingGroup Opacity="1" Transform="2.1679762,0,0,2.1377704,-57.345848,-56.862332">
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PauseGeometry1}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PauseGeometry2}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PauseGeometry3}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource PauseGeometry4}" />
+      <GeometryDrawing Geometry="{StaticResource PauseGeometry5}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+      <GeometryDrawing Geometry="{StaticResource PauseGeometry6}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="PauseDrawingImage" Drawing="{StaticResource PauseDrawingGroup}" />
+  <Geometry x:Key="DeleteGeometry">F1 M32,32z M0,0z M801.73185,824.74661L642.62785,824.74661 506.12385,592.41861 503.41185,592.41861 370.52385,824.74661 222.26785,824.74661 424.76385,498.40261 232.21185,193.75461 392.21985,193.75461 515.16385,407.09861 517.87585,407.09861 642.62785,193.75461 790.88385,193.75461 596.52385,501.11461z</Geometry>
+  <DrawingGroup x:Key="DeleteDrawingGroup" ClipGeometry="M0,0 V32 H32 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <DrawingGroup Opacity="1" Transform="0.05309742,0,0,0.04876139,-11.185873,-8.831767">
+        <GeometryDrawing Brush="#FFFF0000" Geometry="{StaticResource DeleteGeometry}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="24.2114" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="DeleteDrawingImage" Drawing="{StaticResource DeleteDrawingGroup}" />
+  <Geometry x:Key="SettingsGeometry">F0 M24,24z M0,0z M16.97669,3.7028419C16.650569,3.518058,16.312579,3.3508731,15.96408,3.2026188L15.45487,0.94329457C15.330628,0.39255353,14.828093,0,14.247181,0L9.7469944,0C9.1659954,0,8.6634116,0.39255353,8.5392677,0.94329457L8.0299586,3.2026188C7.7015372,3.3423314 7.3824248,3.4988754 7.0738082,3.671099 6.7498373,3.8511083 6.4354225,4.0494725 6.1323937,4.2657116L3.8614451,3.564065C3.307866,3.3930172,2.7062464,3.6191056,2.4157655,4.1073442L0.16567244,7.8893039C-0.12480851,8.3775305,-0.02577276,8.9961844,0.40364999,9.3758896L2.1653018,10.933604C2.1248148,11.287864 2.1049608,11.642724 2.1053068,11.996624 2.1049607,12.350525 2.1248148,12.705385 2.1653018,13.059766L0.40364999,14.617407C-0.0257727600000001,14.9971,-0.12480851,15.615766,0.16567244,16.104029L2.4157655,19.885965C2.7062464,20.374107,3.307866,20.600244,3.8614451,20.429172L6.1323813,19.727609C6.4387728,19.946188 6.7568097,20.146531 7.0845882,20.32816 7.3898547,20.498032 7.7053573,20.652549 8.029971,20.79063L8.5392677,23.049955C8.6634116,23.600719,9.1659954,23.993249,9.7469944,23.993249L14.247181,23.993249C14.828093,23.993249,15.330628,23.600719,15.45487,23.049955L15.96408,20.79063C16.308622,20.644032 16.642904,20.478957 16.965565,20.296729 17.273513,20.123498 17.572685,19.933711 17.861472,19.727609L20.132458,20.429172C20.68605,20.600244,21.287607,20.374102,21.578125,19.885965L23.828218,16.104029C24.118612,15.615766,24.019589,14.9971,23.590241,14.617407L21.828589,13.059766C21.869129,12.704905 21.888919,12.349565 21.888539,11.995305 21.888786,11.641884 21.869009,11.287384 21.828589,10.933604L23.590241,9.3758896C24.019589,8.9961844,24.118612,8.3775426,23.828218,7.8893039L21.578125,4.1073442C21.287607,3.6191176,20.68605,3.3930172,20.132458,3.564065L17.861472,4.2657116C17.576147,4.0621049,17.280683,3.8743578,16.97669,3.7028419z M11.996964,16.795275C14.727958,16.795275 16.941952,14.646798 16.941952,11.996624 16.941952,9.3464018 14.727958,7.1979745 11.996964,7.1979745 9.2659213,7.1979745 7.051976,9.3464018 7.051976,11.996624 7.051976,14.646798 9.2659213,16.795275 11.996964,16.795275z</Geometry>
+  <DrawingGroup x:Key="SettingsDrawingGroup" ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+    <DrawingGroup.Transform>
+      <TranslateTransform X="5.511556100401549E-09" Y="0" />
+    </DrawingGroup.Transform>
+    <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource SettingsGeometry}" />
+  </DrawingGroup>
+  <DrawingImage x:Key="SettingsDrawingImage" Drawing="{StaticResource SettingsDrawingGroup}" />
+  <Geometry x:Key="VolumeGeometry1">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
+  <Geometry x:Key="VolumeGeometry2">F1 M44.281193,44.35283z M0,0z M69.981,47.977L31.356,25.677C31.123,25.543,30.882,25.467,30.64,25.418L67.981,46.977C69.538,47.876,69.538,50.124,67.981,51.023L29.356,73.323C29.007,73.524 28.64,73.611 28.278,73.624 28.934,74.562 30.239,74.967 31.356,74.323L69.981,52.023C71.538,51.124,71.538,48.876,69.981,47.977z</Geometry>
+  <Geometry x:Key="VolumeGeometry3">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
+  <DrawingGroup x:Key="VolumeDrawingGroup" ClipGeometry="M0,0 V44.35283 H44.281193 V0 H0 Z">
+    <DrawingGroup Opacity="1" Transform="-1,0,0,0.88239953,71.633194,-21.943593">
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource VolumeGeometry1}" />
+      <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource VolumeGeometry2}" />
+      <GeometryDrawing Geometry="{StaticResource VolumeGeometry3}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <GeometryDrawing Brush="#FF000000">
+      <GeometryDrawing.Geometry>
+        <RectangleGeometry RadiusX="1.4278" RadiusY="1.4278" Rect="0,12.5739,16.997,19.253" />
+      </GeometryDrawing.Geometry>
+    </GeometryDrawing>
+  </DrawingGroup>
+  <DrawingImage x:Key="VolumeDrawingImage" Drawing="{StaticResource VolumeDrawingGroup}" />
+</ResourceDictionary>

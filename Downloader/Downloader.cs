@@ -3,10 +3,8 @@ using System.ComponentModel;
 using System.IO;
 using Ookii.Dialogs.Wpf;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using Connections.Models;
-using Connections.SongsDSTableAdapters;
 
 namespace Downloader
 {

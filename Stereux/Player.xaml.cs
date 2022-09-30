@@ -1,5 +1,8 @@
 ﻿using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Connections.Models;
 using Stereux.Settings;
 
@@ -10,6 +13,8 @@ namespace Stereux
     /// </summary>
     public partial class Player : Window
     {
+        private bool _isPlaying = false;
+        private readonly DrawingImage _playBrush, _pauseBrush;
         private Playlist? _playlist;
 
         private Song? _currentSong;
@@ -44,6 +49,9 @@ namespace Stereux
 
             Directory.CreateDirectory(Properties.Settings.Default.DataPath);
             CreatePlaylist();
+
+            _playBrush = (FindResource("PlayDrawingImage") as DrawingImage)!;
+            _pauseBrush = (FindResource("PauseDrawingImage") as DrawingImage)!;
         }
 
         private void CreatePlaylist()
@@ -80,7 +88,11 @@ namespace Stereux
 
         private void PlayBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_playlist != null) Console.WriteLine("Play / Payse");
+            if (_playlist != null)
+            {
+                (PlayBtn.Content as Image)!.Source = _isPlaying ? _pauseBrush : _playBrush;
+                _isPlaying = !_isPlaying;
+            }
             else CreatePlaylist();
         }
     }

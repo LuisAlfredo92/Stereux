@@ -26,13 +26,6 @@
 
   <ItemGroup>
     <None Remove="Resources\Icons\Delete icon.png" />
-    <None Remove="Resources\Icons\Mute icon.png" />
-    <None Remove="Resources\Icons\Next icon.png" />
-    <None Remove="Resources\Icons\Pause icon.png" />
-    <None Remove="Resources\Icons\Play icon.png" />
-    <None Remove="Resources\Icons\Previous icon.png" />
-    <None Remove="Resources\Icons\Settings icon.png" />
-    <None Remove="Resources\Icons\Volume icon.png" />
     <None Remove="Resources\Images\ncs-qr.png" />
     <None Remove="Resources\Images\repo-qr.png" />
     <None Remove="Resources\Images\Stereux logo 512x512.png" />
@@ -55,36 +48,15 @@
 
   <ItemGroup>
     <Resource Include="Resources\Icons\Delete icon.png" />
-    <Resource Include="Resources\Icons\Mute icon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Icons\Stereux-logo-128x128.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Icons\Next icon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Icons\Pause icon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Icons\Play icon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Icons\Previous icon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Icons\Settings icon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Icons\stereux_icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Icons\Volume icon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\QrCodes\ncs-qr.png">

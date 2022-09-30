@@ -63,10 +63,9 @@
                 Cursor="Hand"
                 BorderBrush="{x:Null}"
                 Foreground="{x:Null}"
-                Click="PrevBtn_OnClick">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Icons/Previous icon.png" />
-            </Button.Background>
+                Click="PrevBtn_OnClick"
+                Background="{x:Null}">
+            <Image Source="{StaticResource PreviousDrawingImage}" />
         </Button>
 
         <!-- Play / Pause button -->
@@ -83,10 +82,9 @@
                 Opacity="1"
                 BorderBrush="{x:Null}"
                 Foreground="{x:Null}"
-                Click="PlayBtn_OnClick">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Icons/Play icon.png" />
-            </Button.Background>
+                Click="PlayBtn_OnClick"
+                Background="{x:Null}">
+            <Image Source="{StaticResource PlayDrawingImage}" />
         </Button>
 
         <!-- Next song button -->
@@ -103,10 +101,9 @@
                 Opacity="0.995"
                 BorderBrush="{x:Null}"
                 Foreground="{x:Null}"
-                Click="NextBtn_OnClick">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Icons/Next icon.png" />
-            </Button.Background>
+                Click="NextBtn_OnClick"
+                Background="{x:Null}">
+            <Image Source="{StaticResource NextDrawingImage}" />
         </Button>
 
         <!-- Settings button -->
@@ -122,17 +119,16 @@
                 Cursor="Hand"
                 Opacity="0.995"
                 BorderBrush="{x:Null}"
-                Foreground="{x:Null}" Click="SettingsBtn_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Icons/Settings icon.png" />
-            </Button.Background>
+                Foreground="{x:Null}" Click="SettingsBtn_Click"
+                Background="{x:Null}">
+            <Image Source="{StaticResource SettingsDrawingImage}" />
         </Button>
         <!--#endregion-->
 
         <!--#region Volume controls -->
         <!-- Button -->
         <Button Style="{DynamicResource playerBtnsStyle}"
-                x:Name="volumeBtn"
+                x:Name="VolumeBtn"
                 HorizontalAlignment="Left"
                 Height="25"
                 Margin="160,80,0,0"
@@ -143,10 +139,9 @@
                 Cursor="Hand"
                 Opacity="1"
                 BorderBrush="{x:Null}"
-                Foreground="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Icons/Volume icon.png" />
-            </Button.Background>
+                Foreground="{x:Null}"
+                Background="{x:Null}">
+            <Image Source="{StaticResource VolumeDrawingImage}" />
         </Button>
 
         <!-- Slider selector -->
