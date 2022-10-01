@@ -21,7 +21,7 @@ namespace Downloader
 
         private static Task<HttpResponseMessage> _songTask, _albumCoverTask;
 
-        public static async Task<Song> DownloadSong(string destRootFolder, Song song)
+        public static async Task<Song?> DownloadSong(string destRootFolder, Song? song)
         {
             string destinationFolder = Path.Combine(destRootFolder, song.Id.ToString() ?? throw new InvalidOperationException()),
                 destinationSongFile = Path.Combine(destinationFolder, song.Id + Path.GetExtension(song.SongURL)),
@@ -45,15 +45,17 @@ namespace Downloader
             return song;
         }
 
-        public static async Task<Song> DownloadSongWithProgressBar(string destRootFolder, Song song)
+        public static async Task<Song?> DownloadSongWithProgressBar(string destRootFolder, Song? song)
         {
+            if (ProgressDialog.IsBusy) return song;
+
             string destinationFolder = Path.Combine(destRootFolder, song.Id.ToString() ?? throw new InvalidOperationException()),
                 destinationSongFile = Path.Combine(destinationFolder, song.Id + Path.GetExtension(song.SongURL)),
                 destinationAlbumCover = Path.Combine(destinationFolder, song.Id + Path.GetExtension(song.AlbumCoverURL));
             if (Directory.Exists(destinationFolder)) Directory.Delete(destinationFolder, true);
             Directory.CreateDirectory(destinationFolder);
 
-            ProgressDialog.Text = $"Downloading {song.Artists} - {song.Name}";
+            ProgressDialog.Description = $"Downloading {song.Artists} - {song.Name}";
             ProgressDialog.DoWork += GetSongs_DoWork;
 
             _songTask = Client.GetAsync(song.SongURL);
@@ -74,10 +76,17 @@ namespace Downloader
 
             static void GetSongs_DoWork(object? sender, DoWorkEventArgs e)
             {
-                _songTask.Wait();
-                ProgressDialog.ReportProgress(50, "", "Downloading album cover");
-                _albumCoverTask.Wait();
-                ProgressDialog.ReportProgress(100, "", "Song downloaded");
+                try
+                {
+                    _songTask.Wait();
+                    ProgressDialog.ReportProgress(50, ProgressDialog.Text, "Downloading album cover");
+                    _albumCoverTask.Wait();
+                    ProgressDialog.ReportProgress(100, "", "Song downloaded");
+                }
+                finally
+                {
+                    ProgressDialog.ReportProgress(100, ProgressDialog.Text, "There was an error, operation cancelled");
+                }
                 ProgressDialog.Dispose();
             }
         }

@@ -46,6 +46,7 @@
   <Geometry x:Key="MuteGeometry1">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
   <Geometry x:Key="MuteGeometry2">F1 M44.281193,44.35283z M0,0z M69.981,47.977L31.356,25.677C31.123,25.543,30.882,25.467,30.64,25.418L67.981,46.977C69.538,47.876,69.538,50.124,67.981,51.023L29.356,73.323C29.007,73.524 28.64,73.611 28.278,73.624 28.934,74.562 30.239,74.967 31.356,74.323L69.981,52.023C71.538,51.124,71.538,48.876,69.981,47.977z</Geometry>
   <Geometry x:Key="MuteGeometry3">F1 M44.281193,44.35283z M0,0z M31.356,25.677L69.981,47.977C71.538,48.876,71.538,51.124,69.981,52.023L31.356,74.323C29.799,75.222,27.852,74.098,27.852,72.3L27.852,27.7C27.852,25.902,29.798,24.778,31.356,25.677z</Geometry>
+  <Geometry x:Key="MuteGeometry4">F1 M44.281193,44.35283z M0,0z M43.502248,37.686844L34.252241,37.686844 27.564736,27.478503 20.752231,37.686844 11.918891,37.686844 22.918899,22.061832 12.148058,6.6659874 21.377231,6.6659874 27.835569,16.332661 34.481408,6.6659874 43.335581,6.6659874 32.50224,21.749332z</Geometry>
   <DrawingGroup x:Key="MuteDrawingGroup" ClipGeometry="M0,0 V44.35283 H44.281193 V0 H0 Z">
     <DrawingGroup Opacity="1" Transform="-1,0,0,0.88239953,71.633194,-21.943593">
       <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource MuteGeometry1}" />
@@ -61,6 +62,13 @@
         <RectangleGeometry RadiusX="1.4278" RadiusY="1.4278" Rect="0,12.5739,16.997,19.253" />
       </GeometryDrawing.Geometry>
     </GeometryDrawing>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFF0000" Geometry="{StaticResource MuteGeometry4}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
   </DrawingGroup>
   <DrawingImage x:Key="MuteDrawingImage" Drawing="{StaticResource MuteDrawingGroup}" />
   <Geometry x:Key="Stereux_logoGeometry1">F1 M256,256z M0,0z M32.000192,81.357438L32.003592,25.915694C32.003592,24.177628 33.010008,23.658442 34.08034,23.658441 47.760115,23.658441 80,19.875 80,64 80,64 64.037124,41.734532 48.003552,41.734532L48.000152,96.159448</Geometry>

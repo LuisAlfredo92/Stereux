@@ -12,7 +12,7 @@
     <Grid>
         <!--#region Song cover -->
         <!-- Song cover -->
-        <Image x:Name="songImage"
+        <Image x:Name="SongImage"
                HorizontalAlignment="Left"
                Height="150"
                Width="150"
@@ -140,12 +140,13 @@
                 Opacity="1"
                 BorderBrush="{x:Null}"
                 Foreground="{x:Null}"
-                Background="{x:Null}">
+                Background="{x:Null}"
+                Click="VolumeBtn_OnClick">
             <Image Source="{StaticResource VolumeDrawingImage}" />
         </Button>
 
         <!-- Slider selector -->
-        <Slider x:Name="volumeSlider"
+        <Slider x:Name="VolumeSlider"
                 HorizontalAlignment="Left"
                 Margin="190,85,0,0"
                 VerticalAlignment="Top"
@@ -153,31 +154,32 @@
                 Maximum="100"
                 LargeChange="10"
                 SmallChange="5"
-                Value="60"
-                AutoToolTipPlacement="TopLeft" />
+                Value="50"
+                AutoToolTipPlacement="TopLeft"
+                ValueChanged="VolumeSlider_OnValueChanged" />
         <!--#endregion-->
 
         <!--#region Time controls -->
         <!-- Time slider -->
-        <Slider x:Name="timeSlider"
+        <Slider x:Name="TimeSlider"
                 Value="{Binding Position, FallbackValue=0}"
-                Maximum="{Binding
-                SliderMaximum, FallbackValue=0, Mode=OneWay}"
+                Maximum="{Binding SliderMaximum, FallbackValue=0, Mode=OneWay}"
                 Minimum="0"
                 VerticalAlignment="Top"
                 Width="125"
                 HorizontalAlignment="Left"
-                Margin="160,110,0,0" />
+                Margin="160,110,0,0"
+                ValueChanged="TimeSlider_OnValueChanged" />
 
         <!-- Current time label -->
-        <TextBlock x:Name="currentTimeTB"
+        <TextBlock x:Name="CurrentTimeTextBlock"
                    Text="{Binding Time, StringFormat={}{0:mm}:{0:ss}, FallbackValue=00:00, Mode=OneWay}"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    Margin="160,128,0,0" />
 
         <!-- Song time label -->
-        <TextBlock x:Name="songTimeTB"
+        <TextBlock x:Name="SongTimeTextBlock"
                    Text="{Binding Time, FallbackValue=00:00, Mode=OneWay, StringFormat=\{0:mm\}:\{0:ss\}}"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"

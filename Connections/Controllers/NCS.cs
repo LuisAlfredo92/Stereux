@@ -189,7 +189,12 @@ namespace Connections.Controllers
                     .Replace("&#039;", "'")
                     .Replace("&amp;", "&")
                     .Trim(),
-                songArtists = bottomSongInfo.SelectSingleNode("span").InnerText.Trim(),
+                songArtists = bottomSongInfo
+                    .SelectSingleNode("span")
+                    .InnerText
+                    .Replace("&#039;", "'")
+                    .Replace("&amp;", "&")
+                    .Trim(),
                 songGenre = completeSongInfo
                     .SelectNodes(
                         "div [contains(@class, 'options')]/div [contains(@class, 'row align-items-center')]/div [contains(@class, 'col-6 col-lg-6')]/span/strong")
