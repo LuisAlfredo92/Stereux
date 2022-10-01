@@ -185,8 +185,10 @@ namespace Stereux
             CurrentTimeTextBlock.Text = $"{_player.Position:mm\\:ss}";
 
             if (!(Math.Abs(TimeSlider.Value - TimeSlider.Maximum) < 1)) return;
-            CurrentSong = _playlist!.NextSong().Result;
+            _player.Stop();
             TimeSlider.Value = 0;
+            CurrentSong = _playlist!.NextSong().Result;
+            if (_isPlaying) _player.Play();
         }
     }
 }

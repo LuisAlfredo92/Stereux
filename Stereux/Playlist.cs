@@ -1,4 +1,5 @@
-﻿using Connections;
+﻿using System.IO;
+using Connections;
 using Connections.Models;
 using Connections.SongsDSTableAdapters;
 
@@ -43,7 +44,9 @@ public class Playlist
 
     public Song? CurrentSong()
     {
-        if (_songs[5].AlbumCoverLocalPath != null && _songs[5].SongLocalPath != null) return _songs[5];
+        if (_songs[5] != null && _songs[5]!.AlbumCoverLocalPath != null && _songs[5]!.SongLocalPath != null &&
+            File.Exists(_songs[5]!.SongLocalPath!))
+            return _songs[5];
         try
         {
             _songs[5] = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, _songs[5]).Result;
