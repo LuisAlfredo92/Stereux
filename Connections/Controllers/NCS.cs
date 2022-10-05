@@ -211,9 +211,6 @@ namespace Connections.Controllers
                     .Value
                     .Trim();
 
-            if (songDataLink.Length < 1)
-                return;
-
             // Some treatment to album cover links since they can contains forbidden chars or be relative
             if (songImageLink.Contains('?'))
                 songImageLink = songImageLink[..(songImageLink.LastIndexOf('?') - 1)];

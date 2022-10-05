@@ -49,7 +49,7 @@ namespace Stereux.Settings
             _songsTable.TruncateTable();
             Downloader.Downloader.StopAllDownloads();
             if (Directory.Exists(Properties.Settings.Default.DataPath))
-            Directory.Delete(Properties.Settings.Default.DataPath, true);
+                Directory.Delete(Properties.Settings.Default.DataPath, true);
             SongsDataGrid.ItemsSource = _songsTable.GetData();
         }
 

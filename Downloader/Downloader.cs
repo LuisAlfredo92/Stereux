@@ -40,12 +40,12 @@ namespace Downloader
 
             // Downloading song
             _songTask = client.GetAsync(song.SongURL);
-            using var songStream = new FileStream(destinationSongFile, FileMode.CreateNew);
+            using var songStream = new FileStream(destinationSongFile, FileMode.Create);
             _songTask.Result.Content.CopyToAsync(songStream);
 
             // Downloading Album cover
             _albumTask = client.GetAsync(song.AlbumCoverURL);
-            using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.CreateNew);
+            using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.Create);
             _albumTask.Result.Content.CopyToAsync(albumCoverStream);
 
             song.SongLocalPath = destinationSongFile;
@@ -110,7 +110,7 @@ namespace Downloader
                 /*while (!_songWithDialogTask.IsCompleted)
                     DownloadDialog.ReportProgress(_songProgress, "fdgdgdfg", "Downloading song");*/
 
-                using var songStream = new FileStream(destinationSongFile, FileMode.CreateNew);
+                using var songStream = new FileStream(destinationSongFile, FileMode.Create);
                 _songWithDialogTask.Result.Content.CopyToAsync(songStream);
                 DownloadDialog.ReportProgress(0, "asdasd", "Downloading album cover");
 
@@ -119,7 +119,7 @@ namespace Downloader
                 //while (!_albumCoverWithDialogTask.IsCompleted)
                 //    DownloadDialog.ReportProgress(_albumProgress, DownloadDialog.Text, "Downloading song");
 
-                using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.CreateNew);
+                using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.Create);
                 _albumCoverWithDialogTask.Result.Content.CopyToAsync(albumCoverStream);
 
                 DownloadDialog.ReportProgress(100, "Finished", "Song downloaded");

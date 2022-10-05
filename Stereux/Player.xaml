@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Stereux"
         mc:Ignorable="d"
-        Title="Player"
+        Title="Stereux player"
         Height="189"
         Width="520"
         ResizeMode="NoResize">

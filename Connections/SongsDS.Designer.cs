@@ -2001,18 +2001,18 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "dbo.InsertSong";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Source", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Artists", global::System.Data.SqlDbType.NChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverURL", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InfoURL", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongURL", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].CommandText = @"INSERT INTO [Songs] ([Source], [Name], [Artists], [AlbumCoverURL], [Genre], [InfoURL], [SongURL], [AlbumCoverLocalPath], [SongLocalPath]) VALUES (@Source, @Name, @Artists, @AlbumCoverURL, @Genre, @InfoURL, @SongURL, @AlbumCoverLocalPath, @SongLocalPath);
+SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumCoverLocalPath, SongLocalPath FROM Songs WHERE (Id = SCOPE_IDENTITY())";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Source", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Artists", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Artists", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverURL", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Genre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InfoURL", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "InfoURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongURL", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SongURL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlbumCoverLocalPath", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "AlbumCoverLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongLocalPath", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SongLocalPath", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
             this._commandCollection[6].CommandText = "dbo.SongDownloaded";
@@ -2384,61 +2384,56 @@ SELECT Id, Source, Name, Artists, AlbumCoverURL, Genre, InfoURL, SongURL, AlbumC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertSong(global::System.Nullable<int> Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath) {
+        public virtual int InsertSong(int Source, string Name, string Artists, string AlbumCoverURL, string Genre, string InfoURL, string SongURL, string AlbumCoverLocalPath, string SongLocalPath) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
-            if ((Source.HasValue == true)) {
-                command.Parameters[1].Value = ((int)(Source.Value));
-            }
-            else {
-                command.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            command.Parameters[0].Value = ((int)(Source));
             if ((Name == null)) {
-                command.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Name");
             }
             else {
-                command.Parameters[2].Value = ((string)(Name));
+                command.Parameters[1].Value = ((string)(Name));
             }
             if ((Artists == null)) {
-                command.Parameters[3].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Artists");
             }
             else {
-                command.Parameters[3].Value = ((string)(Artists));
+                command.Parameters[2].Value = ((string)(Artists));
             }
             if ((AlbumCoverURL == null)) {
+                throw new global::System.ArgumentNullException("AlbumCoverURL");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(AlbumCoverURL));
+            }
+            if ((Genre == null)) {
                 command.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[4].Value = ((string)(AlbumCoverURL));
-            }
-            if ((Genre == null)) {
-                command.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[5].Value = ((string)(Genre));
+                command.Parameters[4].Value = ((string)(Genre));
             }
             if ((InfoURL == null)) {
-                command.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("InfoURL");
             }
             else {
-                command.Parameters[6].Value = ((string)(InfoURL));
+                command.Parameters[5].Value = ((string)(InfoURL));
             }
             if ((SongURL == null)) {
+                throw new global::System.ArgumentNullException("SongURL");
+            }
+            else {
+                command.Parameters[6].Value = ((string)(SongURL));
+            }
+            if ((AlbumCoverLocalPath == null)) {
                 command.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[7].Value = ((string)(SongURL));
+                command.Parameters[7].Value = ((string)(AlbumCoverLocalPath));
             }
-            if ((AlbumCoverLocalPath == null)) {
+            if ((SongLocalPath == null)) {
                 command.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[8].Value = ((string)(AlbumCoverLocalPath));
-            }
-            if ((SongLocalPath == null)) {
-                command.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[9].Value = ((string)(SongLocalPath));
+                command.Parameters[8].Value = ((string)(SongLocalPath));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -164,6 +164,8 @@ namespace Stereux
                 _isPlaying = !_isPlaying;
                 (PlayBtn.Content as Image)!.Source = _isPlaying ? _pauseImage : _playImage;
 
+                CurrentTimeTextBlock.Text = $"{_player.Position:mm\\:ss}";
+                TimeSlider.Value = _player.Position.TotalSeconds;
                 if (_isPlaying)
                 {
                     _player.Play();
@@ -210,7 +212,7 @@ namespace Stereux
             _player.Position = TimeSpan.FromSeconds(TimeSlider.Value);
             CurrentTimeTextBlock.Text = $"{_player.Position:mm\\:ss}";
 
-            if (!(Math.Abs(TimeSlider.Value - TimeSlider.Maximum) < 1)) return;
+            if (!(Math.Abs(TimeSlider.Value - TimeSlider.Maximum) < 0.5)) return;
             _player.Stop();
             TimeSlider.Value = 0;
             CurrentSong = _playlist!.NextSong().Result;

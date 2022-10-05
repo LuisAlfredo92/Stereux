@@ -8,21 +8,25 @@ namespace Stereux;
 public class Playlist
 {
     private readonly List<Song> _songs;
+    private readonly int _middle;
     private readonly SongsTableAdapter _table;
     private readonly int _lastId;
 
     public Playlist()
     {
         //TODO: Take capacity from settings
-        _songs = new List<Song>(11);
         _table = new SongsTableAdapter();
         _lastId = (_table.GetLastSong().Rows[0] as SongsDS.SongsRow)!.Id;
+        _songs = new List<Song>(Math.Clamp(11, 0, _lastId));
+        _middle = (int)Math.Floor((double)(_songs.Capacity / 2));
 
-        for (byte i = 0; i < 11; i++)
+        for (byte i = 0; i < Math.Clamp(11, 0, _lastId); i++)
+        {
+            Song newSong;
             do
             {
                 var result = _table.GetSong(new Random().Next(1, _lastId + 1)).Rows[0] as SongsDS.SongsRow;
-                _songs.Add(new Song(
+                newSong = new Song(
                     result!.Id,
                     (Sources)result!.Source,
                     result.Name,
@@ -33,22 +37,22 @@ public class Playlist
                     result.SongURL,
                     result.IsAlbumCoverLocalPathNull() ? null : result.AlbumCoverLocalPath,
                     result.IsSongLocalPathNull() ? null : result.SongLocalPath
-                ));
-                /*
-                 * Songs aren't downloaded here because that would
-                 * do startup extremely slow
-                 */
-            } while (_songs.Count(elem => elem.Equals(_songs[i])) > 1 && _lastId > 11);
+                );
+            } while (_songs.Contains(newSong));
+            /* Songs aren't downloaded here because that would
+             * do startup extremely slow */
+            _songs.Add(newSong);
+        }
     }
 
     public Song CurrentSong()
     {
-        if (_songs[5].AlbumCoverLocalPath != null && _songs[5].SongLocalPath != null &&
-            File.Exists(_songs[5]!.SongLocalPath!))
-            return _songs[5];
+        if (_songs[_middle].AlbumCoverLocalPath != null && _songs[_middle].SongLocalPath != null &&
+            File.Exists(_songs[_middle]!.SongLocalPath!))
+            return _songs[_middle];
 
-        _songs[5] = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, _songs[5]).Result;
-        return _songs[5];
+        _songs[_middle] = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, _songs[_middle]).Result;
+        return _songs[_middle];
     }
 
     public async Task<Song?> NextSong()
