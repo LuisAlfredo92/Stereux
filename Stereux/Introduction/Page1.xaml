@@ -1,0 +1,74 @@
+﻿<Page x:Class="Stereux.Introduction.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Stereux.Introduction"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <Label Content="Welcome to" FontSize="48" FontFamily="Aneliza" />
+            <Label Content="Stereux"
+                   FontSize="48"
+                   FontFamily="Aneliza"
+                   FontWeight="Bold" Foreground="#FF0592" />
+        </StackPanel>
+        <TextBlock Grid.Row="1"
+                   TextWrapping="Wrap"
+                   FontFamily="Aneliza"
+                   FontSize="18"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center">
+            <TextBlock.Text>This is a program to help streamers to play background music in their
+                streams with correct attribution so they won't have copyright problems</TextBlock.Text>
+        </TextBlock>
+        <TextBlock Grid.Row="2"
+                   TextWrapping="Wrap"
+                   FontFamily="Aneliza"
+                   FontSize="18"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center">
+            <TextBlock.Text>This window will guide you in how to use the program
+            and some advices to use it, but first...</TextBlock.Text>
+        </TextBlock>
+        <StackPanel Grid.Row="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Label Content="Select a language:"
+                       FontFamily="Aneliza"
+                       FontSize="18"
+                       FontWeight="Bold" />
+                <ComboBox x:Name="LanguageComboBox"
+                      Width="150"
+                      VerticalContentAlignment="Center"
+                      FontFamily="Aneliza"
+                      IsReadOnly="True"
+                      Cursor="Hand"
+                      FontSize="18"
+                      SelectedIndex="0">
+                    <ComboBoxItem Content="English" />
+                </ComboBox>
+            </StackPanel>
+            <Label Content="More languages coming soon!" HorizontalContentAlignment="Center" FontSize="14" />
+        </StackPanel>
+    </Grid>
+</Page>

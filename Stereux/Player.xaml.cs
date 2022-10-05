@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Connections.Models;
@@ -34,7 +35,29 @@ namespace Stereux
 
                 // Setting labels
                 SongNameLabel.Content = CurrentSong!.Name;
+                SongNameLabel.BeginAnimation(MarginProperty,
+                    CurrentSong!.Name.Length > 25
+                        ? new ThicknessAnimation()
+                        {
+                            From = new Thickness(160, 0, 0, 0),
+                            To = new Thickness(160 - 10 * (CurrentSong.Name.Length - 25), 0, 0, 0),
+                            AutoReverse = true,
+                            Duration = Duration.Forever,
+                        }
+                        : null);
+
                 ArtistsNamesLabel.Content = CurrentSong!.Artists;
+                ArtistsNamesLabel.BeginAnimation(MarginProperty,
+                    CurrentSong!.Artists.Length > 45
+                        ? new ThicknessAnimation()
+                        {
+                            From = new Thickness(160, 30, 0, 0),
+                            To = new Thickness(160 - 5 * (CurrentSong.Name.Length - 45), 30, 0, 0),
+                            AutoReverse = true,
+                            Duration = Duration.Forever,
+                        }
+                        : null);
+
                 SongInfoContainer.ChangeVars(CurrentSong!.Source, CurrentSong!.InfoURL);
 
                 // Setting time
@@ -83,10 +106,12 @@ namespace Stereux
                 Properties.Settings.Default.Save();
             }
 
-            Directory.CreateDirectory(Properties.Settings.Default.DataPath);
+            if (!Directory.Exists(Properties.Settings.Default.DataPath))
+                Directory.CreateDirectory(Properties.Settings.Default.DataPath);
+
             CreatePlaylist();
 
-            _timer = new()
+            _timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(1)
             };
@@ -99,12 +124,13 @@ namespace Stereux
             TimeSlider.Value = _player.Position.TotalSeconds;
         }
 
-        private void CreatePlaylist()
+        private async void CreatePlaylist()
         {
             try
             {
                 _playlist = new Playlist();
                 CurrentSong = _playlist.CurrentSong();
+                Task.Run(() => _playlist.DownloadNextSongs());
             }
             catch (IndexOutOfRangeException)
             {
@@ -133,7 +159,7 @@ namespace Stereux
 
         private void PlayBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_playlist != null)
+            if (_playlist != null && _currentSong is not null)
             {
                 _isPlaying = !_isPlaying;
                 (PlayBtn.Content as Image)!.Source = _isPlaying ? _pauseImage : _playImage;

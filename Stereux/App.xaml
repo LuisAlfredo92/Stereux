@@ -1,8 +1,8 @@
-﻿<Application x:Class="Stereux.App"
+﻿<Application x:Name="CompleteApp"
+             x:Class="Stereux.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Stereux"
-             StartupUri="Player.xaml">
+             xmlns:local="clr-namespace:Stereux">
     <Application.Resources>
         <ResourceDictionary
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"

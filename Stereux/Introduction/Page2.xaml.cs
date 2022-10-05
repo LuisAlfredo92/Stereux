@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using Connections.Controllers;
@@ -8,14 +8,15 @@ using Connections.Models;
 using Connections.SongsDSTableAdapters;
 using Ookii.Dialogs.Wpf;
 
-namespace Stereux.Settings
+namespace Stereux.Introduction
 {
     /// <summary>
-    /// Lógica de interacción para SongsPage.xaml
+    /// Lógica de interacción para Page2.xaml
     /// </summary>
-    public partial class SongsPage : Page
+    public partial class Page2 : Page
     {
         private readonly SongsTableAdapter _songsTable;
+        private readonly SourcesTableAdapter _sourcesTable;
 
         private readonly ProgressDialog _entireProgressDialog = new()
         {
@@ -25,11 +26,22 @@ namespace Stereux.Settings
             ShowCancelButton = false
         };
 
-        public SongsPage()
+        public Page2()
         {
             InitializeComponent();
             _songsTable = new SongsTableAdapter();
+            _sourcesTable = new SourcesTableAdapter();
             SongsDataGrid.ItemsSource = _songsTable.GetData();
+            SourcesDataGrid.ItemsSource = _sourcesTable.GetData();
+        }
+
+        private void OnEnabledChanged(object sender, RoutedEventArgs e)
+        {
+            var parameter = (sender as CheckBox)?.CommandParameter as DataRowView;
+            var id = parameter!.Row["Id"] as int?;
+            var currentCheckedValue = (sender as CheckBox)?.IsChecked;
+
+            _sourcesTable.SetEnabled(currentCheckedValue, id);
         }
 
         private async void GetSongsBtn_OnClick(object sender, RoutedEventArgs e)
@@ -42,15 +54,6 @@ namespace Stereux.Settings
                 _entireProgressDialog.RunWorkerCompleted += UpdateTable;
                 _entireProgressDialog.Show();
             }
-        }
-
-        private void ClearSongsBtn_OnClick(object sender, RoutedEventArgs e)
-        {
-            _songsTable.TruncateTable();
-            Downloader.Downloader.StopAllDownloads();
-            if (Directory.Exists(Properties.Settings.Default.DataPath))
-            Directory.Delete(Properties.Settings.Default.DataPath, true);
-            SongsDataGrid.ItemsSource = _songsTable.GetData();
         }
 
         private void DeleteSongBtn_OnClick(object sender, RoutedEventArgs e)
@@ -126,7 +129,6 @@ namespace Stereux.Settings
             _entireProgressDialog.Dispose();
         }
 
-        private void UpdateTable(object? sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs)
-            => SongsDataGrid.ItemsSource = _songsTable.GetData();
+        private void UpdateTable(object? sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs) => SongsDataGrid.ItemsSource = _songsTable.GetData();
     }
 }

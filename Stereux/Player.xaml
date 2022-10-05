@@ -18,35 +18,39 @@
                Width="150"
                Margin="0"
                VerticalAlignment="Top"
-               Source="Resources/Icons/stereux_icon.png" />
+               Source="Resources/Icons/stereux_icon.png" Panel.ZIndex="1" />
         <!--#endregion-->
 
         <!--#region Titles -->
         <!--Song title-->
         <Label x:Name="SongNameLabel"
-               Content="Song's name"
+               Content="Name of the song"
                Margin="160,0,0,0"
                VerticalAlignment="Top"
-               Width="340"
+               Width="520"
                Height="30"
                FontFamily="Aneliza ExtraBold"
                FontSize="24"
                Padding="0,0,0,0"
                FontWeight="Bold"
                FontStyle="Normal"
-               HorizontalAlignment="Left" />
+               HorizontalAlignment="Left"
+               RenderTransformOrigin="0.5,0.5"
+               Panel.ZIndex="-1" />
         <!-- Song artists -->
         <Label x:Name="ArtistsNamesLabel"
-               Content="Artists names g"
+               Content="Artists"
                HorizontalAlignment="Left"
                Margin="160,30,0,0"
                VerticalAlignment="Top"
-               Width="340"
+               Width="520"
                Height="20"
                Padding="0,0,0,0"
                FontFamily="Aneliza"
                FontWeight="Bold"
-               FontSize="14" />
+               FontSize="14"
+               Panel.ZIndex="-1"
+               RenderTransformOrigin="0,0.5" />
         <!--#endregion-->
 
         <!--#region Control buttons -->

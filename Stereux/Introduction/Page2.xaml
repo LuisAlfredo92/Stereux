@@ -1,0 +1,132 @@
+﻿<Page x:Class="Stereux.Introduction.Page2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Stereux.Introduction"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page2">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Content="Getting songs" FontSize="48" FontFamily="Aneliza" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="5*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="First, select at least one source checking the correspondent cell"
+                   FontFamily="Aneliza"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="Then, click on 'Get songs' button to get the necessary info"
+                   FontFamily="Aneliza"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+            <DataGrid x:Name="SourcesDataGrid"
+                      Grid.Row="1"
+                      Grid.Column="0"
+                      CanUserReorderColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeRows="False"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Path='Id'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path='Name'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="URL" Binding="{Binding Path='URL'}" IsReadOnly="True" />
+                    <DataGridTemplateColumn Header="Enabled">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Path='Enabled'}"
+                                          CommandParameter="{Binding}"
+                                          Click="OnEnabledChanged" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="SongsDataGrid"
+                      Grid.Row="1"
+                      Grid.Column="1"
+                      CanUserAddRows="False"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Path='Id'}"  IsReadOnly="True" />
+                    <DataGridTextColumn Header="Source" Binding="{Binding Path='Source'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path='Name'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Artists" Binding="{Binding Path='Artists'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="AlbumCoverURL" Binding="{Binding Path='AlbumCoverURL'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Genre" Binding="{Binding Path='Genre'}" />
+                    <DataGridTextColumn Header="InfoURL" Binding="{Binding Path='InfoURL'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="SongURL" Binding="{Binding Path='SongURL'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="AlbumCoverLocalPath" Binding="{Binding Path='AlbumCoverLocalPath'}" />
+                    <DataGridTextColumn Header="SongLocalPath" Binding="{Binding Path='SongLocalPath'}" IsReadOnly="True" />
+                    <DataGridTemplateColumn Header="Remove">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="DeleteSongBtn"
+                                    CommandParameter="{Binding 'Id'}"
+                                    Width="25"
+                                    Foreground="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    Click="DeleteSongBtn_OnClick"
+                                    Background="{x:Null}">
+                                    <Image Source="{StaticResource DeleteDrawingImage}" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Download">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="DownloadBtn"
+                                    Content="Download"
+                                    CommandParameter="{Binding 'Id'}"
+                                    Click="DownloadBtn_OnClick" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!-- TODO: Add a Play next button -->
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Content="More sources coming soon"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontFamily="Aneliza"
+                   FontSize="18" />
+            <Button x:Name="GetSongsBtn"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Content="Get songs"
+                    FontWeight="Bold"
+                    FontSize="18"
+                    Click="GetSongsBtn_OnClick" />
+        </Grid>
+        <Label Grid.Row="2"
+                   FontFamily="Aneliza"
+                   FontSize="20"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontWeight="Bold"
+                   Content="This operation will take some time, be patient" />
+    </Grid>
+</Page>

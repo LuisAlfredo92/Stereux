@@ -34,5 +34,17 @@ namespace Stereux.Properties {
                 this["DataPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FirstTimeOpening {
+            get {
+                return ((bool)(this["FirstTimeOpening"]));
+            }
+            set {
+                this["FirstTimeOpening"] = value;
+            }
+        }
     }
 }

@@ -1,27 +1,31 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using Ookii.Dialogs.Wpf;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Connections.Models;
+using System.Net.Http.Handlers;
+using System.Threading;
 
 namespace Downloader
 {
     public class Downloader
     {
-        private static readonly HttpClient Client = new();
-
-        private static readonly ProgressDialog ProgressDialog = new()
+        private static readonly ProgressDialog DownloadDialog = new()
         {
             WindowTitle = "Downloading",
             Text = "Downloading song",
-            Description = "Downloading song"
+            Description = "Downloading song",
+            ShowCancelButton = false,
+            ShowTimeRemaining = true
         };
 
-        private static Task<HttpResponseMessage> _songTask, _albumCoverTask;
+        private static Task<HttpResponseMessage> _songWithDialogTask, _albumCoverWithDialogTask, _songTask, _albumTask;
+        private static int _songProgress, _albumProgress;
 
-        public static async Task<Song?> DownloadSong(string destRootFolder, Song? song)
+        public static Song DownloadSong(string destRootFolder, Song song)
         {
             string destinationFolder = Path.Combine(destRootFolder, song.Id.ToString() ?? throw new InvalidOperationException()),
                 destinationSongFile = Path.Combine(destinationFolder, song.Id + Path.GetExtension(song.SongURL)),
@@ -29,15 +33,20 @@ namespace Downloader
             if (Directory.Exists(destinationFolder)) Directory.Delete(destinationFolder, true);
             Directory.CreateDirectory(destinationFolder);
 
+            HttpClient client = new()
+            {
+                Timeout = TimeSpan.FromSeconds(1000)
+            };
+
             // Downloading song
-            var songResponse = Client.GetAsync(song.SongURL).Result;
-            await using var songStream = new FileStream(destinationSongFile, FileMode.CreateNew);
-            songResponse.Content.CopyToAsync(songStream);
+            _songTask = client.GetAsync(song.SongURL);
+            using var songStream = new FileStream(destinationSongFile, FileMode.CreateNew);
+            _songTask.Result.Content.CopyToAsync(songStream);
 
             // Downloading Album cover
-            var albumCoverResponse = Client.GetAsync(song.AlbumCoverURL).Result;
-            await using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.CreateNew);
-            albumCoverResponse.Content.CopyToAsync(albumCoverStream);
+            _albumTask = client.GetAsync(song.AlbumCoverURL);
+            using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.CreateNew);
+            _albumTask.Result.Content.CopyToAsync(albumCoverStream);
 
             song.SongLocalPath = destinationSongFile;
             song.AlbumCoverLocalPath = destinationAlbumCover;
@@ -45,9 +54,9 @@ namespace Downloader
             return song;
         }
 
-        public static async Task<Song?> DownloadSongWithProgressBar(string destRootFolder, Song? song)
+        public static async Task<Song> DownloadSongWithProgressBar(string destRootFolder, Song song)
         {
-            if (ProgressDialog.IsBusy) return song;
+            if (DownloadDialog.IsBusy) return song;
 
             string destinationFolder = Path.Combine(destRootFolder, song.Id.ToString() ?? throw new InvalidOperationException()),
                 destinationSongFile = Path.Combine(destinationFolder, song.Id + Path.GetExtension(song.SongURL)),
@@ -55,40 +64,79 @@ namespace Downloader
             if (Directory.Exists(destinationFolder)) Directory.Delete(destinationFolder, true);
             Directory.CreateDirectory(destinationFolder);
 
-            ProgressDialog.Description = $"Downloading {song.Artists} - {song.Name}";
-            ProgressDialog.DoWork += GetSongs_DoWork;
+            DownloadDialog.Text = $"Downloading {song.Artists} - {song.Name}";
+            DownloadDialog.DoWork += GetSongs_DoWork;
 
-            _songTask = Client.GetAsync(song.SongURL);
-            _albumCoverTask = Client.GetAsync(song.AlbumCoverURL);
+            DownloadDialog.Show();
 
-            ProgressDialog.Show();
-
-            await using var songStream = new FileStream(destinationSongFile, FileMode.CreateNew);
-            await using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.CreateNew);
-
-            _songTask.Result.Content.CopyToAsync(songStream);
-            _albumCoverTask.Result.Content.CopyToAsync(albumCoverStream);
-
-            song.SongLocalPath = destinationSongFile;
             song.AlbumCoverLocalPath = destinationAlbumCover;
+            song.SongLocalPath = destinationSongFile;
+
+            Thread.Sleep(1000);
+            _songWithDialogTask.Wait();
+            Thread.Sleep(1000);
+            _albumCoverWithDialogTask.Wait();
 
             return song;
 
-            static void GetSongs_DoWork(object? sender, DoWorkEventArgs e)
+            void GetSongs_DoWork(object? sender, DoWorkEventArgs e)
             {
-                try
+                // Bug: I can't do the Download progress dialog report progress aaaaaaaaaaahhh
+                ProgressMessageHandler songDownloadHandler = new(new HttpClientHandler { AllowAutoRedirect = true }),
+                    albumDownloadHandler = new(new HttpClientHandler { AllowAutoRedirect = true });
+                songDownloadHandler.HttpReceiveProgress += (_, args) =>
                 {
-                    _songTask.Wait();
-                    ProgressDialog.ReportProgress(50, ProgressDialog.Text, "Downloading album cover");
-                    _albumCoverTask.Wait();
-                    ProgressDialog.ReportProgress(100, "", "Song downloaded");
-                }
-                finally
+                    _songProgress = args.ProgressPercentage;
+                    Debug.WriteLine($"Song progress: {_songProgress}%");
+                    DownloadDialog.ReportProgress(_songProgress, "Downloading", "Downloading song");
+                };
+                albumDownloadHandler.HttpReceiveProgress += (_, args) =>
                 {
-                    ProgressDialog.ReportProgress(100, ProgressDialog.Text, "There was an error, operation cancelled");
-                }
-                ProgressDialog.Dispose();
+                    _albumProgress = args.ProgressPercentage;
+                    Debug.WriteLine($"Album progress: {_albumProgress}%");
+                };
+                HttpClient songClient = new(songDownloadHandler)
+                {
+                    Timeout = TimeSpan.FromSeconds(1000)
+                };
+                HttpClient albumClient = new(albumDownloadHandler)
+                {
+                    Timeout = TimeSpan.FromSeconds(1000)
+                };
+
+                // TODO: Handle "System.InvalidOperationException: 'An invalid request URI was provided. Either the request URI must be an absolute URI or BaseAddress must be set.'"
+                _songWithDialogTask = songClient.GetAsync(song.SongURL);
+
+                /*while (!_songWithDialogTask.IsCompleted)
+                    DownloadDialog.ReportProgress(_songProgress, "fdgdgdfg", "Downloading song");*/
+
+                using var songStream = new FileStream(destinationSongFile, FileMode.CreateNew);
+                _songWithDialogTask.Result.Content.CopyToAsync(songStream);
+                DownloadDialog.ReportProgress(0, "asdasd", "Downloading album cover");
+
+                _albumCoverWithDialogTask = albumClient.GetAsync(song.AlbumCoverURL);
+
+                //while (!_albumCoverWithDialogTask.IsCompleted)
+                //    DownloadDialog.ReportProgress(_albumProgress, DownloadDialog.Text, "Downloading song");
+
+                using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.CreateNew);
+                _albumCoverWithDialogTask.Result.Content.CopyToAsync(albumCoverStream);
+
+                DownloadDialog.ReportProgress(100, "Finished", "Song downloaded");
+                DownloadDialog.Dispose();
             }
+        }
+
+        public static void StopAllDownloads()
+        {
+            if (_songWithDialogTask != null)
+                _songWithDialogTask.Wait();
+            if (_albumCoverWithDialogTask != null)
+                _albumCoverWithDialogTask.Wait();
+            if (_songTask != null)
+                _songTask.Wait();
+            if (_albumTask != null)
+                _albumTask.Wait();
         }
     }
 }

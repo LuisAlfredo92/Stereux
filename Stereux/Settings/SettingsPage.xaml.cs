@@ -79,12 +79,17 @@ namespace Stereux.Settings
 
         private async void CalculateFolderSize()
         {
-            DirectoryInfo di = new(Properties.Settings.Default.DataPath);
-            FolderSizeLabel.Content =
-                AddSuffixToBytes(
-                    di.EnumerateFiles("*", SearchOption.AllDirectories)
-                        .Sum(fi => fi.Length)
-                    );
+            if (!Directory.Exists(Properties.Settings.Default.DataPath))
+                FolderSizeLabel.Content = AddSuffixToBytes(0);
+            else
+            {
+                DirectoryInfo di = new(Properties.Settings.Default.DataPath);
+                FolderSizeLabel.Content =
+                    AddSuffixToBytes(
+                        di.EnumerateFiles("*", SearchOption.AllDirectories)
+                            .Sum(fi => fi.Length)
+                        );
+            }
 
             string AddSuffixToBytes(long value)
             {

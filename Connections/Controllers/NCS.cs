@@ -93,7 +93,7 @@ namespace Connections.Controllers
             {
                 Thread.Sleep(3000);
             } while (_progressDialog.IsBusy);
-            return _songs;
+            return _songs.Where(song => song.SongURL.Length > 0).ToList();
         }
 
         private void GetList(object? sender, DoWorkEventArgs doWorkEventArgs)
@@ -182,8 +182,8 @@ namespace Connections.Controllers
                     .Value,
                 songImageLink = songImageStyle.Substring(
                     songImageStyle.IndexOf("'", StringComparison.Ordinal) + 1,
-                    songImageStyle.LastIndexOf("'", StringComparison.Ordinal) - songImageStyle.IndexOf("'", StringComparison.Ordinal) - 1
-                ).Trim(),
+                    songImageStyle.LastIndexOf("'", StringComparison.Ordinal) - songImageStyle.IndexOf("'", StringComparison.Ordinal) - 1)
+                    .Trim(),
                 songName = bottomSongInfo.SelectSingleNode("p/strong")
                     .InnerText
                     .Replace("&#039;", "'")
@@ -210,6 +210,13 @@ namespace Connections.Controllers
                     .Attributes["data-url"]
                     .Value
                     .Trim();
+
+            if (songDataLink.Length < 1)
+                return;
+
+            // Some treatment to album cover links since they can contains forbidden chars or be relative
+            if (songImageLink.Contains('?'))
+                songImageLink = songImageLink[..(songImageLink.LastIndexOf('?') - 1)];
             songImageLink = Uri.IsWellFormedUriString(songImageLink, UriKind.Relative)
                 ? "https://ncs.io" + songImageLink
                 : songImageLink;
