@@ -106,5 +106,8 @@ namespace Stereux.Settings
                 return $"{dValue:n1} {sizeSuffixes[i]}";
             }
         }
+
+        private void ShowWelcomeWindowBtn_OnClick(object sender, RoutedEventArgs e)
+            => new WelcomeWindow().Show();
     }
 }

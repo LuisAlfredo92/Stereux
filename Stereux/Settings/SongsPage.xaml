@@ -21,12 +21,8 @@
                 <DataGridTextColumn Header="Source" Binding="{Binding Path='Source'}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Path='Name'}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Artists" Binding="{Binding Path='Artists'}" IsReadOnly="True" />
-                <DataGridTextColumn Header="AlbumCoverURL" Binding="{Binding Path='AlbumCoverURL'}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Genre" Binding="{Binding Path='Genre'}" />
                 <DataGridTextColumn Header="InfoURL" Binding="{Binding Path='InfoURL'}" IsReadOnly="True" />
-                <DataGridTextColumn Header="SongURL" Binding="{Binding Path='SongURL'}" IsReadOnly="True" />
-                <DataGridTextColumn Header="AlbumCoverLocalPath" Binding="{Binding Path='AlbumCoverLocalPath'}" />
-                <DataGridTextColumn Header="SongLocalPath" Binding="{Binding Path='SongLocalPath'}" IsReadOnly="True" />
                 <DataGridTemplateColumn Header="Remove">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Stereux
 {
@@ -21,6 +9,12 @@ namespace Stereux
     {
         private byte _page = 1;
 
+        /// <summary>
+        /// The total pages. Change it to 4 or more
+        /// if you want to add another page
+        /// </summary>
+        private const byte TotalPages = 3;
+
         public WelcomeWindow()
         {
             InitializeComponent();
@@ -29,23 +23,23 @@ namespace Stereux
         private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
         {
             _page--;
-            PageLabel.Content = $"{_page} / 3";
+            PageLabel.Content = $"{_page} / {TotalPages}";
             ContainerFrame.Source = new Uri($"Introduction/Page{_page}.xaml", UriKind.Relative);
             if (_page < 2)
                 PreviousButton.IsEnabled = false;
-            if (_page < 3)
+            if (_page < TotalPages)
                 NextButton.Content = "Next ↪";
         }
 
         private void NextButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_page < 3)
+            if (_page < TotalPages)
             {
                 _page++;
-                PageLabel.Content = $"{_page} / 3";
+                PageLabel.Content = $"{_page} / {TotalPages}";
                 PreviousButton.IsEnabled = true;
                 ContainerFrame.Source = new Uri($"Introduction/Page{_page}.xaml", UriKind.Relative);
-                if (_page == 3)
+                if (_page == TotalPages)
                     NextButton.Content = "Finish";
             }
             else
