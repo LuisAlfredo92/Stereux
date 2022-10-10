@@ -46,6 +46,7 @@ namespace Stereux.Introduction
 
         private async void GetSongsBtn_OnClick(object sender, RoutedEventArgs e)
         {
+            GetSongsBtn.IsEnabled = false;
             if (_entireProgressDialog.IsBusy)
                 MessageBox.Show("Songs are already being obtained", "Work in progress");
             else
