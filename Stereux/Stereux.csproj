@@ -37,13 +37,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
     <PackageReference Include="TagLibSharp" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Connections\Connections.csproj" />
-    <ProjectReference Include="..\Downloader\Downloader.csproj" />
     <ProjectReference Include="..\QrGenerator\QrGenerator.csproj" />
   </ItemGroup>
 

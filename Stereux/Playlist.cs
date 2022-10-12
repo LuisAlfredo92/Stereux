@@ -1,7 +1,11 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
 using Connections;
 using Connections.Models;
 using Connections.SongsDSTableAdapters;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Handlers;
+using Ookii.Dialogs.Wpf;
 
 namespace Stereux;
 
@@ -11,6 +15,17 @@ public class Playlist
     private readonly int _middle;
     private readonly SongsTableAdapter _table;
     private readonly int _lastId;
+    private Dictionary<Song, SongTasks?> _songTasksMap;
+    private ProgressMessageHandler ph = new ProgressMessageHandler(new HttpClientHandler { AllowAutoRedirect = true });
+    private HttpClient client;
+
+    private readonly ProgressDialog _currentSongProgressDialog = new()
+    {
+        WindowTitle = "Downloading song",
+        Text = "Downloading",
+        Description = "Processing...",
+        ShowCancelButton = false
+    };
 
     public Playlist()
     {
@@ -19,6 +34,12 @@ public class Playlist
         _lastId = (_table.GetLastSong().Rows[0] as SongsDS.SongsRow)!.Id;
         _songs = new List<Song>(Math.Clamp(11, 0, _lastId));
         _middle = (int)Math.Floor((double)(_songs.Capacity / 2));
+        _songTasksMap = new Dictionary<Song, SongTasks?>();
+        ph.HttpReceiveProgress += (_, args) =>
+        {
+            Debug.WriteLine($"Download progress: {args.ProgressPercentage}%");
+        };
+        client = new HttpClient(ph) { Timeout = TimeSpan.FromSeconds(1000) };
 
         for (byte i = 0; i < Math.Clamp(11, 0, _lastId); i++)
         {
@@ -39,19 +60,31 @@ public class Playlist
                     result.IsSongLocalPathNull() ? null : result.SongLocalPath
                 );
             } while (_songs.Contains(newSong));
-            /* Songs aren't downloaded here because that would
-             * do startup extremely slow */
             _songs.Add(newSong);
+            _songTasksMap.Add(newSong, null);
         }
+
+        DownloadSong(_middle);
     }
 
     public Song CurrentSong()
     {
-        if (_songs[_middle].AlbumCoverLocalPath != null && _songs[_middle].SongLocalPath != null &&
-            File.Exists(_songs[_middle]!.SongLocalPath!))
+        if (_songTasksMap[_songs[_middle]] is null)
             return _songs[_middle];
 
-        _songs[_middle] = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, _songs[_middle]).Result;
+        var currentTasks = _songTasksMap[_songs[_middle]]!;
+        if (currentTasks.DownloadSongTask.IsCompleted && currentTasks.DownloadCoverTask.IsCompleted &&
+            currentTasks.CopySongTask.IsCompleted && currentTasks.CopyCoverTask.IsCompleted)
+            return _songs[_middle];
+        
+        _currentSongProgressDialog.Show();
+        currentTasks.DownloadSongTask.Wait();
+        currentTasks.DownloadCoverTask.Wait();
+        currentTasks.CopySongTask.Wait();
+        currentTasks.CopyCoverTask.Wait();
+        _currentSongProgressDialog.ReportProgress(100);
+        _currentSongProgressDialog.Dispose();
+
         return _songs[_middle];
     }
 
@@ -74,10 +107,10 @@ public class Playlist
         _songs.Add(newSong);
         Task.Run(() =>
         {
-            var downloadedSong = DownloadSong(newSong).Result;
+            //var downloadedSong = DownloadSong(newSong).Result;
             var index = _songs.IndexOf(newSong);
             if (index == -1) return;
-            _songs[index] = downloadedSong;
+            //_songs[index] = downloadedSong;
         });
 
         return CurrentSong();
@@ -102,29 +135,32 @@ public class Playlist
         _songs.Insert(0, newSong);
         Task.Run(() =>
         {
-            var downloadedSong = DownloadSong(newSong).Result;
+            //var downloadedSong = DownloadSong(newSong).Result;
             var index = _songs.IndexOf(newSong);
             if (index == -1) return;
-            _songs[index] = downloadedSong;
+            //_songs[index] = downloadedSong;
         });
 
         return CurrentSong();
     }
 
-    private async Task<Song> DownloadSong(Song song)
+    private void DownloadSong(int index)
     {
-        if (song.AlbumCoverLocalPath == null || song.SongLocalPath == null || !File.Exists(song.SongLocalPath))
-            song = Downloader.Downloader.DownloadSong(Properties.Settings.Default.DataPath, song);
-        return song;
+        var obtainedSong = _songs[index];
+
+        if (obtainedSong.AlbumCoverLocalPath != null && obtainedSong.SongLocalPath != null && File.Exists(obtainedSong.SongLocalPath!))
+            return;
+
+        Downloader.DownloadSong(out var downloadSongTask, out var downloadCoverTask, out var copySongTask, out var copyCoverTask,
+            ref client, Properties.Settings.Default.DataPath, ref obtainedSong);
+        var tasks = new SongTasks(downloadSongTask, downloadCoverTask, copySongTask, copyCoverTask);
+        _songTasksMap[obtainedSong] = tasks;
+        _songs[index] = obtainedSong;
     }
 
-    public async void DownloadNextSongs()
+    public void DownloadNextSongs()
     {
-        _songs[6] = await DownloadSong(_songs[6]);
-        _songs[4] = await DownloadSong(_songs[4]);
-        for (var i = 7; i < 11; i++)
-            _songs[i] = await DownloadSong(_songs[i]);
-        for (var i = 0; i < 4; i++)
-            _songs[i] = await DownloadSong(_songs[i]);
+        for (var i = 0; i < _songs.Capacity; i++)
+            DownloadSong(i);
     }
 }
