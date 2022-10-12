@@ -67,7 +67,7 @@ namespace Stereux.Introduction
         {
             var id = ((sender as Button)!.CommandParameter as int?)!;
             Song? song = new(_songsTable.GetSong(id));
-            //song = Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, song).Result;
+            song = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, song).Result;
             _songsTable.SongDownloaded(song.AlbumCoverLocalPath, song.SongLocalPath, id);
             SongsDataGrid.ItemsSource = _songsTable.GetData();
         }
