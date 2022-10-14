@@ -147,13 +147,23 @@ namespace Stereux
 
         private async void NextBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_playlist != null) CurrentSong = await _playlist.NextSong();
+            if (_playlist != null)
+            {
+                _player.Pause();
+                CurrentSong = await _playlist.NextSong();
+                _player.Play();
+            }
             else CreatePlaylist();
         }
 
         private async void PrevBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_playlist != null) CurrentSong = await _playlist.PreviousSong();
+            if (_playlist != null)
+            {
+                _player.Pause();
+                CurrentSong = await _playlist.PreviousSong();
+                _player.Play();
+            }
             else CreatePlaylist();
         }
 

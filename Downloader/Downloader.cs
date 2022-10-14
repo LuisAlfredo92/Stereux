@@ -25,7 +25,7 @@ namespace Downloader
         private static Task<HttpResponseMessage> _songWithDialogTask, _albumCoverWithDialogTask, _songTask, _albumTask;
         private static int _songProgress, _albumProgress;
 
-        public static Song DownloadSong(string destRootFolder, Song song)
+        public static Song DownloadSong(string destRootFolder, Song song, out Task refSongTask, out Task refCoverTask)
         {
             string destinationFolder = Path.Combine(destRootFolder, song.Id.ToString() ?? throw new InvalidOperationException()),
                 destinationSongFile = Path.Combine(destinationFolder, song.Id + Path.GetExtension(song.SongURL)),
@@ -33,20 +33,31 @@ namespace Downloader
             if (Directory.Exists(destinationFolder)) Directory.Delete(destinationFolder, true);
             Directory.CreateDirectory(destinationFolder);
 
-            HttpClient client = new()
+            // Web client creation
+            ProgressMessageHandler songDownloadHandler = new(new HttpClientHandler { AllowAutoRedirect = true }),
+                albumDownloadHandler = new(new HttpClientHandler { AllowAutoRedirect = true });
+            songDownloadHandler.HttpReceiveProgress += (_, args)
+                => Debug.WriteLine($"{song.Name} progress: {args.ProgressPercentage}%");
+            albumDownloadHandler.HttpReceiveProgress += (_, args)
+                => Debug.WriteLine($"{song.Name} cover progress: {args.ProgressPercentage}%");
+            HttpClient songClient = new(songDownloadHandler)
+            {
+                Timeout = TimeSpan.FromSeconds(1000)
+            };
+            HttpClient albumClient = new(albumDownloadHandler)
             {
                 Timeout = TimeSpan.FromSeconds(1000)
             };
 
-            // Downloading song
-            _songTask = client.GetAsync(song.SongURL);
-            using var songStream = new FileStream(destinationSongFile, FileMode.Create);
-            _songTask.Result.Content.CopyToAsync(songStream);
+            // Downloading files
+            _songTask = songClient.GetAsync(song.SongURL);
+            _albumTask = albumClient.GetAsync(song.AlbumCoverURL);
 
-            // Downloading Album cover
-            _albumTask = client.GetAsync(song.AlbumCoverURL);
+            using var songStream = new FileStream(destinationSongFile, FileMode.Create);
             using var albumCoverStream = new FileStream(destinationAlbumCover, FileMode.Create);
-            _albumTask.Result.Content.CopyToAsync(albumCoverStream);
+
+            refSongTask = _songTask.Result.Content.CopyToAsync(songStream);
+            refCoverTask = _albumTask.Result.Content.CopyToAsync(albumCoverStream);
 
             song.SongLocalPath = destinationSongFile;
             song.AlbumCoverLocalPath = destinationAlbumCover;
@@ -72,9 +83,12 @@ namespace Downloader
             song.AlbumCoverLocalPath = destinationAlbumCover;
             song.SongLocalPath = destinationSongFile;
 
-            Thread.Sleep(1000);
+            do Thread.Sleep(500);
+            while (_songWithDialogTask is null);
             _songWithDialogTask.Wait();
-            Thread.Sleep(1000);
+
+            do Thread.Sleep(500);
+            while (_albumCoverWithDialogTask is null);
             _albumCoverWithDialogTask.Wait();
 
             return song;
