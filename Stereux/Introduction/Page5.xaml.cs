@@ -3,11 +3,11 @@
 namespace Stereux.Introduction
 {
     /// <summary>
-    /// Lógica de interacción para Page1.xaml
+    /// Lógica de interacción para Page3.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Page5 : Page
     {
-        public Page1()
+        public Page5()
         {
             InitializeComponent();
         }

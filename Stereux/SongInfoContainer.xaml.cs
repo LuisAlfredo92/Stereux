@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows.Threading;
 using Connections.Models;
-using Connections.SongsDSTableAdapters;
 
 namespace Stereux
 {

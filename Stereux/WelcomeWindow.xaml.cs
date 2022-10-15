@@ -13,7 +13,7 @@ namespace Stereux
         /// The total pages. Change it to 4 or more
         /// if you want to add another page
         /// </summary>
-        private const byte TotalPages = 3;
+        private const byte TotalPages = 5;
 
         public WelcomeWindow()
         {

@@ -1,7 +1,6 @@
 ﻿using Ookii.Dialogs.Wpf;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 using Connections.SongsDSTableAdapters;
 
 namespace Stereux.Settings
