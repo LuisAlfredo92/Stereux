@@ -7,6 +7,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Connections.Models;
+using Downloader;
 using Stereux.Settings;
 
 namespace Stereux
@@ -88,6 +89,21 @@ namespace Stereux
 
         public Player()
         {
+            // TODO: Uncomment this to enable the updater
+            //var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            //var fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            //if (Updater.CheckUpdates(fvi.FileVersion!).Result)
+            //{
+            //    var boxResult = MessageBox.Show("There's a new version available. Do you want to download it?", "New version available",
+            //        MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No);
+            //    if (boxResult == MessageBoxResult.Yes)
+            //    {
+            //        // TODO: I could download the .exe file itself with an HttpClient like songs
+            //        System.Diagnostics.Process.Start("https://github.com/LuisAlfredo92/Stereux/Releases/latest");
+            //        Close();
+            //    }
+            //}
+
             _player = new MediaPlayer();
             _playImage = (FindResource("PlayDrawingImage") as DrawingImage)!;
             _pauseImage = (FindResource("PauseDrawingImage") as DrawingImage)!;
