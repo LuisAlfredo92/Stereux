@@ -96,7 +96,6 @@ namespace Stereux
             //        MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No);
             //    if (boxResult == MessageBoxResult.Yes)
             //    {
-            //        // TODO: I could download the .exe file itself with an HttpClient like songs
             //        System.Diagnostics.Process.Start("https://github.com/LuisAlfredo92/Stereux/Releases/latest");
             //        Close();
             //    }

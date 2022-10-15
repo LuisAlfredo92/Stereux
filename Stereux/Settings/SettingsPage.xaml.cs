@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using Connections.SongsDSTableAdapters;
+using Downloader;
 
 namespace Stereux.Settings
 {
@@ -10,6 +11,8 @@ namespace Stereux.Settings
     /// </summary>
     public partial class SettingsPage
     {
+        private string _stereuxVersion;
+
         /* TODO: Add option to choose if move folder to new path or
          * delete it and create it again
          */
@@ -21,6 +24,11 @@ namespace Stereux.Settings
             var currentPath = Properties.Settings.Default.DataPath;
             DataPathTextBox.Text = currentPath;
             CalculateFolderSize();
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            _stereuxVersion = fvi.FileVersion!;
+            UpdateStereuxTextBlock.Text = $"Current version: {_stereuxVersion}";
         }
 
         private void DefaultFolderBtn_OnClick(object sender, RoutedEventArgs e)
@@ -108,5 +116,23 @@ namespace Stereux.Settings
 
         private void ShowWelcomeWindowBtn_OnClick(object sender, RoutedEventArgs e)
             => new WelcomeWindow().Show();
+
+        private void CheckUpdatesBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            // TODO: Uncomment this to enable the updater
+            //if (Updater.CheckUpdates(stereuxVersion).Result)
+            //{
+            //    var boxResult = MessageBox.Show("There's a new version available. Do you want to download it?", "New version available",
+            //        MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No);
+            //    if (boxResult == MessageBoxResult.Yes)
+            //    {
+            //        System.Diagnostics.Process.Start("https://github.com/LuisAlfredo92/Stereux/Releases/latest");
+            //        Close();
+            //    }
+            //}
+            //else
+            //    MessageBox.Show("You have the latest version of Stereux", "No new versions", MessageBoxButton.OK,
+            //        MessageBoxImage.Information);
+        }
     }
 }

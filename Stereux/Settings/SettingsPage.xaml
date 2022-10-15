@@ -151,6 +151,41 @@
                         Click="ShowWelcomeWindowBtn_OnClick" />
             </Grid>
             <!--#endregion-->
+
+            <!--#region Update Stereux -->
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Margin="10,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       Content="Update Stereux"
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="20" />
+                <TextBlock x:Name="UpdateStereuxTextBlock"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Grid.RowSpan="2"
+                           Text="Current version"
+                           HorizontalAlignment="Center"
+                           FontSize="16" VerticalAlignment="Center"
+                           TextWrapping="Wrap" />
+                <Button x:Name="CheckUpdatesBtn"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Content="Check updates"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Click="CheckUpdatesBtn_OnClick" />
+            </Grid>
+            <!--#endregion-->
         </Grid>
     </ScrollViewer>
 </Page>

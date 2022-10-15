@@ -17,6 +17,7 @@ namespace Downloader
                 localVersion = new(currentVersion);
 
             return localVersion.CompareTo(latestGitHubVersion) < 0;
+            // TODO: I could download the .exe file itself with an HttpClient like songs
         }
     }
 }
