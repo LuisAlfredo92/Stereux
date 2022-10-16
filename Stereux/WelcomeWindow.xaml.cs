@@ -7,6 +7,7 @@ namespace Stereux
     /// </summary>
     public partial class WelcomeWindow : Window
     {
+        private bool isPlayerBeingShowed;
         private byte _page = 1;
 
         /// <summary>
@@ -15,9 +16,10 @@ namespace Stereux
         /// </summary>
         private const byte TotalPages = 5;
 
-        public WelcomeWindow()
+        public WelcomeWindow(bool isPlayerBeingShowed = false)
         {
             InitializeComponent();
+            this.isPlayerBeingShowed = isPlayerBeingShowed;
         }
 
         private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
@@ -46,7 +48,8 @@ namespace Stereux
             {
                 Properties.Settings.Default.FirstTimeOpening = false;
                 Properties.Settings.Default.Save();
-                new Player().Show();
+                if (!isPlayerBeingShowed)
+                    new Player().Show();
                 Close();
             }
         }

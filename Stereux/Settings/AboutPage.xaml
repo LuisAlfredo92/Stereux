@@ -5,10 +5,473 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Stereux.Settings"
       mc:Ignorable="d"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="400" d:DesignWidth="800"
       Title="AboutPage">
 
-    <Grid>
-        <!-- TODO: Add credits to NuGet packages -->
-    </Grid>
+    <ScrollViewer>
+        <Grid Height="1000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--#region Created by -->
+            <StackPanel Grid.Row="0">
+                <Label Content="Created by"
+                       HorizontalAlignment="Center"
+                       FontFamily="Aneliza"
+                       FontSize="24"
+                       FontWeight="Bold" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="/Resources/Images/LuisAlfredo92 - Título.png" Width="260" />
+                    <StackPanel VerticalAlignment="Center" Margin="25,0,0,0">
+                        <Button x:Name="StereuxButton"
+                                Content="Stereux repository"
+                                Width="200"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Height="50"
+                                Background="Black"
+                                BorderBrush="{x:Null}"
+                                Foreground="White"
+                                Margin="0,0,0,10"
+                                Click="ButtonBase_OnClick"
+                                CommandParameter="Stereux" />
+                        <Button x:Name="GitHubProfileBtn"
+                                Content="GitHub profile"
+                                Width="200"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Height="50"
+                                Background="Black"
+                                BorderBrush="{x:Null}"
+                                Foreground="White"
+                                Margin="0,10,0,10"
+                                Click="ButtonBase_OnClick"
+                                CommandParameter="GitHub" />
+                        <Button x:Name="DonateButton"
+                                Content="Donate"
+                                Width="200"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Height="50"
+                                Background="Black"
+                                BorderBrush="{x:Null}"
+                                Foreground="White"
+                                Margin="0,10,0,0"
+                                Click="ButtonBase_OnClick"
+                                CommandParameter="Donate" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region With help of -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       Content="With help of"
+                       HorizontalAlignment="Center"
+                       FontFamily="Aneliza"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" />
+
+                <!--#region Microsoft.AspNet.WebApi.Client -->
+                <StackPanel Grid.Row="1"
+                            Grid.Column="0">
+                    <Button Content="Microsoft.AspNet.WebApi.Client"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="Microsoft.AspNet.WebApi.Client"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Microsoft"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="Microsoft author"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a Microsoft license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="Microsoft license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region Microsoft.EntityFrameworkCore -->
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1">
+                    <Button Content="Microsoft.EntityFrameworkCore"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="Microsoft.EntityFrameworkCore"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Microsoft"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="Microsoft author"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a MIT license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="MIT license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region Net.Codecrete.QrCodeGenerator -->
+                <StackPanel Grid.Row="2"
+                            Grid.Column="0">
+                    <Button Content="Net.Codecrete.QrCodeGenerator"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="Net.Codecrete.QrCodeGenerator"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Manuel Bleichenbacher"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="Manuel Bleichenbacher"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a MIT license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="MIT license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region Octokit -->
+                <StackPanel Grid.Row="2"
+                            Grid.Column="1">
+                    <Button Content="Octokit"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="Octokit"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Octokit"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="Octokit author"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a MIT license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="MIT license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region Ookii.Dialogs.Wpf -->
+                <StackPanel Grid.Row="3"
+                            Grid.Column="0">
+                    <Button Content="Ookii.Dialogs.Wpf"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="Ookii.Dialogs.Wpf"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Ookii Dialogs Contributors"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="Ookii Dialogs Contributors"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a BSD-3-Clause license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="BSD-3-Clause license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region ScrapySharp -->
+                <StackPanel Grid.Row="3"
+                            Grid.Column="1">
+                    <Button Content="ScrapySharp"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="ScrapySharp"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Romain Flechner"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="Romain Flechner"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a MIT license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="MIT license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region System.Data.SqlClient -->
+                <StackPanel Grid.Row="4"
+                            Grid.Column="0">
+                    <Button Content="System.Data.SqlClient"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="System.Data.SqlClient"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Microsoft"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="Microsoft author"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a MIT license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="MIT license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region TagLibSharp -->
+                <StackPanel Grid.Row="4"
+                            Grid.Column="1">
+                    <Button Content="TagLibSharp"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="5,0,5,0"
+                            Cursor="Hand"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="TagLibSharp"
+                            Click="ButtonBase_OnClick" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Made by:"
+                               Padding="5,0,5,0"
+                               FontSize="16" />
+                        <Button Content="Brian Nickel, Gabriel Burt, Stephen Shaw, etc"
+                                FontSize="16"
+                                Foreground="Blue"
+                                FontWeight="Bold"
+                                Padding="5,0,5,0"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                CommandParameter="TagLibSharp author"
+                                Click="ButtonBase_OnClick" />
+                    </StackPanel>
+                    <Button Content="With a LGPL-2.1-only license"
+                            FontSize="16"
+                            Foreground="Blue"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="5,0,5,0"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            CommandParameter="LGPL-2.1-only license"
+                            Click="ButtonBase_OnClick" />
+                </StackPanel>
+                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Contributors -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       Content="Contributors"
+                       HorizontalAlignment="Center"
+                       FontFamily="Aneliza"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       Grid.RowSpan="2"
+                       Text="Nobody has contributed yet, check the Stereux repository to contribute and your username will appear here" FontSize="20"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center" />
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Translators -->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="5"
+                       Content="Translators"
+                       HorizontalAlignment="Center"
+                       FontFamily="Aneliza"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="5"
+                           Grid.RowSpan="2"
+                           Text="Nobody has translated yet, check the Stereux repository to localize it and your username will appear here" FontSize="20"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center" />
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+    </ScrollViewer>
 </Page>

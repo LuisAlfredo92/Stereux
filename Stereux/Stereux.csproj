@@ -27,10 +27,17 @@
 
   <ItemGroup>
     <None Remove="Resources\Icons\Delete icon.png" />
+    <None Remove="Resources\Images\LuisAlfredo92 - Título.png" />
     <None Remove="Resources\Images\ncs-qr.png" />
     <None Remove="Resources\Images\repo-qr.png" />
     <None Remove="Resources\Images\Stereux logo 512x512.png" />
     <None Remove="Resources\Images\Stereux logo 512x512.qoi" />
+    <None Remove="Resources\Images\Tutorial\1.png" />
+    <None Remove="Resources\Images\Tutorial\2.png" />
+    <None Remove="Resources\Images\Tutorial\3.png" />
+    <None Remove="Resources\Images\Tutorial\4.png" />
+    <None Remove="Resources\Images\Tutorial\5.png" />
+    <None Remove="Resources\Images\Tutorial\6.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,12 +68,19 @@
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\LuisAlfredo92 - Título.png" />
     <Resource Include="Resources\Images\Stereux logo 512x512.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Stereux logo 512x512.qoi">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\Tutorial\1.png" />
+    <Resource Include="Resources\Images\Tutorial\2.png" />
+    <Resource Include="Resources\Images\Tutorial\3.png" />
+    <Resource Include="Resources\Images\Tutorial\4.png" />
+    <Resource Include="Resources\Images\Tutorial\5.png" />
+    <Resource Include="Resources\Images\Tutorial\6.png" />
     <Resource Include="Resources\Styles\Colors.xaml" />
   </ItemGroup>
 

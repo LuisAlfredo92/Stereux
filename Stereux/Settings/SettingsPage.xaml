@@ -140,7 +140,9 @@
                        Grid.RowSpan="2"
                        Text="Click this button to see the Welcome window again"
                        HorizontalAlignment="Center"
-                       FontSize="16" VerticalAlignment="Center"
+                       FontSize="16"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
                        TextWrapping="Wrap" />
                 <Button x:Name="ShowWelcomeWindowBtn"
                         Grid.Row="3"

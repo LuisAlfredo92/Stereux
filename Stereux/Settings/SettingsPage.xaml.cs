@@ -115,7 +115,7 @@ namespace Stereux.Settings
         }
 
         private void ShowWelcomeWindowBtn_OnClick(object sender, RoutedEventArgs e)
-            => new WelcomeWindow().Show();
+            => new WelcomeWindow(true).Show();
 
         private void CheckUpdatesBtn_OnClick(object sender, RoutedEventArgs e)
         {
