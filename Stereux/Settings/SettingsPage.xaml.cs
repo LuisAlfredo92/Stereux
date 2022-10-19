@@ -7,16 +7,19 @@ using Downloader;
 namespace Stereux.Settings
 {
     /// <summary>
-    /// Lógica de interacción para SettingsPage.xaml
+    /// Page in the Settings window where the user can modify some
+    /// settings like DataPath or Stereux size
     /// </summary>
     public partial class SettingsPage
     {
-        private string _stereuxVersion;
+        /// <summary>
+        /// The stereux version.
+        /// </summary>
+        private readonly string _stereuxVersion;
 
-        /* TODO: Add option to choose if move folder to new path or
-         * delete it and create it again
-         */
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SettingsPage"/> class.
+        /// </summary>
         public SettingsPage()
         {
             InitializeComponent();
@@ -31,8 +34,13 @@ namespace Stereux.Settings
             UpdateStereuxTextBlock.Text = $"Current version: {_stereuxVersion}";
         }
 
+        /// <summary>
+        /// Establishes the DataPath (directory where everything will be saved)
+        /// to the default %APPDATA%\Stereux folder
+        /// </summary>
         private void DefaultFolderBtn_OnClick(object sender, RoutedEventArgs e)
         {
+            // TODO: Add option to choose if move folder to new path or delete it and create it again
             // Delete existing folder
             if (Directory.Exists(Properties.Settings.Default.DataPath))
                 Directory.Delete(Properties.Settings.Default.DataPath, true);
@@ -50,6 +58,9 @@ namespace Stereux.Settings
             Directory.CreateDirectory(Properties.Settings.Default.DataPath);
         }
 
+        /// <summary>
+        /// Shows a window to select a new DataPath folder (Where everything will be saved)
+        /// </summary>
         private void SelectFolderBtn_OnClick(object sender, RoutedEventArgs e)
         {
             var dialog = new VistaFolderBrowserDialog
@@ -59,9 +70,10 @@ namespace Stereux.Settings
             };
 
             var wind = Application.Current.Windows.OfType<SettingsWindow>().First();
-            if (!(bool)dialog.ShowDialog(wind)) return;
+            if (!dialog.ShowDialog(wind)!.Value) return;
 
             // Delete existing folder
+            // TODO: Add option to choose if move folder to new path or delete it and create it again
             if (Directory.Exists(Properties.Settings.Default.DataPath))
                 Directory.Delete(Properties.Settings.Default.DataPath, true);
             CalculateFolderSize();
@@ -74,6 +86,9 @@ namespace Stereux.Settings
             Directory.CreateDirectory(Properties.Settings.Default.DataPath);
         }
 
+        /// <summary>
+        /// Deletes the stereux folder (where songs and covers are saved)
+        /// </summary>
         private void DeleteStereuxFolderBtn_OnClick(object sender, RoutedEventArgs e)
         {
             var path = Properties.Settings.Default.DataPath;
@@ -84,7 +99,10 @@ namespace Stereux.Settings
             Directory.CreateDirectory(path);
         }
 
-        private async void CalculateFolderSize()
+        /// <summary>
+        /// Calculates the Stereux folder size.
+        /// </summary>
+        private void CalculateFolderSize()
         {
             if (!Directory.Exists(Properties.Settings.Default.DataPath))
                 FolderSizeLabel.Content = AddSuffixToBytes(0);
@@ -98,7 +116,7 @@ namespace Stereux.Settings
                         );
             }
 
-            string AddSuffixToBytes(long value)
+            static string AddSuffixToBytes(long value)
             {
                 string[] sizeSuffixes = { "Bytes", "KB", "MB", "GB" };
 
@@ -114,9 +132,15 @@ namespace Stereux.Settings
             }
         }
 
+        /// <summary>
+        /// Shows the welcome window on click.
+        /// </summary>
         private void ShowWelcomeWindowBtn_OnClick(object sender, RoutedEventArgs e)
             => new WelcomeWindow(true).Show();
 
+        /// <summary>
+        /// Checks updates click.
+        /// </summary>
         private void CheckUpdatesBtn_OnClick(object sender, RoutedEventArgs e)
         {
             // TODO: Uncomment this to enable the updater

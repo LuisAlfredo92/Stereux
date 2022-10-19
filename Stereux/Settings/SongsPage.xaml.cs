@@ -8,125 +8,149 @@ using Connections.Models;
 using Connections.SongsDSTableAdapters;
 using Ookii.Dialogs.Wpf;
 
-namespace Stereux.Settings
+namespace Stereux.Settings;
+
+/// <summary>
+/// Page of Settings window where the user can manage (delete or
+/// download) songs or re-download them from the internet
+/// </summary>
+public partial class SongsPage
 {
     /// <summary>
-    /// Lógica de interacción para SongsPage.xaml
+    /// The songs table.
     /// </summary>
-    public partial class SongsPage : Page
+    private readonly SongsTableAdapter _songsTable;
+
+    /// <summary>
+    /// The progress dialog used when downloading a song.
+    /// </summary>
+    private readonly ProgressDialog _entireProgressDialog = new()
     {
-        private readonly SongsTableAdapter _songsTable;
+        WindowTitle = "Getting songs info",
+        Text = "Getting info of the songs from",
+        Description = "Processing...",
+        ShowCancelButton = false
+    };
 
-        private readonly ProgressDialog _entireProgressDialog = new()
-        {
-            WindowTitle = "Getting songs info",
-            Text = "Getting info of the songs from",
-            Description = "Processing...",
-            ShowCancelButton = false
-        };
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SongsPage"/> class.
+    /// </summary>
+    public SongsPage()
+    {
+        InitializeComponent();
+        _songsTable = new SongsTableAdapter();
+        SongsDataGrid.ItemsSource = _songsTable.GetData();
+    }
 
-        public SongsPage()
+    /// <summary>
+    /// Shows a progress dialog and calls the method that will get
+    /// ALL the songs from ALL the enabled sources
+    /// </summary>
+    private void GetSongsBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_entireProgressDialog.IsBusy)
+            MessageBox.Show("Songs are already being obtained", "Work in progress");
+        else
         {
-            InitializeComponent();
-            _songsTable = new SongsTableAdapter();
-            SongsDataGrid.ItemsSource = _songsTable.GetData();
+            _entireProgressDialog.DoWork += GetSongsFromAllSources_DoWork;
+            _entireProgressDialog.RunWorkerCompleted += (_, _) => SongsDataGrid.ItemsSource = _songsTable.GetData(); ;
+            _entireProgressDialog.Show();
+        }
+    }
+
+    /// <summary>
+    /// Deletes and truncates Songs table
+    /// </summary>
+    private void ClearSongsBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        _songsTable.TruncateTable();
+        Downloader.Downloader.StopAllDownloads();
+        if (Directory.Exists(Properties.Settings.Default.DataPath))
+            Directory.Delete(Properties.Settings.Default.DataPath, true);
+        SongsDataGrid.ItemsSource = _songsTable.GetData();
+    }
+
+    /// <summary>
+    /// Deletes one song from database.
+    /// </summary>
+    private void DeleteSongBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        var id = ((sender as Button)!.CommandParameter as int?) ?? -1;
+        _songsTable.DeleteSong(id);
+    }
+
+    /// <summary>
+    /// Downloads one song from the Internet.
+    /// </summary>
+    private void DownloadBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        var id = ((sender as Button)!.CommandParameter as int?)!;
+        Song? song = new(_songsTable.GetSong(id));
+        song = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, song).Result;
+        SongsDataGrid.ItemsSource = _songsTable.GetData();
+    }
+
+    /// <summary>
+    /// Gets ALL the songs from ALL the enabled sources.
+    /// It must be called carefully since it's a heavy
+    /// and slow function
+    /// </summary>
+    private void GetSongsFromAllSources_DoWork(object? sender, DoWorkEventArgs e)
+    {
+        List<Song> songs = new();
+        var enabledSources = new SourcesTableAdapter().GetEnabledSources();
+        if (enabledSources.Count == 0)
+        {
+            MessageBox.Show("You didn't select any source, go to Sources page and select at least one",
+                "No selected sources",
+                MessageBoxButton.OK,
+                MessageBoxImage.Exclamation);
+            _entireProgressDialog.ReportProgress(100,
+                "Getting songs",
+                $"Progress: {100}%");
+            return;
         }
 
-        private async void GetSongsBtn_OnClick(object sender, RoutedEventArgs e)
+        byte progress = 0;
+        foreach (var source in enabledSources)
         {
-            if (_entireProgressDialog.IsBusy)
-                MessageBox.Show("Songs are already being obtained", "Work in progress");
-            else
-            {
-                _entireProgressDialog.DoWork += GetSongsFromAllSources_DoWork;
-                _entireProgressDialog.RunWorkerCompleted += UpdateTable;
-                _entireProgressDialog.Show();
-            }
-        }
-
-        private void ClearSongsBtn_OnClick(object sender, RoutedEventArgs e)
-        {
-            _songsTable.TruncateTable();
-            Downloader.Downloader.StopAllDownloads();
-            if (Directory.Exists(Properties.Settings.Default.DataPath))
-                Directory.Delete(Properties.Settings.Default.DataPath, true);
-            SongsDataGrid.ItemsSource = _songsTable.GetData();
-        }
-
-        private void DeleteSongBtn_OnClick(object sender, RoutedEventArgs e)
-        {
-            var id = ((sender as Button)!.CommandParameter as int?) ?? -1;
-            _songsTable.DeleteSong(id);
-        }
-
-        private void DownloadBtn_OnClick(object sender, RoutedEventArgs e)
-        {
-            var id = ((sender as Button)!.CommandParameter as int?)!;
-            Song? song = new(_songsTable.GetSong(id));
-            song = Downloader.Downloader.DownloadSongWithProgressBar(Properties.Settings.Default.DataPath, song).Result;
-            _songsTable.SongDownloaded(song.AlbumCoverLocalPath, song.SongLocalPath, id);
-            SongsDataGrid.ItemsSource = _songsTable.GetData();
-        }
-
-        private void GetSongsFromAllSources_DoWork(object? sender, DoWorkEventArgs e)
-        {
-            List<Song> songs = new();
-            var enabledSources = new SourcesTableAdapter().GetEnabledSources();
-            if (enabledSources.Count == 0)
-            {
-                MessageBox.Show("You didn't select any source, go to Sources page and select at least one",
-                    "No selected sources",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Exclamation);
-                _entireProgressDialog.ReportProgress(100,
-                    "Getting songs",
-                    $"Progress: {100}%");
-                return;
-            }
-
-            byte progress = 0;
-            foreach (var source in enabledSources)
-            {
-                // Report progress to progress dialog
-                _entireProgressDialog.ReportProgress(progress,
-                    $"Getting songs from {source.Name}",
-                    $"Progress: {progress}%");
-
-                List<Song>? songsObtained;
-                try
-                {
-                    songsObtained = source.Id switch
-                    {
-                        1 => new Ncs().GetSongs(),
-                        _ => null
-                    };
-                }
-                catch (Exception)
-                {
-                    songsObtained = null;
-                }
-                if (songsObtained is not null)
-                    songs.AddRange(songsObtained);
-
-                // Checks if user has cancelled
-                if (_entireProgressDialog.CancellationPending)
-                    return;
-                progress += (byte)(enabledSources.Count / 100);
-            }
-
+            // Report progress to progress dialog
             _entireProgressDialog.ReportProgress(progress,
-                "Getting songs finished",
+                $"Getting songs from {source.Name}",
                 $"Progress: {progress}%");
 
-            if (songs.Count != _songsTable.InsertSong(songs))
+            List<Song>? songsObtained;
+            try
             {
-                //TODO: Handle error
-                Debug.WriteLine("Not every song was added");
+                // Add here more sources when added
+                songsObtained = source.Id switch
+                {
+                    1 => new Ncs().GetSongs(),
+                    _ => null
+                };
             }
-            _entireProgressDialog.Dispose();
+            catch (Exception)
+            {
+                songsObtained = null;
+            }
+            if (songsObtained is not null)
+                songs.AddRange(songsObtained);
+
+            // Checks if user has cancelled
+            if (_entireProgressDialog.CancellationPending)
+                return;
+            progress += (byte)(enabledSources.Count / 100);
         }
 
-        private void UpdateTable(object? sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs)
-            => SongsDataGrid.ItemsSource = _songsTable.GetData();
+        _entireProgressDialog.ReportProgress(progress,
+            "Getting songs finished",
+            $"Progress: {progress}%");
+
+        if (songs.Count != _songsTable.InsertSong(songs))
+        {
+            //TODO: Handle error
+            Debug.WriteLine("Not every song was added");
+        }
+        _entireProgressDialog.Dispose();
     }
 }

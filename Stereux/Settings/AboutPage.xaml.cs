@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Stereux.Settings
@@ -15,7 +17,7 @@ namespace Stereux.Settings
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var link = (sender as Button)!.CommandParameter.ToString() switch
+            var url = (sender as Button)!.CommandParameter.ToString() switch
             {
                 "Stereux" => "https://github.com/LuisAlfredo92/Stereux",
                 "GitHub" => "https://github.com/LuisAlfredo92/",
@@ -38,9 +40,24 @@ namespace Stereux.Settings
                 "TagLibSharp" => "https://github.com/mono/taglib-sharp",
                 "TagLibSharp author" => "https://github.com/mono",
                 "LGPL-2.1-only license" => "https://licenses.nuget.org/LGPL-2.1-only",
+                "ncs page" => "https://ncs.io/",
                 _ => "https://github.com/LuisAlfredo92/Stereux"
             };
-            System.Diagnostics.Process.Start(link);
+
+            // Thanks to https://stackoverflow.com/a/43232486/11756870
+            /* I removed the OSX and Linux part since this program will
+             * be Windows exclusive
+             */
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                url = url.Replace("&", "^&");
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            }
         }
     }
 }

@@ -6,14 +6,36 @@ using Ookii.Dialogs.Wpf;
 
 namespace Stereux;
 
+/// <summary>
+/// The playlist that contains the songs that will be played
+/// or were played
+/// </summary>
 public class Playlist
 {
+    /// <summary>
+    /// The song state (If is being downloaded or not).
+    /// </summary>
     private class SongState
     {
+        /// <summary>
+        /// Gets or Sets a value indicating whether a song is being downloaded.
+        /// </summary>
         public bool IsBeingDownloaded { get; set; }
+
+        /// <summary>
+        /// Gets the download song task.
+        /// </summary>
         public Task? SongTask { get; }
+
+        /// <summary>
+        /// Gets the download cover task.
+        /// </summary>
         public Task? CoverTask { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SongState"/> class
+        /// not being downloaded.
+        /// </summary>
         public SongState()
         {
             IsBeingDownloaded = false;
@@ -21,6 +43,12 @@ public class Playlist
             CoverTask = null;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SongState"/> class
+        /// being downloaded.
+        /// </summary>
+        /// <param name="songTask">The song task.</param>
+        /// <param name="coverTask">The cover task.</param>
         public SongState(Task songTask, Task coverTask)
         {
             IsBeingDownloaded = true;
@@ -29,12 +57,34 @@ public class Playlist
         }
     }
 
+    /// <summary>
+    /// The songs.
+    /// </summary>
     private readonly List<Song> _songs;
+
+    /// <summary>
+    /// The middle value of the play list.
+    /// </summary>
     private readonly int _middle;
+
+    /// <summary>
+    /// The songs table.
+    /// </summary>
     private readonly SongsTableAdapter _table;
+
+    /// <summary>
+    /// The last id of the songs table.
+    /// </summary>
     private readonly int _lastId;
+
+    /// <summary>
+    /// Dictionary that associates Songs with their download tasks
+    /// </summary>
     private readonly Dictionary<Song, SongState> _songsTasks;
 
+    /// <summary>
+    /// The downloading song progress dialog.
+    /// </summary>
     private readonly ProgressDialog _downloadingSongProgressDialog = new()
     {
         ShowCancelButton = false,
@@ -44,6 +94,9 @@ public class Playlist
         WindowTitle = "Downloading..."
     };
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Playlist"/> class.
+    /// </summary>
     public Playlist()
     {
         //TODO: Take capacity from settings
@@ -79,6 +132,10 @@ public class Playlist
         }
     }
 
+    /// <summary>
+    /// Gets the current song (in the middle of the play list).
+    /// </summary>
+    /// <returns>The middle Song.</returns>
     public Song CurrentSong()
     {
         if (_songs[_middle].AlbumCoverLocalPath != null && _songs[_middle].SongLocalPath != null &&
@@ -103,6 +160,10 @@ public class Playlist
         return _songs[_middle];
     }
 
+    /// <summary>
+    /// Moves the play list one song adding and removing one.
+    /// </summary>
+    /// <returns><![CDATA[Task<Song?>]]>The current song already moved on the list</returns>
     public async Task<Song?> NextSong()
     {
         _songsTasks.Remove(_songs[0]);
@@ -133,6 +194,10 @@ public class Playlist
         return CurrentSong();
     }
 
+    /// <summary>
+    /// Moves the play list one song adding and removing one.
+    /// </summary>
+    /// <returns><![CDATA[Task<Song?>]]>The current song already moved on the list</returns>
     public async Task<Song?> PreviousSong()
     {
         _songsTasks.Remove(_songs[10]);
@@ -163,6 +228,11 @@ public class Playlist
         return CurrentSong();
     }
 
+    /// <summary>
+    /// Downloads the song asynchronously.
+    /// </summary>
+    /// <param name="song">The song to be downloaded.</param>
+    /// <returns><![CDATA[Task<Song>]]>The song with their local paths aiming to the local file</returns>
     private async Task<Song> DownloadSong(Song song)
     {
         if (song.AlbumCoverLocalPath != null && song.SongLocalPath != null &&
@@ -175,6 +245,10 @@ public class Playlist
         return song;
     }
 
+    /// <summary>
+    /// Downloads the immediately next and previous song so the user can change to them
+    /// quickly if they want to, then downloads the rest of the songs
+    /// </summary>
     public async void DownloadNextSongs()
     {
         _songs[6] = await DownloadSong(_songs[_middle + 1]);

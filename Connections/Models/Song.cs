@@ -16,27 +16,32 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     /// <param name="source">Source of the song, taken from <see cref="Sources"/></param>
     /// <param name="name">Name or title of the song</param>
     /// <param name="artists">Artist or artists involved into creation of the song (Usually avoid "feat" or "ft." artists)</param>
-    /// <param name="albumCoverURL">URL to the album cover image on the Internet, it the song has no cover this param must be null and the program will use a generic cover</param>
+    /// <param name="albumCoverUrl">URL to the album cover image on the Internet, it the song has no cover this param must be null and the program will use a generic cover</param>
     /// <param name="genre">(Optional) Genre or genres of the song</param>
     /// <param name="infoURL">URL that will lead to a web page where the viewers can find more information about the song, not the artists. This is used to create the QRCode</param>
-    /// <param name="songURL">URL that leads to the song FILE on the Internet</param>
+    /// <param name="songUrl">URL that leads to the song FILE on the Internet</param>
     /// <param name="albumCoverLocalPath">Once album cover has been downloaded, this will save the local path (on the user's computer) to the file of the downloaded image to be shown</param>
     /// <param name="songLocalPath">Once the song has been downloaded, this will save the local path to the file of the downloaded song</param>
-    public Song(int? id, Sources? source, string name, string artists, string? albumCoverURL, string genre, string infoURL,
-        string songURL, string? albumCoverLocalPath, string? songLocalPath)
+    public Song(int? id, Sources? source, string name, string artists, string? albumCoverUrl, string genre, string infoURL,
+        string songUrl, string? albumCoverLocalPath, string? songLocalPath)
     {
         Id = id;
         Source = source ?? throw new ArgumentNullException(nameof(source));
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Artists = artists ?? throw new ArgumentNullException(nameof(artists));
-        AlbumCoverURL = albumCoverURL ?? "No cover.png";
+        AlbumCoverURL = albumCoverUrl ?? "No cover.png";
         Genre = genre;
         InfoURL = infoURL ?? throw new ArgumentNullException(nameof(infoURL));
-        SongURL = songURL ?? throw new ArgumentNullException(nameof(songURL));
+        SongURL = songUrl ?? throw new ArgumentNullException(nameof(songUrl));
         AlbumCoverLocalPath = albumCoverLocalPath;
         SongLocalPath = songLocalPath;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Song"/> class using a <see cref="SongsDS.SongsRow"/>
+    /// taken from the database.
+    /// </summary>
+    /// <param name="row">The row.</param>
     public Song(SongsDS.SongsRow row) : this(row.Id,
         (Sources)row.Source,
         row.Name,
@@ -51,6 +56,11 @@ public class Song : IEquatable<Song>, IComparable<Song>, IFormattable
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Song"/> class using a
+    /// data table that should have only one row.
+    /// </summary>
+    /// <param name="dataTable">The data table.</param>
     public Song(DataTable dataTable) : this((dataTable.Rows[0] as SongsDS.SongsRow)!)
     {
     }

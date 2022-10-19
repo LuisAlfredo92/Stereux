@@ -30,6 +30,7 @@
     <None Remove="Resources\Images\LuisAlfredo92 - Título.png" />
     <None Remove="Resources\Images\ncs-qr.png" />
     <None Remove="Resources\Images\repo-qr.png" />
+    <None Remove="Resources\Images\Sources\ncs.png" />
     <None Remove="Resources\Images\Stereux logo 512x512.png" />
     <None Remove="Resources\Images\Stereux logo 512x512.qoi" />
     <None Remove="Resources\Images\Tutorial\1.png" />
@@ -69,6 +70,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\LuisAlfredo92 - Título.png" />
+    <Resource Include="Resources\Images\Sources\ncs.png" />
     <Resource Include="Resources\Images\Stereux logo 512x512.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

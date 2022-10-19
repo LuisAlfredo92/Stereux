@@ -21,7 +21,7 @@ namespace Connections.Controllers
         private readonly int _maxPage;
         private List<Song>? _songs;
 
-        private ProgressDialog _progressDialog = new()
+        private readonly ProgressDialog _progressDialog = new()
         {
             WindowTitle = "Getting songs from NCS",
             Text = "Getting songs from No Copyright Sounds",
@@ -59,7 +59,7 @@ namespace Connections.Controllers
 
                     try
                     {
-                        webPage = _htmlWeb.Load($"https://ncs.io/music?page=1");
+                        webPage = _htmlWeb.Load("https://ncs.io/music?page=1");
                         error = false;
                     }
                     catch
@@ -93,7 +93,7 @@ namespace Connections.Controllers
             {
                 Thread.Sleep(3000);
             } while (_progressDialog.IsBusy);
-            return _songs.Where(song => song.SongURL.Length > 0).ToList();
+            return _songs.Where(song => !song.SongURL.Equals("https://ncs.io/#") && song.SongURL.Length > 0).ToList();
         }
 
         private void GetList(object? sender, DoWorkEventArgs doWorkEventArgs)
@@ -166,7 +166,7 @@ namespace Connections.Controllers
             => songsDiv.SelectNodes("//div [contains(@class, 'col-lg-2 item')]");
 
         /// <summary>
-        /// Gets only <b>one</b> song /its info) from one div
+        /// Gets only <b>one</b> song (its info) from one div
         /// </summary>
         /// <param name="completeSongInfo">The div that contains the complete song info</param>
         /// <returns>A Song object</returns>
