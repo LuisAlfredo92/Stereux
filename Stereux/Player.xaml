@@ -118,7 +118,7 @@
                 Margin="280,50,0,0"
                 VerticalAlignment="Top"
                 Width="25"
-                ToolTip="Next song"
+                ToolTip="Settings"
                 Focusable="True"
                 Cursor="Hand"
                 Opacity="0.995"

@@ -1,18 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Connections.Models;
 
-namespace Connections
-{
-}
-
 namespace Connections.SongsDSTableAdapters
 {
+    /// <summary>
+    /// The sources table adapter with custom connection string.
+    /// </summary>
+    public partial class SourcesTableAdapter
+    {
+        private readonly string _fixedConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                                                         $"AttachDbFilename={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SongsDB.mdf")};" +
+                                                         "Integrated Security=True";
+    }
+
     /// <summary>
     /// The songs table adapter with custom methods.
     /// </summary>
     public partial class SongsTableAdapter
     {
+        private readonly string _fixedConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                                                $"AttachDbFilename={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SongsDB.mdf")};" +
+                                                "Integrated Security=True";
+
         /// <summary>
         /// Inserts a song into the database.
         /// </summary>
