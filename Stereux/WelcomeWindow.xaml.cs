@@ -16,10 +16,17 @@ namespace Stereux
         /// </summary>
         private const byte TotalPages = 6;
 
+        public WelcomeWindow() : this(false)
+        {
+        }
+
         public WelcomeWindow(bool isPlayerBeingShowed = false)
         {
             InitializeComponent();
             _isPlayerBeingShowed = isPlayerBeingShowed;
+            if (Properties.Settings.Default.FirstTimeOpening || isPlayerBeingShowed) return;
+            new Player().Show();
+            Close();
         }
 
         private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
