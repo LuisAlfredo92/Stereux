@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Stereux.Introduction;
 
 namespace Stereux
 {
@@ -44,6 +45,12 @@ namespace Stereux
         {
             if (_page < TotalPages)
             {
+                if (_page == 2 &&
+                    (ContainerFrame.Content as Page2)!.GetSongsBtn.IsEnabled &&
+                    MessageBox.Show("You haven't gotten any song. Are you sure you want to continue?", "Not songs",
+                        MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.No)
+                    return;
+
                 _page++;
                 PageLabel.Content = $"{_page} / {TotalPages}";
                 PreviousButton.IsEnabled = true;
