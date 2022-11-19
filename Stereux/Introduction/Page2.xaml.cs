@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using Connections.Controllers;
@@ -43,10 +44,18 @@ namespace Stereux.Introduction
         public Page2()
         {
             InitializeComponent();
-            _songsTable = new SongsTableAdapter();
-            _sourcesTable = new SourcesTableAdapter();
-            SongsDataGrid.ItemsSource = _songsTable.GetData();
-            SourcesDataGrid.ItemsSource = _sourcesTable.GetData();
+            try
+            {
+                _songsTable = new SongsTableAdapter();
+                _sourcesTable = new SourcesTableAdapter();
+                SongsDataGrid.ItemsSource = _songsTable.GetData();
+                SourcesDataGrid.ItemsSource = _sourcesTable.GetData();
+            }
+            catch (Exception e)
+            {
+                File.WriteAllText("Error.txt", e.Message);
+                throw;
+            }
         }
 
         /// <summary>

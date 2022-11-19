@@ -1,5 +1,7 @@
-﻿using Ookii.Dialogs.Wpf;
+﻿using System.Diagnostics;
+using Ookii.Dialogs.Wpf;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using Connections.SongsDSTableAdapters;
 using Downloader;
@@ -23,15 +25,15 @@ namespace Stereux.Settings
         public SettingsPage()
         {
             InitializeComponent();
-
             var currentPath = Properties.Settings.Default.DataPath;
             DataPathTextBox.Text = currentPath;
-            CalculateFolderSize();
 
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            var assembly = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Stereux.exe");
+            var fvi = FileVersionInfo.GetVersionInfo(assembly);
             _stereuxVersion = fvi.FileVersion!;
             UpdateStereuxTextBlock.Text = $"Current version: {_stereuxVersion}";
+
+            CalculateFolderSize();
         }
 
         /// <summary>
@@ -104,6 +106,8 @@ namespace Stereux.Settings
         /// </summary>
         private void CalculateFolderSize()
         {
+            if (Properties.Settings.Default.DataPath.Length < 1)
+                return;
             if (!Directory.Exists(Properties.Settings.Default.DataPath))
                 FolderSizeLabel.Content = AddSuffixToBytes(0);
             else
