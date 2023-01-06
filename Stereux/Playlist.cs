@@ -182,7 +182,8 @@ public class Playlist
             result.IsSongLocalPathNull() ? null : result.SongLocalPath
         );
         _songs.Add(newSong);
-        _songsTasks.Add(newSong, new SongState());
+        if (!_songsTasks.TryAdd(newSong, new SongState()))
+            _songsTasks[newSong] = new SongState();
         Task.Run(() =>
         {
             var downloadedSong = DownloadSong(newSong).Result;
@@ -216,7 +217,8 @@ public class Playlist
             result.IsSongLocalPathNull() ? null : result.SongLocalPath
         );
         _songs.Insert(0, newSong);
-        _songsTasks.Add(newSong, new SongState());
+        if (!_songsTasks.TryAdd(newSong, new SongState()))
+            _songsTasks[newSong] = new SongState();
         Task.Run(() =>
         {
             var downloadedSong = DownloadSong(newSong).Result;

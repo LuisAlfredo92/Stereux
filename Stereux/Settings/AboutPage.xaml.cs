@@ -41,6 +41,7 @@ namespace Stereux.Settings
                 "TagLibSharp author" => "https://github.com/mono",
                 "LGPL-2.1-only license" => "https://licenses.nuget.org/LGPL-2.1-only",
                 "ncs page" => "https://ncs.io/",
+                "Changelog" => "Changelog.txt",
                 _ => "https://github.com/LuisAlfredo92/Stereux"
             };
 

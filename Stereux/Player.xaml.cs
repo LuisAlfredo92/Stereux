@@ -92,8 +92,30 @@ public partial class Player
             SongInfoContainer.ChangeVars(CurrentSong!.Source, CurrentSong!.InfoURL);
 
             // Setting time
-            var file = TagLib.File.Create(CurrentSong.SongLocalPath);
-            var duration = file.Properties.Duration;
+            TagLib.File? file = null;
+            var success = false;
+            try
+            {
+                file = TagLib.File.Create(CurrentSong.SongLocalPath);
+            }
+            catch (Exception e)
+            {
+                for (var i = 0; i < 3; i++)
+                {
+                    if (success) continue;
+
+                    Thread.Sleep(1000);
+                    file = TagLib.File.Create(CurrentSong.SongLocalPath);
+                    success = true;
+                }
+
+                if (!success)
+                {
+                    File.WriteAllText("Error.txt", $"{e.Message}\n\n{e.StackTrace}");
+                    throw;
+                }
+            }
+            var duration = file!.Properties.Duration;
 
             // Setting text
             SongTimeTextBlock.Text = $"{duration:mm\\:ss}";
@@ -212,13 +234,22 @@ public partial class Player
     /// </summary>
     private async void NextBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        if (_playlist != null)
+        try
         {
-            _player.Pause();
-            CurrentSong = await _playlist.NextSong();
-            _player.Play();
+            if (_playlist != null)
+            {
+                _player.Pause();
+                BlockButtons();
+                CurrentSong = await _playlist.NextSong();
+                _player.Play();
+            }
+            else CreatePlaylist();
         }
-        else CreatePlaylist();
+        catch (Exception exception)
+        {
+            File.WriteAllText("Error.txt", $"{exception.Message}\n\n{exception.StackTrace}");
+            throw;
+        }
     }
 
     /// <summary>
@@ -230,6 +261,7 @@ public partial class Player
         if (_playlist != null)
         {
             _player.Pause();
+            BlockButtons();
             CurrentSong = await _playlist.PreviousSong();
             _player.Play();
         }
@@ -308,5 +340,22 @@ public partial class Player
         TimeSlider.Value = 0;
         CurrentSong = _playlist!.NextSong().Result;
         if (_isPlaying) _player.Play();
+    }
+
+    private void BlockButtons()
+    {
+        NextBtn.IsEnabled = false;
+        PrevBtn.IsEnabled = false;
+        var enablerDispatcherTimer = new DispatcherTimer
+        {
+            Interval = TimeSpan.FromSeconds(3),
+            IsEnabled = true
+        };
+        enablerDispatcherTimer.Tick += (_, _) =>
+        {
+            NextBtn.IsEnabled = true;
+            PrevBtn.IsEnabled = true;
+            enablerDispatcherTimer.Stop();
+        };
     }
 }

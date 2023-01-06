@@ -63,6 +63,18 @@
                                 Margin="0,10,0,0"
                                 Click="ButtonBase_OnClick"
                                 CommandParameter="Donate" />
+                        <Button x:Name="ChangelogButton"
+                                Content="Changelog"
+                                Width="200"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Height="50"
+                                Background="Black"
+                                BorderBrush="{x:Null}"
+                                Foreground="White"
+                                Margin="0,10,0,0"
+                                Click="ButtonBase_OnClick"
+                                CommandParameter="Changelog" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -439,7 +451,7 @@
             </Grid>
             <!--#endregion-->
 
-            <!--#region Translators -->
+            <!--#region Sources -->
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
