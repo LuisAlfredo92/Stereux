@@ -15,14 +15,14 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/LuisAlfredo92/Stereux</RepositoryUrl>
     <PackageTags>music;copyright;attribution;stream;</PackageTags>
-    <PackageReleaseNotes>1.0.0
--Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.1 - 25/01/2023
+ -Hotfix: The program didn't start correctly due to a publish error</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
     <PackageLicenseFile>C:\Users\luisa\Proyectos\En progreso\Programas\Stereux\Stereux\LICENSE</PackageLicenseFile>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

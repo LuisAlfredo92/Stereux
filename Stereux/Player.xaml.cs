@@ -148,63 +148,71 @@ public partial class Player
     /// </summary>
     public Player()
     {
-        //TODO: Add option to check updates on startup
-        var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-        var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-        if (Updater.CheckUpdates(fvi.FileVersion!))
+        try
         {
-            var boxResult = MessageBox.Show("There's a new version available. Do you want to download it?", "New version available",
-                MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No);
-            if (boxResult != MessageBoxResult.Yes) return;
-
-            // Thanks to https://stackoverflow.com/a/43232486/11756870
-            /* I removed the OSX and Linux part since this program will
-             * be Windows exclusive
-             */
-            var url = "https://github.com/LuisAlfredo92/Stereux/releases/latest";
-            try
+            //TODO: Add option to check updates on startup
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            if (Updater.CheckUpdates(fvi.FileVersion!))
             {
-                Process.Start(url);
+                var boxResult = MessageBox.Show("There's a new version available. Do you want to download it?",
+                    "New version available",
+                    MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No);
+                if (boxResult != MessageBoxResult.Yes) return;
+
+                // Thanks to https://stackoverflow.com/a/43232486/11756870
+                /* I removed the OSX and Linux part since this program will
+                 * be Windows exclusive
+                 */
+                var url = "https://github.com/LuisAlfredo92/Stereux/releases/latest";
+                try
+                {
+                    Process.Start(url);
+                }
+                catch
+                {
+                    // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                }
             }
-            catch
+            else
+                MessageBox.Show("You have the latest version of Stereux", "No new versions", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+
+            _player = new MediaPlayer();
+            _playImage = (FindResource("PlayDrawingImage") as DrawingImage)!;
+            _pauseImage = (FindResource("PauseDrawingImage") as DrawingImage)!;
+            _volumeImage = (FindResource("VolumeDrawingImage") as DrawingImage)!;
+            _muteImage = (FindResource("MuteDrawingImage") as DrawingImage)!;
+
+            InitializeComponent();
+
+            if (Properties.Settings.Default.DataPath.Length < 1)
             {
-                // hack because of this: https://github.com/dotnet/corefx/issues/10361
-                url = url.Replace("&", "^&");
-                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                Properties.Settings.Default.DataPath =
+                    Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "Stereux"
+                    );
+                Properties.Settings.Default.Save();
             }
+
+            if (!Directory.Exists(Properties.Settings.Default.DataPath))
+                Directory.CreateDirectory(Properties.Settings.Default.DataPath);
+
+            CreatePlaylist();
+
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            _timer.Tick += UpdateTimers;
         }
-        else
-            MessageBox.Show("You have the latest version of Stereux", "No new versions", MessageBoxButton.OK,
-                MessageBoxImage.Information);
-
-        _player = new MediaPlayer();
-        _playImage = (FindResource("PlayDrawingImage") as DrawingImage)!;
-        _pauseImage = (FindResource("PauseDrawingImage") as DrawingImage)!;
-        _volumeImage = (FindResource("VolumeDrawingImage") as DrawingImage)!;
-        _muteImage = (FindResource("MuteDrawingImage") as DrawingImage)!;
-
-        InitializeComponent();
-
-        if (Properties.Settings.Default.DataPath.Length < 1)
+        catch (Exception ex)
         {
-            Properties.Settings.Default.DataPath =
-                Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    "Stereux"
-                );
-            Properties.Settings.Default.Save();
+            File.AppendAllText("Error.txt", $"{ex.Message}\n\n{ex.StackTrace}");
         }
-
-        if (!Directory.Exists(Properties.Settings.Default.DataPath))
-            Directory.CreateDirectory(Properties.Settings.Default.DataPath);
-
-        CreatePlaylist();
-
-        _timer = new DispatcherTimer
-        {
-            Interval = TimeSpan.FromSeconds(1)
-        };
-        _timer.Tick += UpdateTimers;
     }
 
     /// <summary>
