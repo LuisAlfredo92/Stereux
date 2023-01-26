@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows;
 using Connections.SongsDSTableAdapters;
 using Downloader;
+using System.Security.Policy;
 
 namespace Stereux.Settings
 {
@@ -147,20 +148,31 @@ namespace Stereux.Settings
         /// </summary>
         private void CheckUpdatesBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            // TODO: Uncomment this to enable the updater
-            //if (Updater.CheckUpdates(stereuxVersion).Result)
-            //{
-            //    var boxResult = MessageBox.Show("There's a new version available. Do you want to download it?", "New version available",
-            //        MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No);
-            //    if (boxResult == MessageBoxResult.Yes)
-            //    {
-            //        System.Diagnostics.Process.Start("https://github.com/LuisAlfredo92/Stereux/Releases/latest");
-            //        Close();
-            //    }
-            //}
-            //else
-            //    MessageBox.Show("You have the latest version of Stereux", "No new versions", MessageBoxButton.OK,
-            //        MessageBoxImage.Information);
+            if (Updater.CheckUpdates(_stereuxVersion))
+            {
+                var boxResult = MessageBox.Show("There's a new version available. Do you want to download it?", "New version available",
+                    MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No);
+                if (boxResult != MessageBoxResult.Yes) return;
+
+                // Thanks to https://stackoverflow.com/a/43232486/11756870
+                /* I removed the OSX and Linux part since this program will
+                 * be Windows exclusive
+                 */
+                var url = "https://github.com/LuisAlfredo92/Stereux/releases/latest";
+                try
+                {
+                    Process.Start(url);
+                }
+                catch
+                {
+                    // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                }
+            }
+            else
+                MessageBox.Show("You have the latest version of Stereux", "No new versions", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
         }
     }
 }

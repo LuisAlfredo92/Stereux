@@ -16,13 +16,12 @@ public class Updater
     /// </summary>
     /// <param name="currentVersion">The current version.</param>
     /// <returns><![CDATA[Task<bool>]]> that indicates if there's a new version</returns>
-    public static async Task<bool> CheckUpdates(string currentVersion)
+    public static bool CheckUpdates(string currentVersion)
     {
         var client = new GitHubClient(new ProductHeaderValue("Stereux"));
-        var release = await client.Repository.Release.GetLatest("LuisAlfredo92", "Stereux");
+        var release = client.Repository.Release.GetAll("LuisAlfredo92", "Stereux").Result[0];
 
-        Version latestGitHubVersion = new(release.TagName),
-            localVersion = new(currentVersion);
+        Version latestGitHubVersion = new(release.TagName), localVersion = new(currentVersion);
 
         return localVersion.CompareTo(latestGitHubVersion) < 0;
         // TODO: I could download the .exe file itself with an HttpClient like songs
