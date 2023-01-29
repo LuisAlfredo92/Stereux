@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4d7a9ca7.css",
+    "main.js": "/static/js/main.3ab23fbb.js",
+    "static/media/6.png": "/static/media/6.d0bb83ef0b4d2833d3f1.png",
+    "static/media/logo.png": "/static/media/logo.27a5bae1b66483e31e6f.png",
+    "static/media/Aneliza-Regular.ttf": "/static/media/Aneliza-Regular.7c36d5d55b8f206e12c8.ttf",
+    "static/media/Aneliza-ExtraBold.ttf": "/static/media/Aneliza-ExtraBold.0062b0c20a050180ca2b.ttf",
+    "static/media/4.png": "/static/media/4.e8453ca54d51834e7f14.png",
+    "static/media/1.png": "/static/media/1.ce5aee0bdb7e41add8e3.png",
+    "static/media/5.png": "/static/media/5.9b799982f178322c9ee7.png",
+    "index.html": "/index.html",
+    "main.4d7a9ca7.css.map": "/static/css/main.4d7a9ca7.css.map",
+    "main.3ab23fbb.js.map": "/static/js/main.3ab23fbb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4d7a9ca7.css",
+    "static/js/main.3ab23fbb.js"
+  ]
+}
